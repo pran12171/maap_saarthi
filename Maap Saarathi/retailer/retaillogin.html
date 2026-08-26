@@ -1,0 +1,3081 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Retailer Registration | MaapSaarthi</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+<style>
+
+/* =====================================================
+   ROOT
+===================================================== */
+
+:root {
+
+    --gov-blue: #003366;
+    --gov-blue-dark: #00264d;
+    --gov-blue-light: #005a9c;
+
+    --saffron: #e87500;
+    --green: #138808;
+
+    --background: #f3f5f7;
+    --white: #ffffff;
+
+    --text: #1a1a1a;
+    --muted: #666666;
+
+    --border: #cfd5dc;
+
+    --danger: #c62828;
+    --success: #138808;
+
+    --shadow:
+        0 4px 18px rgba(0,0,0,0.08);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    font-family:
+        "Noto Sans",
+        "Noto Sans Telugu",
+        Arial,
+        sans-serif;
+
+    background:
+        var(--background);
+
+    color:
+        var(--text);
+
+    line-height: 1.6;
+}
+
+body.telugu {
+
+    font-family:
+        "Noto Sans Telugu",
+        "Noto Sans",
+        Arial,
+        sans-serif;
+}
+
+
+/* =====================================================
+   TOP BAR
+===================================================== */
+
+.top-bar {
+
+    height: 34px;
+
+    background:
+        var(--gov-blue-dark);
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    font-size: 12px;
+
+    border-bottom:
+        3px solid var(--saffron);
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+
+    background: white;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.navbar {
+
+    width: 90%;
+
+    max-width: 1250px;
+
+    height: 78px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    text-decoration: none;
+}
+
+.brand img {
+
+    width: 50px;
+
+    height: 50px;
+
+    object-fit: contain;
+}
+
+.brand-text h1 {
+
+    color:
+        var(--gov-blue);
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+}
+
+.brand-text p {
+
+    color: #666;
+
+    font-size: 10px;
+
+    margin-top: 3px;
+}
+
+.back-home {
+
+    color:
+        var(--gov-blue);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.back-home:hover {
+
+    color:
+        var(--saffron);
+}
+
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
+
+.language-container {
+
+    width: 90%;
+
+    max-width: 1050px;
+
+    margin: 25px auto 0;
+
+    display: flex;
+
+    justify-content: flex-end;
+}
+
+.language-switch {
+
+    display: flex;
+}
+
+.language-btn {
+
+    padding:
+        9px 22px;
+
+    border:
+        1px solid var(--border);
+
+    background: white;
+
+    color: #555;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.language-btn:first-child {
+
+    border-radius:
+        3px 0 0 3px;
+}
+
+.language-btn:last-child {
+
+    border-radius:
+        0 3px 3px 0;
+}
+
+.language-btn.active {
+
+    background:
+        var(--gov-blue);
+
+    color: white;
+
+    border-color:
+        var(--gov-blue);
+}
+
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.page-header {
+
+    width: 90%;
+
+    max-width: 1050px;
+
+    margin:
+        25px auto 30px;
+}
+
+.page-header .line {
+
+    width: 55px;
+
+    height: 4px;
+
+    background:
+        var(--saffron);
+
+    margin-bottom: 12px;
+}
+
+.page-header h2 {
+
+    color:
+        var(--gov-blue);
+
+    font-size: 30px;
+
+    font-weight: 800;
+}
+
+.page-header p {
+
+    margin-top: 6px;
+
+    color:
+        var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message {
+
+    display: none;
+
+    width: 90%;
+
+    max-width: 1050px;
+
+    margin:
+        0 auto 25px;
+
+    padding:
+        14px 18px;
+
+    border-radius: 3px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.message.success {
+
+    display: block;
+
+    background:
+        #edf8ed;
+
+    color:
+        #126b0a;
+
+    border:
+        1px solid #b8dfb3;
+}
+
+.message.error {
+
+    display: block;
+
+    background:
+        #fff0f0;
+
+    color:
+        #a51d1d;
+
+    border:
+        1px solid #edb5b5;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.form-container {
+
+    width: 90%;
+
+    max-width: 1050px;
+
+    margin:
+        auto auto 60px;
+
+    background: white;
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        var(--shadow);
+}
+
+.form-section {
+
+    padding:
+        30px 35px;
+
+    border-bottom:
+        1px solid #e2e6ea;
+}
+
+.form-section:last-child {
+
+    border-bottom: none;
+}
+
+
+/* =====================================================
+   SECTION TITLE
+===================================================== */
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.section-number {
+
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 50%;
+
+    background:
+        var(--gov-blue);
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    flex-shrink: 0;
+}
+
+.section-title h3 {
+
+    color:
+        var(--gov-blue);
+
+    font-size: 19px;
+
+    font-weight: 800;
+}
+
+.section-title p {
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   FORM GRID
+===================================================== */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:
+        20px 25px;
+}
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.form-group.full {
+
+    grid-column:
+        1 / -1;
+}
+
+label {
+
+    color: #333;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+.required {
+
+    color:
+        var(--danger);
+}
+
+input,
+select,
+textarea {
+
+    width: 100%;
+
+    border:
+        1px solid var(--border);
+
+    background: white;
+
+    padding:
+        11px 12px;
+
+    border-radius: 3px;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    color: #222;
+
+    outline: none;
+
+    transition:
+        0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+
+    border-color:
+        var(--gov-blue);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(0,51,102,0.08);
+}
+
+textarea {
+
+    min-height: 90px;
+
+    resize: vertical;
+}
+
+.field-help {
+
+    margin-top: 5px;
+
+    color: #777;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   DEMO BADGE
+===================================================== */
+
+.demo-badge {
+
+    display: inline-block;
+
+    padding:
+        4px 9px;
+
+    margin-left: 8px;
+
+    border-radius: 12px;
+
+    background:
+        var(--saffron);
+
+    color: white;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    vertical-align: middle;
+}
+
+
+/* =====================================================
+   KYC
+===================================================== */
+
+.kyc-options {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 5px;
+}
+
+.kyc-option {
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        12px 20px;
+
+    background:
+        #f8f9fa;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 3px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color:
+        var(--gov-blue);
+}
+
+.kyc-option input {
+
+    width: 16px;
+
+    height: 16px;
+
+    accent-color:
+        var(--gov-blue);
+}
+
+.kyc-input-area {
+
+    margin-top: 22px;
+}
+
+.kyc-input-row {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.kyc-input-row input {
+
+    flex: 1;
+}
+
+.verify-btn {
+
+    min-width: 150px;
+
+    padding:
+        11px 18px;
+
+    background:
+        var(--gov-blue);
+
+    color: white;
+
+    border:
+        1px solid var(--gov-blue);
+
+    border-radius: 3px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+.verify-btn:hover {
+
+    background:
+        var(--saffron);
+
+    border-color:
+        var(--saffron);
+}
+
+.kyc-result {
+
+    display: none;
+
+    margin-top: 20px;
+
+    padding:
+        15px 18px;
+
+    border-left:
+        4px solid var(--green);
+
+    background:
+        #eef8ed;
+
+    color:
+        #126b0a;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.kyc-result.error {
+
+    border-left-color:
+        var(--danger);
+
+    background:
+        #fff0f0;
+
+    color:
+        var(--danger);
+}
+
+.kyc-verified-badge {
+
+    display: inline-block;
+
+    margin-left: 8px;
+
+    padding:
+        3px 8px;
+
+    background:
+        var(--green);
+
+    color: white;
+
+    border-radius: 10px;
+
+    font-size: 9px;
+
+    font-weight: 800;
+}
+
+.verification-note {
+
+    margin-top: 18px;
+
+    padding:
+        12px 15px;
+
+    background:
+        #fff7ed;
+
+    border-left:
+        4px solid var(--saffron);
+
+    color:
+        #754300;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   LICENSE UPLOAD
+===================================================== */
+
+.upload-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 18px;
+}
+
+.upload-card {
+
+    border:
+        1px dashed #aeb7c2;
+
+    padding: 20px;
+
+    background:
+        #fafbfc;
+
+    border-radius: 4px;
+}
+
+.upload-card h4 {
+
+    color:
+        var(--gov-blue);
+
+    font-size: 15px;
+
+    margin-bottom: 5px;
+}
+
+.upload-card p {
+
+    color: #777;
+
+    font-size: 11px;
+
+    margin-bottom: 12px;
+}
+
+.upload-card input {
+
+    padding: 8px;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   DECLARATION
+===================================================== */
+
+.declaration {
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: flex-start;
+
+    margin-top: 20px;
+}
+
+.declaration input {
+
+    width: 17px;
+
+    height: 17px;
+
+    margin-top: 2px;
+}
+
+.declaration label {
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    color: #555;
+}
+
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
+.submit-section {
+
+    padding:
+        30px 35px;
+
+    background:
+        #f8f9fa;
+
+    border-top:
+        1px solid var(--border);
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.submit-btn {
+
+    padding:
+        12px 35px;
+
+    background:
+        var(--gov-blue);
+
+    color: white;
+
+    border:
+        1px solid var(--gov-blue);
+
+    border-radius: 3px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    transition:
+        0.2s;
+}
+
+.submit-btn:hover {
+
+    background:
+        var(--saffron);
+
+    border-color:
+        var(--saffron);
+}
+
+.submit-btn:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    background:
+        #17212b;
+
+    color: white;
+
+    padding:
+        35px 5% 18px;
+}
+
+.footer-container {
+
+    width: 90%;
+
+    max-width: 1050px;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 40px;
+}
+
+.footer-container h3 {
+
+    font-size: 16px;
+
+    margin-bottom: 7px;
+}
+
+.footer-container p {
+
+    color:
+        #b8c0c8;
+
+    font-size: 11px;
+}
+
+.footer-bottom {
+
+    width: 90%;
+
+    max-width: 1050px;
+
+    margin:
+        25px auto 0;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid #35404b;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color:
+        #9da8b2;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:800px) {
+
+    .top-bar {
+
+        justify-content: center;
+    }
+
+    .top-bar .right {
+
+        display: none;
+    }
+
+    .form-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .form-group.full {
+
+        grid-column:
+            auto;
+    }
+
+    .upload-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .footer-container {
+
+        flex-direction:
+            column;
+    }
+
+    .footer-bottom {
+
+        flex-direction:
+            column;
+
+        gap: 8px;
+    }
+}
+
+
+@media(max-width:600px) {
+
+    .kyc-options {
+
+        flex-direction:
+            column;
+    }
+
+    .kyc-input-row {
+
+        flex-direction:
+            column;
+    }
+
+    .verify-btn {
+
+        width: 100%;
+    }
+}
+
+
+@media(max-width:550px) {
+
+    .navbar {
+
+        width: 92%;
+    }
+
+    .back-home {
+
+        display: none;
+    }
+
+    .form-container {
+
+        width: 94%;
+    }
+
+    .form-section {
+
+        padding:
+            25px 18px;
+    }
+
+    .submit-section {
+
+        padding:
+            25px 18px;
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+    }
+
+    .submit-btn {
+
+        width: 100%;
+    }
+
+    .page-header {
+
+        width: 94%;
+    }
+
+    .language-container {
+
+        width: 94%;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     GOVERNMENT BAR
+===================================================== -->
+
+<div class="top-bar">
+
+    <span
+        data-en="Government of India"
+        data-te="భారత ప్రభుత్వం">
+
+        Government of India
+
+    </span>
+
+
+    <span
+        class="right"
+        data-en="Legal Metrology | Department of Consumer Affairs"
+        data-te="లీగల్ మెట్రాలజీ | వినియోగదారుల వ్యవహారాల శాఖ">
+
+        Legal Metrology |
+        Department of Consumer Affairs
+
+    </span>
+
+</div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+<nav class="navbar">
+
+
+    <a
+        href="../landingpage.html"
+        class="brand">
+
+        <img
+            src="../images/sihlogo.png"
+            alt="MaapSaarthi Logo">
+
+
+        <div class="brand-text">
+
+            <h1>
+                MaapSaarthi
+            </h1>
+
+            <p
+                data-en="Digital Legal Metrology Platform"
+                data-te="డిజిటల్ లీగల్ మెట్రాలజీ ప్లాట్‌ఫారమ్">
+
+                Digital Legal Metrology Platform
+
+            </p>
+
+        </div>
+
+    </a>
+
+
+    <a
+        href="../landingpage.html"
+        class="back-home"
+        data-en="← Back to Home"
+        data-te="← హోమ్‌కు తిరిగి వెళ్లండి">
+
+        ← Back to Home
+
+    </a>
+
+</nav>
+
+</header>
+
+
+<!-- =====================================================
+     LANGUAGE SWITCH
+===================================================== -->
+
+<div class="language-container">
+
+<div class="language-switch">
+
+    <button
+        class="language-btn active"
+        id="englishBtn"
+        onclick="changeLanguage('english')">
+
+        English
+
+    </button>
+
+
+    <button
+        class="language-btn"
+        id="teluguBtn"
+        onclick="changeLanguage('telugu')">
+
+        తెలుగు
+
+    </button>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE HEADER
+===================================================== -->
+
+<section class="page-header">
+
+    <div class="line"></div>
+
+    <h2
+        data-en="Retailer Registration"
+        data-te="రిటైలర్ నమోదు">
+
+        Retailer Registration
+
+    </h2>
+
+    <p
+        data-en="Register your business to access the MaapSaarthi retailer portal."
+        data-te="మా‌ప్‌సారథి రిటైలర్ పోర్టల్‌ను ఉపయోగించడానికి మీ వ్యాపారాన్ని నమోదు చేయండి.">
+
+        Register your business to access the
+        MaapSaarthi retailer portal.
+
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     MESSAGE
+===================================================== -->
+
+<div
+    id="message"
+    class="message">
+</div>
+
+
+<!-- =====================================================
+     FORM
+===================================================== -->
+
+<form
+    id="retailerForm"
+    class="form-container"
+    enctype="multipart/form-data">
+
+
+<!-- =====================================================
+     1. OWNER
+===================================================== -->
+
+<section class="form-section">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            1
+        </div>
+
+        <div>
+
+            <h3
+                data-en="Owner Information"
+                data-te="యజమాని సమాచారం">
+
+                Owner Information
+
+            </h3>
+
+            <p
+                data-en="Basic details of the business owner"
+                data-te="వ్యాపార యజమాని ప్రాథమిక వివరాలు">
+
+                Basic details of the business owner
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+
+        <div class="form-group">
+
+            <label>
+
+                Owner Full Name
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+            <input
+                type="text"
+                name="owner_name"
+                required
+                placeholder="Enter owner's full name">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+
+                Mobile Number
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+            <input
+                type="tel"
+                name="mobile_number"
+                required
+                pattern="[6-9][0-9]{9}"
+                maxlength="10"
+                inputmode="numeric"
+                placeholder="Enter 10-digit mobile number">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+
+                Email Address
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+            <input
+                type="email"
+                name="email"
+                required
+                placeholder="Enter email address">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     2. KYC
+===================================================== -->
+
+<section class="form-section">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            2
+        </div>
+
+        <div>
+
+            <h3
+                data-en="KYC Registration"
+                data-te="KYC నమోదు">
+
+                KYC Registration
+
+            </h3>
+
+            <p
+                data-en="Verify the identity of the business owner"
+                data-te="వ్యాపార యజమాని గుర్తింపును ధృవీకరించండి">
+
+                Verify the identity of the business owner
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label>
+
+            Select Verification Document
+
+            <span class="required">
+                *
+            </span>
+
+        </label>
+
+
+        <div class="kyc-options">
+
+
+            <label class="kyc-option">
+
+                <input
+                    type="radio"
+                    name="kyc_type"
+                    value="aadhaar"
+                    checked
+                    onchange="changeKycType('aadhaar')">
+
+                <span>
+                    Aadhaar Card
+                </span>
+
+            </label>
+
+
+            <label class="kyc-option">
+
+                <input
+                    type="radio"
+                    name="kyc_type"
+                    value="pan"
+                    onchange="changeKycType('pan')">
+
+                <span>
+                    PAN Card
+                </span>
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- AADHAAR -->
+
+    <div
+        id="aadhaarKyc"
+        class="kyc-input-area">
+
+        <div class="form-group">
+
+            <label>
+
+                Aadhaar Number
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+
+            <div class="kyc-input-row">
+
+                <input
+                    type="text"
+                    id="kycAadhaar"
+                    name="kyc_aadhaar"
+                    inputmode="numeric"
+                    maxlength="12"
+                    required
+                    placeholder="Enter 12-digit Aadhaar number">
+
+
+                <button
+                    type="button"
+                    class="verify-btn"
+                    onclick="verifyKyc('aadhaar')">
+
+                    Verify Aadhaar
+
+                </button>
+
+            </div>
+
+
+            <span class="field-help">
+
+                Demo verification:
+                Aadhaar must contain exactly 12 digits.
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- PAN -->
+
+    <div
+        id="panKyc"
+        class="kyc-input-area"
+        style="display:none;">
+
+        <div class="form-group">
+
+            <label>
+
+                PAN Number
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+
+            <div class="kyc-input-row">
+
+                <input
+                    type="text"
+                    id="kycPan"
+                    name="kyc_pan"
+                    maxlength="10"
+                    disabled
+                    style="text-transform:uppercase;"
+                    placeholder="Enter 10-character PAN">
+
+
+                <button
+                    type="button"
+                    class="verify-btn"
+                    onclick="verifyKyc('pan')">
+
+                    Verify PAN
+
+                </button>
+
+            </div>
+
+
+            <span class="field-help">
+
+                Demo verification:
+                PAN must follow the standard
+                10-character format.
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="kycResult"
+        class="kyc-result">
+    </div>
+
+
+    <input
+        type="hidden"
+        id="kycStatus"
+        name="kyc_status"
+        value="">
+
+
+    <input
+        type="hidden"
+        id="verifiedKycType"
+        name="verified_kyc_type"
+        value="">
+
+
+    <div class="verification-note">
+
+        Demo KYC verification checks only the
+        document format. No external Aadhaar or
+        PAN database is accessed.
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     3. STORE
+===================================================== -->
+
+<section class="form-section">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            3
+        </div>
+
+        <div>
+
+            <h3
+                data-en="Store Details"
+                data-te="దుకాణం వివరాలు">
+
+                Store Details
+
+            </h3>
+
+            <p>
+                Basic information about your establishment
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+
+        <div class="form-group">
+
+            <label>
+
+                Store / Business Name
+                <span class="required">*</span>
+
+            </label>
+
+            <input
+                type="text"
+                name="store_name"
+                required
+                placeholder="Enter store name">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+
+                Store Contact Number
+                <span class="required">*</span>
+
+            </label>
+
+            <input
+                type="tel"
+                name="store_contact"
+                required
+                pattern="[6-9][0-9]{9}"
+                maxlength="10"
+                inputmode="numeric"
+                placeholder="Enter store contact number">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+
+                Year of Establishment
+                <span class="required">*</span>
+
+            </label>
+
+            <input
+                type="number"
+                name="establishment_year"
+                required
+                min="1900"
+                max="2026"
+                placeholder="YYYY">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+
+                Number of Employees
+                <span class="required">*</span>
+
+            </label>
+
+            <input
+                type="number"
+                name="employee_count"
+                required
+                min="1"
+                placeholder="Enter number of employees">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     4. BUSINESS
+===================================================== -->
+
+<section class="form-section">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            4
+        </div>
+
+        <div>
+
+            <h3>
+                Business Type & Model
+            </h3>
+
+            <p>
+                Classification of your business
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+
+        <div class="form-group">
+
+            <label>
+
+                Business Type
+                <span class="required">*</span>
+
+            </label>
+
+            <select
+                name="business_type"
+                required>
+
+                <option value="">
+                    Select business type
+                </option>
+
+                <option value="retail">
+                    Retail
+                </option>
+
+                <option value="wholesale">
+                    Wholesale
+                </option>
+
+                <option value="manufacturing">
+                    Manufacturing
+                </option>
+
+                <option value="service">
+                    Service
+                </option>
+
+                <option value="other">
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+
+                Business Model
+                <span class="required">*</span>
+
+            </label>
+
+            <select
+                name="business_model"
+                required>
+
+                <option value="">
+                    Select business model
+                </option>
+
+                <option value="offline">
+                    Offline Store
+                </option>
+
+                <option value="online">
+                    Online
+                </option>
+
+                <option value="hybrid">
+                    Online + Offline
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group full">
+
+            <label>
+
+                Primary Products / Services
+                <span class="required">*</span>
+
+            </label>
+
+            <textarea
+                name="products_services"
+                required
+                placeholder="Describe the primary products or services"></textarea>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     5. ADDRESS
+===================================================== -->
+
+<section class="form-section">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            5
+        </div>
+
+        <div>
+
+            <h3>
+                Complete Business Address
+            </h3>
+
+            <p>
+                Registered address of the establishment
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+
+        <div class="form-group full">
+
+            <label>
+
+                Address Line
+                <span class="required">*</span>
+
+            </label>
+
+            <textarea
+                name="address"
+                required
+                placeholder="House / Shop No., Street, Area, Landmark"></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+
+                Village / Town / City
+                <span class="required">*</span>
+
+            </label>
+
+            <input
+                type="text"
+                name="city"
+                required
+                placeholder="Enter city / town">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+
+                District
+                <span class="required">*</span>
+
+            </label>
+
+            <input
+                type="text"
+                name="district"
+                required
+                placeholder="Enter district">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+
+                State
+                <span class="required">*</span>
+
+            </label>
+
+            <select
+                name="state"
+                required>
+
+                <option value="">
+                    Select State
+                </option>
+
+                <option value="Andhra Pradesh">
+                    Andhra Pradesh
+                </option>
+
+                <option value="Telangana">
+                    Telangana
+                </option>
+
+                <option value="Tamil Nadu">
+                    Tamil Nadu
+                </option>
+
+                <option value="Karnataka">
+                    Karnataka
+                </option>
+
+                <option value="Odisha">
+                    Odisha
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+
+                PIN Code
+                <span class="required">*</span>
+
+            </label>
+
+            <input
+                type="text"
+                name="pincode"
+                required
+                pattern="[0-9]{6}"
+                maxlength="6"
+                inputmode="numeric"
+                placeholder="Enter 6-digit PIN code">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     6. LICENSES
+===================================================== -->
+
+<section class="form-section">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            6
+        </div>
+
+        <div>
+
+            <h3>
+
+                Licences & Registration Documents
+
+                <span class="demo-badge">
+                    DEMO
+                </span>
+
+            </h3>
+
+            <p>
+                Upload relevant documents in PDF format
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="upload-grid">
+
+
+        <div class="upload-card">
+
+            <h4>
+                FSSAI Licence
+            </h4>
+
+            <p>
+                Upload FSSAI licence PDF
+            </p>
+
+            <input
+                type="file"
+                name="fssai_license"
+                required
+                accept=".pdf,application/pdf">
+
+        </div>
+
+
+        <div class="upload-card">
+
+            <h4>
+                Trade Licence
+            </h4>
+
+            <p>
+                Upload trade licence PDF
+            </p>
+
+            <input
+                type="file"
+                name="trade_license"
+                required
+                accept=".pdf,application/pdf">
+
+        </div>
+
+
+        <div class="upload-card">
+
+            <h4>
+                Municipality Licence
+            </h4>
+
+            <p>
+                Upload municipality licence PDF
+            </p>
+
+            <input
+                type="file"
+                name="municipality_license"
+                required
+                accept=".pdf,application/pdf">
+
+        </div>
+
+    </div>
+
+
+    <div class="verification-note">
+
+        Demo document verification:
+        PDF upload is required.
+        The backend can store the uploaded document
+        and mark it as "Pending Verification".
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DECLARATION
+===================================================== -->
+
+<section class="form-section">
+
+    <div class="declaration">
+
+        <input
+            type="checkbox"
+            id="declaration"
+            name="declaration"
+            required>
+
+        <label for="declaration">
+
+            I confirm that the information provided
+            in this registration form is complete and
+            accurate to the best of my knowledge.
+
+            <span class="required">
+                *
+            </span>
+
+        </label>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SUBMIT
+===================================================== -->
+
+<div class="submit-section">
+
+    <span class="field-help">
+
+        All fields marked with * are mandatory.
+
+    </span>
+
+
+    <button
+        type="submit"
+        id="submitBtn"
+        class="submit-btn">
+
+        Submit Registration
+
+    </button>
+
+</div>
+
+
+</form>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div>
+
+            <h3>
+                MaapSaarthi
+            </h3>
+
+            <p>
+                Digital Legal Metrology Platform
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Government of India
+            </h3>
+
+            <p>
+                Department of Consumer Affairs
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 MaapSaarthi
+        </span>
+
+        <span>
+            Legal Metrology | Government of India
+        </span>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   GLOBAL VARIABLES
+===================================================== */
+
+let currentLanguage = "english";
+
+let selectedKycType = "aadhaar";
+
+let kycVerified = false;
+
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
+
+function changeLanguage(language) {
+
+    currentLanguage = language;
+
+    document
+        .getElementById("englishBtn")
+        .classList
+        .toggle(
+            "active",
+            language === "english"
+        );
+
+    document
+        .getElementById("teluguBtn")
+        .classList
+        .toggle(
+            "active",
+            language === "telugu"
+        );
+
+    document.body.classList.toggle(
+        "telugu",
+        language === "telugu"
+    );
+
+
+    document
+        .querySelectorAll(
+            "[data-en][data-te]"
+        )
+        .forEach(
+            element => {
+
+                element.textContent =
+                    language === "english"
+                        ? element.dataset.en
+                        : element.dataset.te;
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   KYC TYPE
+===================================================== */
+
+function changeKycType(type) {
+
+    selectedKycType = type;
+
+    kycVerified = false;
+
+    document
+        .getElementById("kycStatus")
+        .value = "";
+
+    document
+        .getElementById("verifiedKycType")
+        .value = "";
+
+    document
+        .getElementById("kycResult")
+        .style.display = "none";
+
+
+    const aadhaarInput =
+        document.getElementById(
+            "kycAadhaar"
+        );
+
+    const panInput =
+        document.getElementById(
+            "kycPan"
+        );
+
+
+    const aadhaarArea =
+        document.getElementById(
+            "aadhaarKyc"
+        );
+
+    const panArea =
+        document.getElementById(
+            "panKyc"
+        );
+
+
+    if (type === "aadhaar") {
+
+        aadhaarArea.style.display =
+            "block";
+
+        panArea.style.display =
+            "none";
+
+        aadhaarInput.disabled =
+            false;
+
+        aadhaarInput.required =
+            true;
+
+        panInput.disabled =
+            true;
+
+        panInput.required =
+            false;
+
+        panInput.value = "";
+
+    } else {
+
+        aadhaarArea.style.display =
+            "none";
+
+        panArea.style.display =
+            "block";
+
+        aadhaarInput.disabled =
+            true;
+
+        aadhaarInput.required =
+            false;
+
+        aadhaarInput.value = "";
+
+        panInput.disabled =
+            false;
+
+        panInput.required =
+            true;
+
+    }
+
+}
+
+
+/* =====================================================
+   KYC SUCCESS
+===================================================== */
+
+function showKycSuccess() {
+
+    const result =
+        document.getElementById(
+            "kycResult"
+        );
+
+    result.style.display =
+        "block";
+
+    result.className =
+        "kyc-result";
+
+
+    if (selectedKycType === "aadhaar") {
+
+        result.innerHTML =
+            currentLanguage === "english"
+
+                ?
+
+                "✓ Aadhaar format verified successfully.<br>" +
+                "KYC Status: VERIFIED " +
+                "<span class='kyc-verified-badge'>DEMO</span>"
+
+                :
+
+                "✓ ఆధార్ ఫార్మాట్ విజయవంతంగా ధృవీకరించబడింది.<br>" +
+                "KYC స్థితి: ధృవీకరించబడింది " +
+                "<span class='kyc-verified-badge'>డెమో</span>";
+
+    } else {
+
+        result.innerHTML =
+            currentLanguage === "english"
+
+                ?
+
+                "✓ PAN format verified successfully.<br>" +
+                "KYC Status: VERIFIED " +
+                "<span class='kyc-verified-badge'>DEMO</span>"
+
+                :
+
+                "✓ PAN ఫార్మాట్ విజయవంతంగా ధృవీకరించబడింది.<br>" +
+                "KYC స్థితి: ధృవీకరించబడింది " +
+                "<span class='kyc-verified-badge'>డెమో</span>";
+
+    }
+
+}
+
+
+/* =====================================================
+   KYC ERROR
+===================================================== */
+
+function showKycError(
+    englishMessage,
+    teluguMessage
+) {
+
+    const result =
+        document.getElementById(
+            "kycResult"
+        );
+
+    result.style.display =
+        "block";
+
+    result.className =
+        "kyc-result error";
+
+    result.textContent =
+        currentLanguage === "english"
+            ? englishMessage
+            : teluguMessage;
+
+}
+
+
+/* =====================================================
+   VERIFY KYC
+===================================================== */
+
+function verifyKyc(type) {
+
+
+    /* =================================================
+       AADHAAR
+    ================================================= */
+
+    if (type === "aadhaar") {
+
+        const input =
+            document.getElementById(
+                "kycAadhaar"
+            );
+
+        const aadhaar =
+            input.value
+                .replace(
+                    /[^0-9]/g,
+                    ""
+                );
+
+        input.value =
+            aadhaar;
+
+
+        if (aadhaar.length !== 12) {
+
+            kycVerified = false;
+
+            document
+                .getElementById(
+                    "kycStatus"
+                )
+                .value = "";
+
+            showKycError(
+
+                "✗ Invalid Aadhaar format. Please enter exactly 12 digits.",
+
+                "✗ చెల్లని ఆధార్ ఫార్మాట్. ఖచ్చితంగా 12 అంకెలను నమోదు చేయండి."
+
+            );
+
+            return;
+
+        }
+
+
+        kycVerified = true;
+
+        selectedKycType =
+            "aadhaar";
+
+        document
+            .getElementById(
+                "kycStatus"
+            )
+            .value =
+            "verified";
+
+        document
+            .getElementById(
+                "verifiedKycType"
+            )
+            .value =
+            "aadhaar";
+
+        showKycSuccess();
+
+        return;
+
+    }
+
+
+    /* =================================================
+       PAN
+    ================================================= */
+
+    if (type === "pan") {
+
+        const input =
+            document.getElementById(
+                "kycPan"
+            );
+
+        const pan =
+            input.value
+                .toUpperCase()
+                .trim();
+
+        input.value =
+            pan;
+
+
+        const panPattern =
+            /^[A-Z]{5}[0-9]{4}[A-Z]$/;
+
+
+        if (!panPattern.test(pan)) {
+
+            kycVerified = false;
+
+            document
+                .getElementById(
+                    "kycStatus"
+                )
+                .value = "";
+
+            showKycError(
+
+                "✗ Invalid PAN format. Example: ABCDE1234F",
+
+                "✗ చెల్లని PAN ఫార్మాట్. ఉదాహరణ: ABCDE1234F"
+
+            );
+
+            return;
+
+        }
+
+
+        kycVerified = true;
+
+        selectedKycType =
+            "pan";
+
+        document
+            .getElementById(
+                "kycStatus"
+            )
+            .value =
+            "verified";
+
+        document
+            .getElementById(
+                "verifiedKycType"
+            )
+            .value =
+            "pan";
+
+        showKycSuccess();
+
+    }
+
+}
+
+
+/* =====================================================
+   AADHAAR INPUT
+===================================================== */
+
+document
+    .getElementById(
+        "kycAadhaar"
+    )
+    .addEventListener(
+        "input",
+        function () {
+
+            this.value =
+                this.value.replace(
+                    /[^0-9]/g,
+                    ""
+                );
+
+            kycVerified = false;
+
+            document
+                .getElementById(
+                    "kycStatus"
+                )
+                .value = "";
+
+            document
+                .getElementById(
+                    "verifiedKycType"
+                )
+                .value = "";
+
+            document
+                .getElementById(
+                    "kycResult"
+                )
+                .style.display =
+                "none";
+
+        }
+    );
+
+
+/* =====================================================
+   PAN INPUT
+===================================================== */
+
+document
+    .getElementById(
+        "kycPan"
+    )
+    .addEventListener(
+        "input",
+        function () {
+
+            this.value =
+                this.value
+                    .replace(
+                        /[^a-zA-Z0-9]/g,
+                        ""
+                    )
+                    .toUpperCase();
+
+            kycVerified = false;
+
+            document
+                .getElementById(
+                    "kycStatus"
+                )
+                .value = "";
+
+            document
+                .getElementById(
+                    "verifiedKycType"
+                )
+                .value = "";
+
+            document
+                .getElementById(
+                    "kycResult"
+                )
+                .style.display =
+                "none";
+
+        }
+    );
+
+
+/* =====================================================
+   PDF VALIDATION
+===================================================== */
+
+document
+    .querySelectorAll(
+        'input[type="file"]'
+    )
+    .forEach(
+        input => {
+
+            input.addEventListener(
+                "change",
+                function () {
+
+                    const file =
+                        this.files[0];
+
+                    if (!file) {
+                        return;
+                    }
+
+
+                    if (
+                        file.type !==
+                        "application/pdf"
+                    ) {
+
+                        alert(
+                            currentLanguage === "english"
+                                ? "Please upload a PDF file."
+                                : "దయచేసి PDF ఫైల్‌ను అప్‌లోడ్ చేయండి."
+                        );
+
+                        this.value = "";
+
+                        return;
+                    }
+
+
+                    const maxSize =
+                        5 *
+                        1024 *
+                        1024;
+
+
+                    if (
+                        file.size >
+                        maxSize
+                    ) {
+
+                        alert(
+                            currentLanguage === "english"
+                                ? "PDF size must be less than 5 MB."
+                                : "PDF పరిమాణం 5 MB కంటే తక్కువగా ఉండాలి."
+                        );
+
+                        this.value = "";
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+/* =====================================================
+   FORM SUBMISSION
+===================================================== */
+
+const form =
+    document.getElementById(
+        "retailerForm"
+    );
+
+const submitBtn =
+    document.getElementById(
+        "submitBtn"
+    );
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
+form.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+
+        /* ---------------------------------------------
+           CHECK FORM
+        --------------------------------------------- */
+
+        if (!form.checkValidity()) {
+
+            form.reportValidity();
+
+            return;
+
+        }
+
+
+        /* ---------------------------------------------
+           CHECK KYC
+        --------------------------------------------- */
+
+        if (!kycVerified) {
+
+            alert(
+
+                currentLanguage === "english"
+
+                    ?
+
+                    "Please complete KYC verification before submitting the registration."
+
+                    :
+
+                    "నమోదును సమర్పించే ముందు KYC ధృవీకరణను పూర్తి చేయండి."
+
+            );
+
+            return;
+
+        }
+
+
+        if (
+            document
+                .getElementById(
+                    "kycStatus"
+                )
+                .value !==
+            "verified"
+        ) {
+
+            alert(
+
+                currentLanguage === "english"
+
+                    ?
+
+                    "KYC verification is required."
+
+                    :
+
+                    "KYC ధృవీకరణ అవసరం."
+
+            );
+
+            return;
+
+        }
+
+
+        /* ---------------------------------------------
+           DISABLE BUTTON
+        --------------------------------------------- */
+
+        submitBtn.disabled =
+            true;
+
+        submitBtn.textContent =
+            currentLanguage === "english"
+                ? "Submitting..."
+                : "సమర్పిస్తోంది...";
+
+
+        /* ---------------------------------------------
+           FORM DATA
+        --------------------------------------------- */
+
+        const formData =
+            new FormData(form);
+
+
+        try {
+
+
+            /* -----------------------------------------
+               BACKEND REQUEST
+            ----------------------------------------- */
+
+            const response =
+                await fetch(
+
+                    "http://10.250.20.18:8000/api/retailers/register",
+
+                    {
+                        method:
+                            "POST",
+
+                        body:
+                            formData
+                    }
+
+                );
+
+
+            let result = {};
+
+
+            try {
+
+                result =
+                    await response.json();
+
+            }
+
+            catch {
+
+                result = {};
+
+            }
+
+
+            /* -----------------------------------------
+               BACKEND ERROR
+            ----------------------------------------- */
+
+            if (!response.ok) {
+
+                throw new Error(
+                    result.detail ||
+                    "Registration failed."
+                );
+
+            }
+
+
+            /* -----------------------------------------
+               SUCCESS
+            ----------------------------------------- */
+
+            message.className =
+                "message success";
+
+
+            message.textContent =
+
+                currentLanguage === "english"
+
+                    ?
+
+                    "Registration submitted successfully. Redirecting to your retailer dashboard..."
+
+                    :
+
+                    "నమోదు విజయవంతంగా సమర్పించబడింది. మీ రిటైలర్ డ్యాష్‌బోర్డ్‌కు మళ్లించబడుతోంది.";
+
+
+            message.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "center"
+
+            });
+
+
+            /*
+                REDIRECT TO DASHBOARD
+
+                Make sure the filename is exactly:
+
+                retaildashboard.html
+            */
+
+            setTimeout(
+                () => {
+
+                    window.location.href =
+                        "retaildashboard.html";
+
+                },
+                1500
+            );
+
+
+        }
+
+
+        catch (error) {
+
+
+            console.error(
+                "Registration error:",
+                error
+            );
+
+
+            message.className =
+                "message error";
+
+
+            message.textContent =
+
+                currentLanguage === "english"
+
+                    ?
+
+                    "Registration could not be submitted. Please check that the backend server is running."
+
+                    :
+
+                    "నమోదును సమర్పించలేకపోయాము. బ్యాక్‌ఎండ్ సర్వర్ నడుస్తుందో లేదో తనిఖీ చేయండి.";
+
+
+            submitBtn.disabled =
+                false;
+
+
+            submitBtn.textContent =
+
+                currentLanguage === "english"
+
+                    ?
+
+                    "Submit Registration"
+
+                    :
+
+                    "నమోదు సమర్పించండి";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   INITIAL KYC
+===================================================== */
+
+changeKycType(
+    "aadhaar"
+);
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,2689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Consumer Login | MaapSaarthi</title>
+
+
+    <!-- =====================================================
+         FONT
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+<style>
+
+/* =====================================================
+   ROOT VARIABLES
+===================================================== */
+
+:root {
+
+    --gov-blue: #003366;
+    --gov-blue-dark: #00264d;
+    --gov-blue-light: #0b4f81;
+
+    --saffron: #e87500;
+    --green: #138808;
+
+    --background: #f1f3f5;
+    --white: #ffffff;
+
+    --text: #222222;
+    --muted: #626b73;
+
+    --border: #c8ced4;
+
+    --danger: #b3261e;
+
+    --captcha-pink: #e72f68;
+
+    --shadow:
+        0 3px 12px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family:
+        "Noto Sans",
+        Arial,
+        sans-serif;
+
+    background:
+        var(--background);
+
+    color:
+        var(--text);
+
+    min-height:
+        100vh;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+}
+
+
+/* =====================================================
+   GOVERNMENT TOP STRIP
+===================================================== */
+
+.top-strip {
+
+    background:
+        var(--gov-blue-dark);
+
+    color:
+        #ffffff;
+
+    min-height:
+        34px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        0 5%;
+
+    font-size:
+        12px;
+
+    border-bottom:
+        3px solid var(--saffron);
+}
+
+
+.top-strip-left {
+
+    font-weight:
+        600;
+}
+
+
+.top-strip-right {
+
+    opacity:
+        0.92;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+
+    background:
+        #ffffff;
+
+    border-bottom:
+        1px solid #d7dce1;
+}
+
+
+.navbar {
+
+    width:
+        90%;
+
+    max-width:
+        1250px;
+
+    min-height:
+        82px;
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.brand {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        15px;
+
+    text-decoration:
+        none;
+}
+
+
+.brand img {
+
+    width:
+        53px;
+
+    height:
+        53px;
+
+    object-fit:
+        contain;
+}
+
+
+.brand-text h1 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        22px;
+
+    font-weight:
+        800;
+
+    line-height:
+        1.15;
+}
+
+
+.brand-text p {
+
+    color:
+        #5e666d;
+
+    font-size:
+        10px;
+
+    margin-top:
+        3px;
+
+    letter-spacing:
+        0.2px;
+}
+
+
+/* =====================================================
+   BACK HOME
+===================================================== */
+
+.back-home {
+
+    color:
+        var(--gov-blue);
+
+    text-decoration:
+        none;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    padding:
+        8px 12px;
+
+    border:
+        1px solid transparent;
+
+    border-radius:
+        2px;
+}
+
+
+.back-home:hover {
+
+    color:
+        var(--gov-blue-dark);
+
+    border-color:
+        var(--border);
+
+    background:
+        #f5f7f9;
+}
+
+
+/* =====================================================
+   PAGE TITLE BAR
+===================================================== */
+
+.page-title-bar {
+
+    background:
+        #ffffff;
+
+    border-bottom:
+        1px solid #d7dce1;
+}
+
+
+.page-title-inner {
+
+    width:
+        90%;
+
+    max-width:
+        1250px;
+
+    margin:
+        auto;
+
+    padding:
+        18px 0 16px;
+}
+
+
+.breadcrumb {
+
+    color:
+        #6b737a;
+
+    font-size:
+        11px;
+
+    margin-bottom:
+        8px;
+}
+
+
+.breadcrumb span {
+
+    color:
+        var(--gov-blue);
+}
+
+
+.page-title {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        24px;
+
+    font-weight:
+        800;
+
+    border-left:
+        5px solid var(--saffron);
+
+    padding-left:
+        12px;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main {
+
+    flex:
+        1;
+}
+
+
+.login-area {
+
+    width:
+        90%;
+
+    max-width:
+        1250px;
+
+    margin:
+        35px auto 65px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+}
+
+
+/* =====================================================
+   LOGIN CARD
+===================================================== */
+
+.login-card {
+
+    width:
+        100%;
+
+    max-width:
+        520px;
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        var(--shadow);
+
+    border-radius:
+        2px;
+
+    overflow:
+        hidden;
+}
+
+
+/* =====================================================
+   CARD HEADER
+===================================================== */
+
+.card-top {
+
+    background:
+        var(--gov-blue);
+
+    color:
+        white;
+
+    padding:
+        22px 30px;
+
+    border-bottom:
+        4px solid var(--saffron);
+}
+
+
+.card-top h2 {
+
+    font-size:
+        20px;
+
+    font-weight:
+        800;
+}
+
+
+.card-top p {
+
+    font-size:
+        12px;
+
+    margin-top:
+        4px;
+
+    color:
+        #e4edf5;
+}
+
+
+/* =====================================================
+   CARD BODY
+===================================================== */
+
+.card-body {
+
+    padding:
+        32px;
+}
+
+
+/* =====================================================
+   FORM GROUP
+===================================================== */
+
+.form-group {
+
+    margin-bottom:
+        22px;
+}
+
+
+.form-group label {
+
+    display:
+        block;
+
+    color:
+        #30363b;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        7px;
+}
+
+
+.required {
+
+    color:
+        var(--danger);
+}
+
+
+input {
+
+    width:
+        100%;
+
+    height:
+        44px;
+
+    padding:
+        0 13px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        2px;
+
+    background:
+        #ffffff;
+
+    color:
+        #222222;
+
+    font-family:
+        inherit;
+
+    font-size:
+        13px;
+
+    outline:
+        none;
+
+    transition:
+        border-color 0.15s,
+        box-shadow 0.15s;
+}
+
+
+input:hover {
+
+    border-color:
+        #9ea7af;
+}
+
+
+input:focus {
+
+    border-color:
+        var(--gov-blue);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(0, 51, 102, 0.10);
+}
+
+
+input.input-error {
+
+    border-color:
+        var(--danger);
+
+    background:
+        #fffafa;
+}
+
+
+/* =====================================================
+   PHONE
+===================================================== */
+
+.phone-wrapper {
+
+    display:
+        flex;
+
+    width:
+        100%;
+}
+
+
+.country-code {
+
+    width:
+        58px;
+
+    min-width:
+        58px;
+
+    height:
+        44px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        #eef1f3;
+
+    border:
+        1px solid var(--border);
+
+    border-right:
+        none;
+
+    border-radius:
+        2px 0 0 2px;
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        13px;
+
+    font-weight:
+        800;
+}
+
+
+.phone-wrapper input {
+
+    border-radius:
+        0 2px 2px 0;
+}
+
+
+.field-help {
+
+    display:
+        block;
+
+    margin-top:
+        6px;
+
+    color:
+        #727a81;
+
+    font-size:
+        11px;
+}
+
+
+/* =====================================================
+   ERROR MESSAGE
+===================================================== */
+
+.error-message {
+
+    display:
+        none;
+
+    margin-top:
+        6px;
+
+    color:
+        var(--danger);
+
+    font-size:
+        11px;
+
+    font-weight:
+        600;
+}
+
+
+.error-message.show {
+
+    display:
+        block;
+}
+
+
+/* =====================================================
+   CAPTCHA SECTION
+===================================================== */
+
+.captcha-section {
+
+    margin-top:
+        5px;
+
+    padding:
+        18px;
+
+    background:
+        #fafafa;
+
+    border:
+        1px solid #d5dadd;
+
+    border-radius:
+        3px;
+}
+
+
+.captcha-label {
+
+    display:
+        block;
+
+    color:
+        #30363b;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        10px;
+}
+
+
+/* =====================================================
+   CAPTCHA ROW
+===================================================== */
+
+.captcha-row {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    margin-bottom:
+        12px;
+}
+
+
+/* =====================================================
+   CAPTCHA DISPLAY
+===================================================== */
+
+.captcha-box {
+
+    flex:
+        1;
+
+    height:
+        78px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #d9dee2;
+
+    border-radius:
+        3px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    overflow:
+        hidden;
+
+    position:
+        relative;
+
+    user-select:
+        none;
+}
+
+
+/*
+    Background dot pattern
+    for image-like CAPTCHA effect.
+*/
+
+.captcha-box::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background-image:
+        radial-gradient(
+            rgba(190, 190, 190, 0.4) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        9px 9px;
+
+    opacity:
+        0.25;
+}
+
+
+/*
+    Background curved line.
+*/
+
+.captcha-box::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        130%;
+
+    height:
+        2px;
+
+    background:
+        rgba(220, 45, 100, 0.18);
+
+    transform:
+        rotate(-7deg);
+
+    left:
+        -15%;
+
+    top:
+        52%;
+}
+
+
+/* =====================================================
+   CAPTCHA TEXT
+===================================================== */
+
+#captchaText {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-family:
+        "Arial Black",
+        Arial,
+        sans-serif;
+
+    font-size:
+        35px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        5px;
+
+    color:
+        var(--captcha-pink);
+
+    white-space:
+        nowrap;
+
+    transform:
+        skewX(-8deg);
+
+    filter:
+        contrast(1.2);
+}
+
+
+/* =====================================================
+   REFRESH CAPTCHA
+===================================================== */
+
+.refresh-captcha {
+
+    width:
+        48px;
+
+    height:
+        78px;
+
+    border:
+        1px solid #c8ced3;
+
+    background:
+        #ffffff;
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        23px;
+
+    cursor:
+        pointer;
+
+    border-radius:
+        3px;
+
+    transition:
+        0.2s;
+}
+
+
+.refresh-captcha:hover {
+
+    background:
+        var(--gov-blue);
+
+    color:
+        #ffffff;
+
+    border-color:
+        var(--gov-blue);
+}
+
+
+/* =====================================================
+   CAPTCHA INPUT
+===================================================== */
+
+#captchaInput {
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        3px;
+
+    font-weight:
+        600;
+
+    height:
+        44px;
+}
+
+
+/* =====================================================
+   CAPTCHA ERROR
+===================================================== */
+
+.captcha-error {
+
+    display:
+        none;
+
+    color:
+        var(--danger);
+
+    font-size:
+        11px;
+
+    font-weight:
+        600;
+
+    margin-top:
+        7px;
+}
+
+
+.captcha-error.show {
+
+    display:
+        block;
+}
+
+
+/* =====================================================
+   LOGIN BUTTON
+===================================================== */
+
+.login-btn {
+
+    width:
+        100%;
+
+    height:
+        45px;
+
+    margin-top:
+        25px;
+
+    background:
+        var(--gov-blue);
+
+    color:
+        white;
+
+    border:
+        1px solid var(--gov-blue);
+
+    border-radius:
+        2px;
+
+    cursor:
+        pointer;
+
+    font-family:
+        inherit;
+
+    font-size:
+        13px;
+
+    font-weight:
+        800;
+
+    transition:
+        0.2s;
+}
+
+
+.login-btn:hover {
+
+    background:
+        var(--gov-blue-dark);
+
+    border-color:
+        var(--gov-blue-dark);
+}
+
+
+.login-btn:active {
+
+    transform:
+        translateY(1px);
+}
+
+
+.login-btn:disabled {
+
+    opacity:
+        0.6;
+
+    cursor:
+        not-allowed;
+}
+
+
+/* =====================================================
+   DEMO INFORMATION
+===================================================== */
+
+.demo-info {
+
+    margin-top:
+        20px;
+
+    padding:
+        12px 14px;
+
+    background:
+        #f7f8f9;
+
+    border:
+        1px solid #d9dde1;
+
+    border-left:
+        4px solid var(--gov-blue);
+
+    color:
+        #606970;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.6;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message {
+
+    display:
+        none;
+
+    margin-bottom:
+        20px;
+
+    padding:
+        12px 14px;
+
+    border-radius:
+        2px;
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+}
+
+
+.message.success {
+
+    display:
+        block;
+
+    background:
+        #edf7ed;
+
+    border:
+        1px solid #b8dcb8;
+
+    color:
+        #176b17;
+}
+
+
+.message.error {
+
+    display:
+        block;
+
+    background:
+        #fff1f0;
+
+    border:
+        1px solid #e2b8b5;
+
+    color:
+        #a51e18;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    background:
+        var(--gov-blue-dark);
+
+    color:
+        white;
+
+    border-top:
+        4px solid var(--saffron);
+
+    padding:
+        25px 5% 15px;
+}
+
+
+.footer-container {
+
+    width:
+        90%;
+
+    max-width:
+        1250px;
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        space-between;
+
+    gap:
+        30px;
+}
+
+
+.footer-block h3 {
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        5px;
+}
+
+
+.footer-block p {
+
+    color:
+        #c3ced7;
+
+    font-size:
+        10px;
+}
+
+
+.footer-bottom {
+
+    width:
+        90%;
+
+    max-width:
+        1250px;
+
+    margin:
+        18px auto 0;
+
+    padding-top:
+        12px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.16);
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    color:
+        #aebbc6;
+
+    font-size:
+        9px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:700px) {
+
+    .top-strip {
+
+        justify-content:
+            center;
+    }
+
+
+    .top-strip-right {
+
+        display:
+            none;
+    }
+
+
+    .navbar {
+
+        min-height:
+            70px;
+    }
+
+
+    .brand img {
+
+        width:
+            45px;
+
+        height:
+            45px;
+    }
+
+
+    .brand-text h1 {
+
+        font-size:
+            19px;
+    }
+
+
+    .brand-text p {
+
+        font-size:
+            9px;
+    }
+
+
+    .back-home {
+
+        display:
+            none;
+    }
+
+
+    .login-area {
+
+        width:
+            94%;
+
+        margin-top:
+            25px;
+    }
+
+
+    .card-body {
+
+        padding:
+            24px 20px;
+    }
+
+
+    .captcha-row {
+
+        gap:
+            7px;
+    }
+
+
+    #captchaText {
+
+        font-size:
+            20px;
+
+        letter-spacing:
+            4px;
+    }
+
+
+    .captcha-box {
+
+        height:
+            68px;
+    }
+
+
+    .refresh-captcha {
+
+        height:
+            68px;
+    }
+
+
+    .footer-container,
+    .footer-bottom {
+
+        flex-direction:
+            column;
+
+        gap:
+            8px;
+    }
+
+}
+
+
+@media(max-width:400px) {
+
+    .page-title {
+
+        font-size:
+            20px;
+    }
+
+
+    .card-top {
+
+        padding:
+            18px 20px;
+    }
+
+
+    .captcha-box {
+
+        height:
+            62px;
+    }
+
+
+    .refresh-captcha {
+
+        height:
+            62px;
+
+        width:
+            44px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     GOVERNMENT TOP STRIP
+===================================================== -->
+
+<div class="top-strip">
+
+    <div class="top-strip-left">
+
+        Government of India
+
+    </div>
+
+
+    <div class="top-strip-right">
+
+        Legal Metrology | Department of Consumer Affairs
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <nav class="navbar">
+
+
+        <a
+            href="landingpage.html"
+            class="brand">
+
+
+            <img
+                src="images/sihlogo.png"
+                alt="MaapSaarthi Logo">
+
+
+            <div class="brand-text">
+
+                <h1>
+                    MaapSaarthi
+                </h1>
+
+                <p>
+                    Digital Legal Metrology Platform
+                </p>
+
+            </div>
+
+        </a>
+
+
+        <a
+            href="landingpage.html"
+            class="back-home">
+
+            ← Back to Home
+
+        </a>
+
+
+    </nav>
+
+</header>
+
+
+<!-- =====================================================
+     PAGE TITLE
+===================================================== -->
+
+<div class="page-title-bar">
+
+    <div class="page-title-inner">
+
+
+        <div class="breadcrumb">
+
+            Home
+            <span> / </span>
+            Consumer Login
+
+        </div>
+
+
+        <div class="page-title">
+
+            Consumer Login
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+    <section class="login-area">
+
+
+        <div class="login-card">
+
+
+            <!-- =========================================
+                 CARD HEADER
+            ========================================== -->
+
+            <div class="card-top">
+
+                <h2>
+                    Consumer Login
+                </h2>
+
+                <p>
+                    Enter your details to access
+                    MaapSaarthi consumer services.
+                </p>
+
+            </div>
+
+
+            <!-- =========================================
+                 CARD BODY
+            ========================================== -->
+
+            <div class="card-body">
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="message"
+                    class="message">
+                </div>
+
+
+                <!-- FORM -->
+
+                <form
+                    id="consumerForm"
+                    novalidate>
+
+
+                    <!-- =================================
+                         NAME
+                    ================================== -->
+
+                    <div class="form-group">
+
+
+                        <label
+                            for="consumerName">
+
+                            Full Name
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="consumerName"
+                            name="name"
+                            required
+                            maxlength="100"
+                            autocomplete="name"
+                            placeholder="Enter your full name">
+
+
+                        <div
+                            id="nameError"
+                            class="error-message">
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- =================================
+                         PHONE
+                    ================================== -->
+
+                    <div class="form-group">
+
+
+                        <label
+                            for="phone">
+
+                            Phone Number
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <div class="phone-wrapper">
+
+
+                            <span class="country-code">
+
+                                +91
+
+                            </span>
+
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                required
+                                maxlength="10"
+                                inputmode="numeric"
+                                autocomplete="tel-national"
+                                placeholder="Enter phone number">
+
+
+                        </div>
+
+
+                        <span class="field-help">
+
+                            Enter a valid phone number.
+
+                        </span>
+
+
+                        <div
+                            id="phoneError"
+                            class="error-message">
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- =================================
+                         CAPTCHA
+                    ================================== -->
+
+                    <div class="captcha-section">
+
+
+                        <label
+                            class="captcha-label"
+                            for="captchaInput">
+
+                            Enter verification code
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <div class="captcha-row">
+
+
+                            <div
+                                class="captcha-box"
+                                id="captchaBox"
+                                aria-label="CAPTCHA">
+
+                                <span
+                                    id="captchaText">
+                                </span>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                id="refreshCaptcha"
+                                class="refresh-captcha"
+                                title="Refresh CAPTCHA"
+                                aria-label="Refresh CAPTCHA">
+
+                                ↻
+
+                            </button>
+
+
+                        </div>
+
+
+                        <input
+                            type="text"
+                            id="captchaInput"
+                            name="captcha"
+                            required
+                            maxlength="6"
+                            autocomplete="off"
+                            spellcheck="false"
+                            placeholder="Enter verification code">
+
+
+                        <div
+                            id="captchaError"
+                            class="captcha-error">
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- =================================
+                         LOGIN BUTTON
+                    ================================== -->
+
+                    <button
+                        type="submit"
+                        id="loginBtn"
+                        class="login-btn">
+
+                        Continue to Consumer Portal
+
+                    </button>
+
+
+                    <!-- =================================
+                         DEMO INFORMATION
+                    ================================== -->
+
+                    <div class="demo-info">
+
+                        <strong>
+                            Demo Login
+                        </strong>
+
+                        <br>
+
+                        This prototype validates the
+                        consumer name, Indian mobile
+                        number and CAPTCHA locally.
+                        No OTP is required.
+
+                    </div>
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+
+    <div class="footer-container">
+
+
+        <div class="footer-block">
+
+            <h3>
+                MaapSaarthi
+            </h3>
+
+            <p>
+                Digital Legal Metrology Platform
+            </p>
+
+        </div>
+
+
+        <div class="footer-block">
+
+            <h3>
+                Government of India
+            </h3>
+
+            <p>
+                Department of Consumer Affairs
+            </p>
+
+        </div>
+
+
+        <div class="footer-block">
+
+            <h3>
+                Legal Metrology
+            </h3>
+
+            <p>
+                Consumer Protection and
+                Measurement Verification
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 MaapSaarthi
+        </span>
+
+
+        <span>
+            Government of India | Legal Metrology
+        </span>
+
+    </div>
+
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   CAPTCHA CONFIGURATION
+===================================================== */
+
+
+/*
+    Five CAPTCHA variations.
+
+    The CAPTCHA is selected randomly.
+
+    When the user enters a wrong CAPTCHA,
+    a new CAPTCHA is automatically generated.
+*/
+
+const captchaVariations = [
+
+    "K7P4X",
+    "M2Q8R",
+    "T9W3K",
+    "H6N5P",
+    "R4Y7D"
+
+];
+
+
+let currentCaptcha = "";
+
+
+/* =====================================================
+   ELEMENT REFERENCES
+===================================================== */
+
+const form =
+    document.getElementById(
+        "consumerForm"
+    );
+
+
+const nameInput =
+    document.getElementById(
+        "consumerName"
+    );
+
+
+const phoneInput =
+    document.getElementById(
+        "phone"
+    );
+
+
+const captchaInput =
+    document.getElementById(
+        "captchaInput"
+    );
+
+
+const captchaText =
+    document.getElementById(
+        "captchaText"
+    );
+
+
+const captchaError =
+    document.getElementById(
+        "captchaError"
+    );
+
+
+const nameError =
+    document.getElementById(
+        "nameError"
+    );
+
+
+const phoneError =
+    document.getElementById(
+        "phoneError"
+    );
+
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
+const loginBtn =
+    document.getElementById(
+        "loginBtn"
+    );
+
+
+const refreshCaptcha =
+    document.getElementById(
+        "refreshCaptcha"
+    );
+
+
+/* =====================================================
+   GENERATE CAPTCHA
+===================================================== */
+
+function generateCaptcha() {
+
+    let newCaptcha;
+
+
+    /*
+        Keep selecting until a different
+        CAPTCHA is generated.
+    */
+
+    do {
+
+        const randomIndex =
+            Math.floor(
+                Math.random() *
+                captchaVariations.length
+            );
+
+
+        newCaptcha =
+            captchaVariations[
+                randomIndex
+            ];
+
+    }
+
+    while (
+        newCaptcha === currentCaptcha
+    );
+
+
+    currentCaptcha =
+        newCaptcha;
+
+
+    /*
+        Remove previous CAPTCHA characters.
+    */
+
+    captchaText.innerHTML =
+        "";
+
+
+    /*
+        Character-specific rotations.
+    */
+
+    const rotations = [
+
+        -12,
+        7,
+        -5,
+        11,
+        -8,
+        6
+
+    ];
+
+
+    /*
+        Character-specific vertical
+        movement.
+    */
+
+    const verticalPositions = [
+
+        4,
+        -3,
+        5,
+        -5,
+        2,
+        -4
+
+    ];
+
+
+    /*
+        Character-specific font sizes.
+    */
+
+    const sizes = [
+
+        34,
+        38,
+        32,
+        36,
+        35,
+        33
+
+    ];
+
+
+    /*
+        Multiple pink shades.
+    */
+
+    const textColors = [
+
+        "#e72f68",
+        "#d92760",
+        "#ef3c73",
+        "#d92b62",
+        "#e8326b"
+
+    ];
+
+
+    /*
+        Create each CAPTCHA
+        character separately.
+    */
+
+    [...currentCaptcha].forEach(
+        (character, index) => {
+
+
+            const span =
+                document.createElement(
+                    "span"
+                );
+
+
+            span.textContent =
+                character;
+
+
+            span.style.display =
+                "inline-block";
+
+
+            /*
+                Rotate and move
+                each character.
+            */
+
+            span.style.transform =
+
+                `rotate(
+                    ${rotations[index % rotations.length]}deg
+                )
+                translateY(
+                    ${verticalPositions[index % verticalPositions.length]}px
+                )
+                skewX(-8deg)`;
+
+
+            /*
+                Different character sizes.
+            */
+
+            span.style.fontSize =
+
+                sizes[
+                    index %
+                    sizes.length
+                ] + "px";
+
+
+            /*
+                Different pink tones.
+            */
+
+            span.style.color =
+
+                textColors[
+                    index %
+                    textColors.length
+                ];
+
+
+            /*
+                Slight shadow to imitate
+                printed CAPTCHA text.
+            */
+
+            span.style.textShadow =
+
+                "1px 1px 0 rgba(150,20,60,0.25)";
+
+
+            captchaText.appendChild(
+                span
+            );
+
+        }
+    );
+
+
+    /*
+        Clear previous input.
+    */
+
+    captchaInput.value =
+        "";
+
+
+    captchaError.textContent =
+        "";
+
+
+    captchaError.classList.remove(
+        "show"
+    );
+
+
+    captchaInput.classList.remove(
+        "input-error"
+    );
+
+}
+
+
+/* =====================================================
+   INITIAL CAPTCHA
+===================================================== */
+
+generateCaptcha();
+
+
+/* =====================================================
+   REFRESH CAPTCHA BUTTON
+===================================================== */
+
+refreshCaptcha.addEventListener(
+    "click",
+    function () {
+
+        generateCaptcha();
+
+        captchaInput.focus();
+
+    }
+);
+
+
+/* =====================================================
+   NAME VALIDATION
+===================================================== */
+
+function validateName() {
+
+
+    const name =
+        nameInput
+            .value
+            .trim();
+
+
+    /*
+        Name cannot be empty.
+    */
+
+    if (
+        name.length === 0
+    ) {
+
+        nameError.textContent =
+            "Please enter your name.";
+
+        nameError.classList.add(
+            "show"
+        );
+
+        nameInput.classList.add(
+            "input-error"
+        );
+
+        return false;
+
+    }
+
+
+    /*
+        Minimum two characters.
+    */
+
+    if (
+        name.length < 2
+    ) {
+
+        nameError.textContent =
+            "Please enter a valid name.";
+
+        nameError.classList.add(
+            "show"
+        );
+
+        nameInput.classList.add(
+            "input-error"
+        );
+
+        return false;
+
+    }
+
+
+    /*
+        Valid name.
+    */
+
+    nameError.textContent =
+        "";
+
+    nameError.classList.remove(
+        "show"
+    );
+
+    nameInput.classList.remove(
+        "input-error"
+    );
+
+
+    return true;
+
+}
+
+
+/* =====================================================
+   PHONE VALIDATION
+===================================================== */
+
+function validatePhone() {
+
+
+    /*
+        Remove anything that isn't a number.
+    */
+
+    const phone =
+        phoneInput
+            .value
+            .replace(
+                /[^0-9]/g,
+                ""
+            );
+
+
+    phoneInput.value =
+        phone;
+
+
+    /*
+        Indian mobile number:
+
+        Exactly 10 digits.
+        First digit must be 6, 7, 8 or 9.
+    */
+
+    const indianPhonePattern =
+        /^[6-9][0-9]{9}$/;
+
+
+    if (
+        !indianPhonePattern.test(
+            phone
+        )
+    ) {
+
+        phoneError.textContent =
+            "Enter a valid phone number.";
+
+        phoneError.classList.add(
+            "show"
+        );
+
+        phoneInput.classList.add(
+            "input-error"
+        );
+
+        return false;
+
+    }
+
+
+    phoneError.textContent =
+        "";
+
+    phoneError.classList.remove(
+        "show"
+    );
+
+    phoneInput.classList.remove(
+        "input-error"
+    );
+
+
+    return true;
+
+}
+
+
+/* =====================================================
+   CAPTCHA VALIDATION
+===================================================== */
+
+function validateCaptcha() {
+
+
+    const enteredCaptcha =
+        captchaInput
+            .value
+            .trim()
+            .toUpperCase();
+
+
+    /*
+        CAPTCHA cannot be empty.
+    */
+
+    if (
+        enteredCaptcha.length === 0
+    ) {
+
+        captchaError.textContent =
+            "Please enter the verification code.";
+
+        captchaError.classList.add(
+            "show"
+        );
+
+        captchaInput.classList.add(
+            "input-error"
+        );
+
+        return false;
+
+    }
+
+
+    /*
+        Compare entered CAPTCHA
+        with the displayed CAPTCHA.
+    */
+
+    if (
+        enteredCaptcha !==
+        currentCaptcha
+    ) {
+
+        captchaError.textContent =
+            "Incorrect verification code. Please try again.";
+
+        captchaError.classList.add(
+            "show"
+        );
+
+        captchaInput.classList.add(
+            "input-error"
+        );
+
+
+        /*
+            Automatically change
+            CAPTCHA after incorrect entry.
+        */
+
+        setTimeout(
+            function () {
+
+                generateCaptcha();
+
+                captchaInput.focus();
+
+            },
+            500
+        );
+
+
+        return false;
+
+    }
+
+
+    /*
+        CAPTCHA is correct.
+    */
+
+    captchaError.textContent =
+        "";
+
+    captchaError.classList.remove(
+        "show"
+    );
+
+    captchaInput.classList.remove(
+        "input-error"
+    );
+
+
+    return true;
+
+}
+
+
+/* =====================================================
+   LIVE NAME INPUT
+===================================================== */
+
+nameInput.addEventListener(
+    "input",
+    function () {
+
+        nameError.classList.remove(
+            "show"
+        );
+
+        nameInput.classList.remove(
+            "input-error"
+        );
+
+    }
+);
+
+
+/* =====================================================
+   LIVE PHONE INPUT
+===================================================== */
+
+phoneInput.addEventListener(
+    "input",
+    function () {
+
+
+        /*
+            Numbers only.
+        */
+
+        this.value =
+            this.value
+                .replace(
+                    /[^0-9]/g,
+                    ""
+                )
+                .slice(
+                    0,
+                    10
+                );
+
+
+        phoneError.classList.remove(
+            "show"
+        );
+
+        phoneInput.classList.remove(
+            "input-error"
+        );
+
+    }
+);
+
+
+/* =====================================================
+   LIVE CAPTCHA INPUT
+===================================================== */
+
+captchaInput.addEventListener(
+    "input",
+    function () {
+
+
+        /*
+            Allow only letters
+            and numbers.
+        */
+
+        this.value =
+            this.value
+                .replace(
+                    /[^a-zA-Z0-9]/g,
+                    ""
+                )
+                .slice(
+                    0,
+                    6
+                )
+                .toUpperCase();
+
+
+        captchaError.classList.remove(
+            "show"
+        );
+
+        captchaInput.classList.remove(
+            "input-error"
+        );
+
+    }
+);
+
+
+/* =====================================================
+   FORM SUBMISSION
+===================================================== */
+
+form.addEventListener(
+    "submit",
+    function (event) {
+
+
+        event.preventDefault();
+
+
+        /*
+            Validate all three
+            mandatory fields.
+        */
+
+        const nameValid =
+            validateName();
+
+
+        const phoneValid =
+            validatePhone();
+
+
+        const captchaValid =
+            validateCaptcha();
+
+
+        /*
+            Stop if anything failed.
+        */
+
+        if (
+            !nameValid ||
+            !phoneValid ||
+            !captchaValid
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+            Get consumer information.
+        */
+
+        const name =
+            nameInput
+                .value
+                .trim();
+
+
+        const phone =
+            phoneInput
+                .value
+                .trim();
+
+
+        /*
+            Disable login button.
+        */
+
+        loginBtn.disabled =
+            true;
+
+
+        loginBtn.textContent =
+            "Signing in...";
+
+
+        /*
+            Store demo consumer data.
+
+            This can later be replaced
+            by your FastAPI endpoint.
+        */
+
+        localStorage.setItem(
+            "consumerName",
+            name
+        );
+
+
+        localStorage.setItem(
+            "consumerPhone",
+            phone
+        );
+
+
+        /*
+            Show success message.
+        */
+
+        message.className =
+            "message success";
+
+
+        message.textContent =
+            "Login successful. Redirecting to the consumer portal...";
+
+
+        /*
+            Redirect to consumer dashboard.
+        */
+
+        setTimeout(
+            function () {
+
+                window.location.href =
+                    "consumerdashboard.html";
+
+            },
+            1000
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

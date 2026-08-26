@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MaapSaarthi | Legal Metrology</title>
+
+    <!-- Telugu + English font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================================
+           GOVERNMENT OF INDIA STYLE COLOR SYSTEM
+        ========================================================= */
+
+        :root {
+
+            --gov-blue: #003366;
+            --gov-blue-dark: #00264d;
+            --gov-blue-light: #005a9c;
+
+            --saffron: #e87500;
+            --saffron-light: #fff3e6;
+
+            --green: #138808;
+            --green-light: #eef8ed;
+
+            --white: #ffffff;
+
+            --background: #f5f6f8;
+            --section-bg: #fafafa;
+
+            --text: #1a1a1a;
+            --text-secondary: #555555;
+            --border: #d9dde3;
+
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+
+            font-family:
+                "Noto Sans",
+                "Noto Sans Telugu",
+                Arial,
+                sans-serif;
+
+            background: var(--background);
+            color: var(--text);
+
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+
+        /* =========================================================
+           TOP GOVERNMENT STRIP
+        ========================================================= */
+
+        .top-strip {
+
+            height: 34px;
+
+            background: var(--gov-blue-dark);
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 5%;
+
+            font-size: 12px;
+
+            border-bottom: 3px solid var(--saffron);
+        }
+
+        .top-strip-content {
+
+            width: 100%;
+            max-width: 1400px;
+
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-left {
+            opacity: 0.95;
+        }
+
+        .top-right {
+
+            display: flex;
+            gap: 20px;
+
+            font-weight: 600;
+        }
+
+        .top-right span {
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           MAIN HEADER
+        ========================================================= */
+
+        header {
+
+            background: white;
+
+            border-bottom: 1px solid var(--border);
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .navbar {
+
+            width: 90%;
+            max-width: 1400px;
+
+            height: 82px;
+
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        /* LOGO */
+
+        .brand {
+
+            display: flex;
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .brand img {
+
+            width: 55px;
+            height: 55px;
+
+            object-fit: contain;
+        }
+
+        .brand-text h1 {
+
+            font-size: 22px;
+
+            color: var(--gov-blue);
+
+            font-weight: 800;
+
+            line-height: 1.1;
+        }
+
+        .brand-text p {
+
+            font-size: 11px;
+
+            color: #666;
+
+            margin-top: 4px;
+        }
+
+
+        /* NAVIGATION */
+
+        .nav-links {
+
+            display: flex;
+            align-items: center;
+
+            gap: 28px;
+        }
+
+        .nav-links a {
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            color: #333;
+
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+
+            color: var(--gov-blue);
+        }
+
+        .nav-login {
+
+            background: var(--gov-blue);
+
+            color: white !important;
+
+            padding: 9px 19px;
+
+            border-radius: 3px;
+
+            border: 1px solid var(--gov-blue);
+        }
+
+        .nav-login:hover {
+
+            background: var(--gov-blue-dark);
+        }
+
+
+        /* =========================================================
+           HERO / ADVERTISEMENT AREA
+        ========================================================= */
+
+        .hero {
+
+            width: 100%;
+
+            background: #e9edf2;
+
+            padding: 20px 5% 24px;
+        }
+
+        .hero-container {
+
+            width: 100%;
+            max-width: 1400px;
+
+            margin: auto;
+        }
+
+
+        /* SLIDER */
+
+        .slider {
+
+            width: 100%;
+
+            height: 390px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: white;
+
+            border: 1px solid #ccd2d9;
+
+            box-shadow: var(--shadow);
+        }
+
+        .slides {
+
+            display: flex;
+
+            width: 400%;
+
+            height: 100%;
+
+            transition:
+                transform 0.75s
+                cubic-bezier(.65,0,.35,1);
+        }
+
+        .slide {
+
+            width: 25%;
+
+            height: 100%;
+
+            flex-shrink: 0;
+
+            position: relative;
+
+            background: white;
+        }
+
+        .slide img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        /* IMAGE OVERLAY */
+
+        .slide-overlay {
+
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 100%;
+
+            padding: 25px 35px;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0, 0, 0, 0.72)
+                );
+
+            color: white;
+        }
+
+        .slide-overlay h2 {
+
+            font-size: 23px;
+
+            margin-bottom: 4px;
+        }
+
+        .slide-overlay p {
+
+            font-size: 13px;
+
+            opacity: 0.95;
+        }
+
+
+        /* ARROWS */
+
+        .slider-arrow {
+
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background:
+                rgba(0, 51, 102, 0.88);
+
+            color: white;
+
+            font-size: 24px;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            transition: 0.2s;
+        }
+
+        .slider-arrow:hover {
+
+            background: var(--saffron);
+        }
+
+        .prev {
+            left: 18px;
+        }
+
+        .next {
+            right: 18px;
+        }
+
+
+        /* DOTS */
+
+        .dots {
+
+            position: absolute;
+
+            bottom: 13px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            display: flex;
+
+            gap: 7px;
+
+            z-index: 20;
+        }
+
+        .dot {
+
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+
+            border: 1px solid white;
+
+            background:
+                rgba(255,255,255,0.65);
+
+            cursor: pointer;
+        }
+
+        .dot.active {
+
+            background: var(--saffron);
+
+            border-color: var(--saffron);
+        }
+
+
+        /* =========================================================
+           LOGIN SECTION
+        ========================================================= */
+
+        .login-section {
+
+            background: white;
+
+            padding: 70px 5%;
+        }
+
+        .section-container {
+
+            width: 100%;
+            max-width: 1150px;
+
+            margin: auto;
+        }
+
+
+        /* SECTION HEADER */
+
+        .section-heading {
+
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+        .section-heading .line {
+
+            width: 55px;
+
+            height: 4px;
+
+            background: var(--saffron);
+
+            margin: 0 auto 15px;
+        }
+
+        .section-heading h2 {
+
+            color: var(--gov-blue);
+
+            font-size: 30px;
+
+            font-weight: 800;
+        }
+
+        .section-heading p {
+
+            color: var(--text-secondary);
+
+            margin-top: 7px;
+
+            font-size: 14px;
+        }
+
+
+        /* LOGIN CARDS */
+
+        .login-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .login-card {
+
+            background: white;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-top:
+
+                5px solid
+                var(--gov-blue);
+
+            padding: 32px 28px;
+
+            text-align: center;
+
+            box-shadow: var(--shadow);
+
+            transition: 0.25s;
+        }
+
+        .login-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 28px
+                rgba(0,0,0,0.12);
+        }
+
+
+        /* CARD ICON */
+
+        .login-icon {
+
+            width: 62px;
+            height: 62px;
+
+            margin: auto auto 18px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            font-size: 25px;
+
+            background:
+                #edf3f8;
+
+            color: var(--gov-blue);
+        }
+
+
+        /* CARD TEXT */
+
+        .login-card h3 {
+
+            color: var(--gov-blue);
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+        .login-card p {
+
+            color: #666;
+
+            font-size: 13px;
+
+            min-height: 55px;
+        }
+
+
+        /* LOGIN BUTTON */
+
+        .login-btn {
+
+            display: block;
+
+            margin-top: 22px;
+
+            padding: 11px;
+
+            border-radius: 3px;
+
+            background:
+                var(--gov-blue);
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            border: 1px solid
+                var(--gov-blue);
+
+            transition: 0.2s;
+        }
+
+        .login-btn:hover {
+
+            background:
+                var(--saffron);
+
+            border-color:
+                var(--saffron);
+        }
+
+
+        /* =========================================================
+           INFORMATION SECTION
+        ========================================================= */
+
+        .information {
+
+            background:
+                #f4f6f8;
+
+            padding: 75px 5%;
+
+            border-top:
+                1px solid
+                var(--border);
+        }
+
+
+        /* LANGUAGE */
+
+        .language-tabs {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 0;
+
+            margin-bottom: 40px;
+        }
+
+        .language-btn {
+
+            padding: 10px 25px;
+
+            background: white;
+
+            border:
+                1px solid
+                var(--border);
+
+            color: #555;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+            font-size: 13px;
+        }
+
+        .language-btn:first-child {
+
+            border-radius:
+                3px 0 0 3px;
+        }
+
+        .language-btn:last-child {
+
+            border-radius:
+                0 3px 3px 0;
+        }
+
+        .language-btn.active {
+
+            background:
+                var(--gov-blue);
+
+            color: white;
+
+            border-color:
+                var(--gov-blue);
+        }
+
+
+        /* CONTENT */
+
+        .info-content {
+
+            display: none;
+        }
+
+        .info-content.active {
+
+            display: block;
+        }
+
+        .info-content h2 {
+
+            color:
+                var(--gov-blue);
+
+            font-size: 28px;
+
+            margin-bottom: 12px;
+        }
+
+        .info-content > p {
+
+            color: #555;
+
+            max-width: 900px;
+
+            font-size: 14px;
+
+            margin-bottom: 35px;
+        }
+
+
+        /* INFO CARDS */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 20px;
+        }
+
+        .info-box {
+
+            background: white;
+
+            padding: 25px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-left:
+                4px solid
+                var(--gov-blue);
+
+            box-shadow:
+                0 2px 8px
+                rgba(0,0,0,0.04);
+        }
+
+        .info-box:nth-child(2) {
+
+            border-left-color:
+                var(--saffron);
+        }
+
+        .info-box:nth-child(3) {
+
+            border-left-color:
+                var(--green);
+        }
+
+        .info-box h3 {
+
+            color:
+                var(--gov-blue);
+
+            font-size: 17px;
+
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+
+            color: #666;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           GOVERNMENT INFORMATION STRIP
+        ========================================================= */
+
+        .gov-section {
+
+            background:
+                var(--gov-blue);
+
+            color: white;
+
+            padding:
+                30px 5%;
+        }
+
+        .gov-container {
+
+            max-width: 1150px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .gov-section h3 {
+
+            font-size: 18px;
+        }
+
+        .gov-section p {
+
+            color:
+                rgba(255,255,255,0.78);
+
+            font-size: 12px;
+
+            margin-top: 3px;
+        }
+
+        .gov-link {
+
+            padding:
+                9px 20px;
+
+            background:
+                white;
+
+            color:
+                var(--gov-blue);
+
+            border-radius: 3px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+
+            background:
+                #17212b;
+
+            color: white;
+
+            padding:
+                45px 5% 20px;
+        }
+
+        .footer-container {
+
+            max-width: 1150px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr;
+
+            gap: 50px;
+        }
+
+        .footer-column h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 15px;
+        }
+
+        .footer-column p {
+
+            color:
+                #b8c0c8;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+        }
+
+        .footer-column a {
+
+            display: block;
+
+            color:
+                #b8c0c8;
+
+            font-size: 12px;
+
+            margin-bottom: 8px;
+        }
+
+        .footer-column a:hover {
+
+            color:
+                white;
+        }
+
+
+        /* FOOTER BOTTOM */
+
+        .footer-bottom {
+
+            max-width: 1150px;
+
+            margin: 35px auto 0;
+
+            padding-top: 18px;
+
+            border-top:
+                1px solid
+                #35404b;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            color:
+                #9da8b2;
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media(max-width: 900px) {
+
+            .nav-links a:not(.nav-login) {
+
+                display: none;
+            }
+
+            .slider {
+
+                height: 320px;
+            }
+
+            .login-grid,
+            .info-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .footer-container {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .gov-container {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+            }
+        }
+
+
+        @media(max-width: 600px) {
+
+            .top-right {
+
+                display: none;
+            }
+
+            .navbar {
+
+                height: 70px;
+            }
+
+            .brand img {
+
+                width: 45px;
+                height: 45px;
+            }
+
+            .brand-text h1 {
+
+                font-size: 18px;
+            }
+
+            .brand-text p {
+
+                font-size: 9px;
+            }
+
+            .hero {
+
+                padding:
+                    10px 3% 15px;
+            }
+
+            .slider {
+
+                height: 240px;
+            }
+
+            .slide-overlay {
+
+                padding:
+                    18px;
+            }
+
+            .slide-overlay h2 {
+
+                font-size: 17px;
+            }
+
+            .slide-overlay p {
+
+                font-size: 10px;
+            }
+
+            .slider-arrow {
+
+                width: 34px;
+                height: 34px;
+
+                font-size: 18px;
+            }
+
+            .login-section,
+            .information {
+
+                padding:
+                    50px 5%;
+            }
+
+            .section-heading h2 {
+
+                font-size: 25px;
+            }
+
+            .footer-bottom {
+
+                flex-direction:
+                    column;
+
+                gap: 8px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         GOVERNMENT TOP BAR
+    ========================================================== -->
+
+    <div class="top-strip">
+
+        <div class="top-strip-content">
+
+            <div class="top-left">
+
+                Government of India
+
+            </div>
+
+            <div class="top-right">
+
+                <span>Skip to Main Content</span>
+
+                <span>English</span>
+
+                <span>हिन्दी</span>
+
+                <span>తెలుగు</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <a href="#" class="brand">
+
+                <!-- YOUR LOGO -->
+
+                <img
+                    src="images/sihlogo.png"
+                    alt="MaapSaarthi Logo"
+                >
+
+                <div class="brand-text">
+
+                    <h1>
+                        MaapSaarthi
+                    </h1>
+
+                    <p>
+                        Digital Legal Metrology Platform
+                    </p>
+
+                </div>
+
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#login">
+                    Portals
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+                <a href="#contact">
+                    Contact
+                </a>
+
+                <a
+                    href="#login"
+                    class="nav-login">
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         ADVERTISEMENT SECTION
+    ========================================================== -->
+
+    <section
+        class="hero"
+        id="home">
+
+        <div class="hero-container">
+
+            <div class="slider">
+
+                <div
+                    class="slides"
+                    id="slides">
+
+
+                    <!-- AD 1 -->
+
+                    <div class="slide">
+
+                        <img
+                            src="images/ad1.jpeg"
+                            alt="Government Advertisement"
+                        >
+
+                    </div>
+
+
+                    <!-- AD 2 -->
+
+                    <div class="slide">
+
+                        <img
+                            src="images/ad3.jpeg"
+                            alt="Government Advertisement"
+                        >
+
+                    </div>
+
+
+                    <!-- AD 3 -->
+
+                    <div class="slide">
+
+                        <img
+                            src="images/ad5.png"
+                            alt="Government Advertisement"
+                        >
+
+                    </div>
+
+
+                    <!-- AD 4 -->
+
+                    <div class="slide">
+
+                        <img
+                            src="images/ad4.png"
+                            alt="Government Advertisement"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PREVIOUS -->
+
+                <button
+                    class="slider-arrow prev"
+                    onclick="previousSlide()">
+
+                    ‹
+
+                </button>
+
+
+                <!-- NEXT -->
+
+                <button
+                    class="slider-arrow next"
+                    onclick="nextSlide()">
+
+                    ›
+
+                </button>
+
+
+                <!-- DOTS -->
+
+                <div class="dots">
+
+                    <button
+                        class="dot active"
+                        onclick="goToSlide(0)">
+                    </button>
+
+                    <button
+                        class="dot"
+                        onclick="goToSlide(1)">
+                    </button>
+
+                    <button
+                        class="dot"
+                        onclick="goToSlide(2)">
+                    </button>
+
+                    <button
+                        class="dot"
+                        onclick="goToSlide(3)">
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         LOGIN PORTALS
+    ========================================================== -->
+
+    <section
+        class="login-section"
+        id="login">
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <div class="line"></div>
+
+                <h2>
+                    Select Your Portal
+                </h2>
+
+                <p>
+                    Access the MaapSaarthi services based on your role
+                </p>
+
+            </div>
+
+
+            <div class="login-grid">
+
+
+                <!-- CONSUMER -->
+
+                <div class="login-card">
+
+                    <div class="login-icon">
+                        👤
+                    </div>
+
+                    <h3>
+                        Consumer Portal
+                    </h3>
+
+                    <p>
+                        Verify products, measurements and
+                        access consumer protection services.
+                    </p>
+
+                    <a
+                        href="consumer/consumerlogin.html"
+                        class="login-btn">
+
+                        Consumer Login
+
+                    </a>
+
+                </div>
+
+
+                <!-- RETAILER -->
+
+                <div class="login-card">
+
+                    <div class="login-icon">
+                        🏪
+                    </div>
+
+                    <h3>
+                        Retailer Portal
+                    </h3>
+
+                    <p>
+                        Manage compliance, verification records
+                        and retailer services.
+                    </p>
+
+                    <!-- FIXED: retailer-login.html -> retaillogin.html -->
+
+                    <a
+                        href="retailer/retaildashboard.html"
+                        class="login-btn">
+
+                        Retailer Login
+
+                    </a>
+
+                </div>
+
+
+                <!-- GOVERNMENT -->
+
+                <div class="login-card">
+
+                    <div class="login-icon">
+                        🏛
+                    </div>
+
+                    <h3>
+                        Government Official Portal
+                    </h3>
+
+                    <p>
+                        Monitor inspections, complaints,
+                        verification and enforcement activities.
+                    </p>
+
+                    <a
+                        href="official/governmentlogin.html"
+                        class="login-btn">
+
+                        Official Login
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         ABOUT / INFORMATION
+    ========================================================== -->
+
+    <section
+        class="information"
+        id="about">
+
+        <div class="section-container">
+
+
+            <!-- LANGUAGE BUTTONS -->
+
+            <div class="language-tabs">
+
+                <button
+                    class="language-btn active"
+                    onclick="showLanguage('english', this)">
+
+                    English
+
+                </button>
+
+                <button
+                    class="language-btn"
+                    onclick="showLanguage('telugu', this)">
+
+                    తెలుగు
+
+                </button>
+
+            </div>
+
+
+
+            <!-- ENGLISH -->
+
+            <div
+                id="english"
+                class="info-content active">
+
+                <h2>
+                    About MaapSaarthi
+                </h2>
+
+                <p>
+
+                    MaapSaarthi is a digital Legal Metrology
+                    platform designed to improve transparency,
+                    compliance and consumer protection by
+                    connecting consumers, retailers and
+                    government officials through a unified
+                    digital ecosystem.
+
+                </p>
+
+
+                <div class="info-grid">
+
+
+                    <div class="info-box">
+
+                        <h3>
+                            Consumer Empowerment
+                        </h3>
+
+                        <p>
+                            Access reliable information,
+                            verify measurements and report
+                            suspected irregularities.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <h3>
+                            Retailer Compliance
+                        </h3>
+
+                        <p>
+                            Maintain digital compliance
+                            records and streamline
+                            verification processes.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <h3>
+                            Government Oversight
+                        </h3>
+
+                        <p>
+                            Enable officials to monitor
+                            inspections, complaints,
+                            verification and enforcement.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TELUGU -->
+
+            <div
+                id="telugu"
+                class="info-content">
+
+                <h2>
+                    మా‌ప్‌సారథి గురించి
+                </h2>
+
+                <p>
+
+                    మా‌ప్‌సారథి అనేది వినియోగదారులు,
+                    రిటైలర్లు మరియు ప్రభుత్వ అధికారులను
+                    ఒకే డిజిటల్ వ్యవస్థలో అనుసంధానించే
+                    లీగల్ మెట్రాలజీ ప్లాట్‌ఫారమ్.
+
+                </p>
+
+
+                <div class="info-grid">
+
+
+                    <div class="info-box">
+
+                        <h3>
+                            వినియోగదారుల సాధికారత
+                        </h3>
+
+                        <p>
+
+                            ఉత్పత్తులు మరియు కొలతలకు
+                            సంబంధించిన సమాచారాన్ని
+                            ధృవీకరించడంతో పాటు సమస్యలను
+                            నివేదించవచ్చు.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <h3>
+                            రిటైలర్ నిబంధనల అనుసరణ
+                        </h3>
+
+                        <p>
+
+                            డిజిటల్ అనుసరణ రికార్డులను
+                            నిర్వహించి ధృవీకరణ ప్రక్రియలను
+                            సులభతరం చేయవచ్చు.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <h3>
+                            ప్రభుత్వ పర్యవేక్షణ
+                        </h3>
+
+                        <p>
+
+                            తనిఖీలు, ఫిర్యాదులు, ధృవీకరణ
+                            మరియు అమలు ప్రక్రియలను
+                            పర్యవేక్షించవచ్చు.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         GOVERNMENT STRIP
+    ========================================================== -->
+
+    <section class="gov-section">
+
+        <div class="gov-container">
+
+            <div>
+
+                <h3>
+                    Department of Consumer Affairs
+                </h3>
+
+                <p>
+                    Legal Metrology | Government of India
+                </p>
+
+            </div>
+
+            <a
+                href="#"
+                class="gov-link">
+
+                Official Information
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer id="contact">
+
+        <div class="footer-container">
+
+
+            <div class="footer-column">
+
+                <h3>
+                    MaapSaarthi
+                </h3>
+
+                <p>
+
+                    A digital platform supporting
+                    transparent measurements,
+                    regulatory compliance and
+                    consumer protection.
+
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#login">
+                    Portals
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Services
+                </h3>
+
+                <a href="consumer-login.html">
+                    Consumer Portal
+                </a>
+
+                <!-- FIXED / CONFIRMED -->
+
+                <a href="retaillogin.html">
+                    Retailer Portal
+                </a>
+
+                <a href="government-login.html">
+                    Government Portal
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 MaapSaarthi
+            </span>
+
+            <span>
+                Government of India | Legal Metrology
+            </span>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+
+        /* =========================================================
+           AD SLIDER
+        ========================================================= */
+
+        let currentSlide = 0;
+
+        const totalSlides = 4;
+
+        const slides =
+            document.getElementById("slides");
+
+        const dots =
+            document.querySelectorAll(".dot");
+
+
+        function updateSlider() {
+
+            slides.style.transform =
+                `translateX(-${currentSlide * 25}%)`;
+
+
+            dots.forEach(
+                (dot, index) => {
+
+                    dot.classList.toggle(
+                        "active",
+                        index === currentSlide
+                    );
+
+                }
+            );
+
+        }
+
+
+        function nextSlide() {
+
+            currentSlide++;
+
+            if (
+                currentSlide >= totalSlides
+            ) {
+
+                currentSlide = 0;
+
+            }
+
+            updateSlider();
+
+        }
+
+
+        function previousSlide() {
+
+            currentSlide--;
+
+            if (
+                currentSlide < 0
+            ) {
+
+                currentSlide =
+                    totalSlides - 1;
+
+            }
+
+            updateSlider();
+
+        }
+
+
+        function goToSlide(index) {
+
+            currentSlide = index;
+
+            updateSlider();
+
+        }
+
+
+        /*
+            Automatically change
+            advertisement every 5 seconds.
+        */
+
+        setInterval(
+            nextSlide,
+            5000
+        );
+
+
+
+        /* =========================================================
+           LANGUAGE SWITCH
+        ========================================================== */
+
+        function showLanguage(
+            language,
+            button
+        ) {
+
+            const contents =
+                document.querySelectorAll(
+                    ".info-content"
+                );
+
+            const buttons =
+                document.querySelectorAll(
+                    ".language-btn"
+                );
+
+
+            contents.forEach(
+                content => {
+
+                    content.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            buttons.forEach(
+                btn => {
+
+                    btn.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            document
+                .getElementById(language)
+                .classList.add("active");
+
+
+            button.classList.add("active");
+
+        }
+
+    </script>
+
+</body>
+</html>

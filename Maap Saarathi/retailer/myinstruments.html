@@ -1,0 +1,2262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>My Instruments | MaapSaarthi</title>
+
+
+    <!-- =====================================================
+         FONT
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+<style>
+
+/* =====================================================
+   ROOT VARIABLES
+===================================================== */
+
+:root {
+
+    --gov-blue: #003366;
+    --gov-blue-dark: #00264d;
+    --gov-blue-light: #0b568a;
+
+    --saffron: #e87500;
+    --green: #138808;
+    --red: #b3261e;
+    --yellow: #a56600;
+
+    --background: #f2f4f6;
+    --white: #ffffff;
+
+    --text: #20252a;
+    --muted: #68717a;
+
+    --border: #cbd2d8;
+
+    --shadow:
+        0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family:
+        "Noto Sans",
+        Arial,
+        sans-serif;
+
+    background:
+        var(--background);
+
+    color:
+        var(--text);
+
+    min-height:
+        100vh;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+}
+
+
+/* =====================================================
+   TOP GOVERNMENT BAR
+===================================================== */
+
+.top-bar {
+
+    min-height:
+        34px;
+
+    background:
+        var(--gov-blue-dark);
+
+    color:
+        white;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        0 5%;
+
+    font-size:
+        11px;
+
+    border-bottom:
+        3px solid var(--saffron);
+}
+
+
+.top-bar-left {
+
+    font-weight:
+        600;
+}
+
+
+.top-bar-right {
+
+    opacity:
+        0.9;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+
+    background:
+        var(--white);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.navbar {
+
+    width:
+        90%;
+
+    max-width:
+        1250px;
+
+    min-height:
+        78px;
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.brand {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        13px;
+
+    text-decoration:
+        none;
+}
+
+
+.brand img {
+
+    width:
+        50px;
+
+    height:
+        50px;
+
+    object-fit:
+        contain;
+}
+
+
+.brand-text h1 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        21px;
+
+    font-weight:
+        800;
+
+    line-height:
+        1.15;
+}
+
+
+.brand-text p {
+
+    color:
+        var(--muted);
+
+    font-size:
+        9px;
+
+    margin-top:
+        3px;
+}
+
+
+/* =====================================================
+   HEADER NAVIGATION
+===================================================== */
+
+.nav-actions {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+}
+
+
+.dashboard-link {
+
+    text-decoration:
+        none;
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    padding:
+        8px 12px;
+
+    border:
+        1px solid transparent;
+}
+
+
+.dashboard-link:hover {
+
+    background:
+        #f5f7f9;
+
+    border-color:
+        var(--border);
+}
+
+
+.profile-icon {
+
+    width:
+        35px;
+
+    height:
+        35px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--gov-blue);
+
+    color:
+        white;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        13px;
+
+    font-weight:
+        800;
+}
+
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.page-header {
+
+    background:
+        var(--white);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.page-header-inner {
+
+    width:
+        90%;
+
+    max-width:
+        1250px;
+
+    margin:
+        auto;
+
+    padding:
+        21px 0;
+}
+
+
+.breadcrumb {
+
+    font-size:
+        10px;
+
+    color:
+        var(--muted);
+
+    margin-bottom:
+        8px;
+}
+
+
+.breadcrumb a {
+
+    color:
+        var(--gov-blue);
+
+    text-decoration:
+        none;
+
+    font-weight:
+        700;
+}
+
+
+.breadcrumb span {
+
+    margin:
+        0 5px;
+
+    color:
+        #9aa1a7;
+}
+
+
+.page-title {
+
+    border-left:
+        5px solid var(--saffron);
+
+    padding-left:
+        12px;
+}
+
+
+.page-title h2 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        26px;
+
+    font-weight:
+        800;
+}
+
+
+.page-title p {
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+
+    margin-top:
+        4px;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main {
+
+    width:
+        90%;
+
+    max-width:
+        1250px;
+
+    margin:
+        28px auto 60px;
+
+    flex:
+        1;
+}
+
+
+/* =====================================================
+   PAGE INTRO
+===================================================== */
+
+.page-intro {
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-left:
+        4px solid var(--gov-blue);
+
+    padding:
+        17px 20px;
+
+    margin-bottom:
+        20px;
+}
+
+
+.page-intro h3 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        14px;
+
+    font-weight:
+        800;
+
+    margin-bottom:
+        4px;
+}
+
+
+.page-intro p {
+
+    color:
+        var(--muted);
+
+    font-size:
+        11px;
+
+    line-height:
+        1.6;
+}
+
+
+/* =====================================================
+   STATISTICS
+   Backend will populate these later.
+===================================================== */
+
+.stats-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:
+        15px;
+
+    margin-bottom:
+        22px;
+}
+
+
+.stat-card {
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        var(--shadow);
+
+    padding:
+        17px;
+
+    position:
+        relative;
+
+    min-height:
+        105px;
+}
+
+
+.stat-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    top:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        4px;
+
+    background:
+        var(--gov-blue);
+}
+
+
+.stat-card.verified::before {
+
+    background:
+        var(--green);
+}
+
+
+.stat-card.expiring::before {
+
+    background:
+        var(--saffron);
+}
+
+
+.stat-card.expired::before {
+
+    background:
+        var(--red);
+}
+
+
+.stat-label {
+
+    color:
+        var(--muted);
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+}
+
+
+.stat-number {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        26px;
+
+    font-weight:
+        800;
+
+    margin-top:
+        4px;
+}
+
+
+.stat-card:not(.has-data) .stat-number {
+
+    color:
+        #a0a7ad;
+
+    font-size:
+        22px;
+}
+
+
+.stat-description {
+
+    color:
+        #858d94;
+
+    font-size:
+        9px;
+
+    margin-top:
+        2px;
+}
+
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.toolbar {
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    padding:
+        16px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    margin-bottom:
+        18px;
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-container {
+
+    flex:
+        1;
+
+    position:
+        relative;
+}
+
+
+.search-icon {
+
+    position:
+        absolute;
+
+    left:
+        13px;
+
+    top:
+        11px;
+
+    color:
+        #7c858c;
+
+    font-size:
+        14px;
+}
+
+
+.search-input {
+
+    width:
+        100%;
+
+    height:
+        40px;
+
+    padding:
+        0 13px 0 36px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        white;
+
+    color:
+        var(--text);
+
+    font-family:
+        inherit;
+
+    font-size:
+        11px;
+
+    outline:
+        none;
+}
+
+
+.search-input:focus {
+
+    border-color:
+        var(--gov-blue);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(0,51,102,0.08);
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+.filter-select {
+
+    height:
+        40px;
+
+    width:
+        180px;
+
+    padding:
+        0 10px;
+
+    background:
+        white;
+
+    border:
+        1px solid var(--border);
+
+    color:
+        #40474d;
+
+    font-family:
+        inherit;
+
+    font-size:
+        11px;
+
+    outline:
+        none;
+
+    cursor:
+        pointer;
+}
+
+
+.filter-select:focus {
+
+    border-color:
+        var(--gov-blue);
+}
+
+
+/* =====================================================
+   REGISTER BUTTON
+===================================================== */
+
+.register-button {
+
+    height:
+        40px;
+
+    padding:
+        0 17px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        var(--gov-blue);
+
+    border:
+        1px solid var(--gov-blue);
+
+    color:
+        white;
+
+    text-decoration:
+        none;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+    white-space:
+        nowrap;
+
+    cursor:
+        pointer;
+}
+
+
+.register-button:hover {
+
+    background:
+        var(--gov-blue-dark);
+
+    border-color:
+        var(--gov-blue-dark);
+}
+
+
+/* =====================================================
+   EMPTY INSTRUMENT STATE
+===================================================== */
+
+.empty-state {
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    min-height:
+        390px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    padding:
+        40px 20px;
+}
+
+
+.empty-content {
+
+    max-width:
+        500px;
+}
+
+
+.empty-icon {
+
+    width:
+        76px;
+
+    height:
+        76px;
+
+    margin:
+        0 auto 17px;
+
+    border:
+        1px solid #c8d4df;
+
+    background:
+        #f1f5f8;
+
+    color:
+        var(--gov-blue);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        32px;
+}
+
+
+.empty-content h3 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        18px;
+
+    font-weight:
+        800;
+
+    margin-bottom:
+        7px;
+}
+
+
+.empty-content p {
+
+    color:
+        var(--muted);
+
+    font-size:
+        11px;
+
+    line-height:
+        1.7;
+
+    margin-bottom:
+        21px;
+}
+
+
+.empty-register-button {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        40px;
+
+    padding:
+        0 20px;
+
+    background:
+        var(--gov-blue);
+
+    color:
+        white;
+
+    border:
+        1px solid var(--gov-blue);
+
+    text-decoration:
+        none;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+}
+
+
+.empty-register-button:hover {
+
+    background:
+        var(--gov-blue-dark);
+}
+
+
+/* =====================================================
+   BACKEND READY MESSAGE
+===================================================== */
+
+.backend-status {
+
+    margin-top:
+        18px;
+
+    padding:
+        12px 15px;
+
+    background:
+        #f7f8f9;
+
+    border:
+        1px solid #d9dee2;
+
+    color:
+        #69727a;
+
+    font-size:
+        9px;
+
+    line-height:
+        1.6;
+}
+
+
+.backend-status strong {
+
+    color:
+        var(--gov-blue);
+}
+
+
+/* =====================================================
+   FUTURE INSTRUMENT CARD
+   Hidden until backend data arrives.
+===================================================== */
+
+.instrument-list {
+
+    display:
+        none;
+
+    flex-direction:
+        column;
+
+    gap:
+        15px;
+}
+
+
+.instrument-card {
+
+    background:
+        white;
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        var(--shadow);
+
+    padding:
+        20px;
+}
+
+
+.instrument-card-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        flex-start;
+
+    border-bottom:
+        1px solid #e3e6e8;
+
+    padding-bottom:
+        15px;
+}
+
+
+.instrument-name {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        15px;
+
+    font-weight:
+        800;
+}
+
+
+.instrument-id {
+
+    color:
+        var(--muted);
+
+    font-size:
+        10px;
+
+    margin-top:
+        3px;
+}
+
+
+.status-badge {
+
+    padding:
+        5px 10px;
+
+    border-radius:
+        12px;
+
+    font-size:
+        9px;
+
+    font-weight:
+        800;
+}
+
+
+.status-verified {
+
+    color:
+        #116d0b;
+
+    background:
+        #edf7ed;
+
+    border:
+        1px solid #b9dbb7;
+}
+
+
+.status-expiring {
+
+    color:
+        #995600;
+
+    background:
+        #fff5e8;
+
+    border:
+        1px solid #ecd09e;
+}
+
+
+.status-expired {
+
+    color:
+        #a51d18;
+
+    background:
+        #fff0ef;
+
+    border:
+        1px solid #dfb4b0;
+}
+
+
+.instrument-info-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:
+        18px;
+
+    padding:
+        17px 0;
+}
+
+
+.info-item label {
+
+    display:
+        block;
+
+    color:
+        #7a838a;
+
+    font-size:
+        8px;
+
+    text-transform:
+        uppercase;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        3px;
+}
+
+
+.info-item span {
+
+    color:
+        #30363b;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+}
+
+
+.instrument-actions {
+
+    display:
+        flex;
+
+    justify-content:
+        flex-end;
+
+    gap:
+        8px;
+}
+
+
+.action-button {
+
+    height:
+        34px;
+
+    padding:
+        0 13px;
+
+    background:
+        white;
+
+    border:
+        1px solid var(--border);
+
+    color:
+        var(--gov-blue);
+
+    font-family:
+        inherit;
+
+    font-size:
+        9px;
+
+    font-weight:
+        800;
+
+    cursor:
+        pointer;
+}
+
+
+.action-button.primary {
+
+    background:
+        var(--gov-blue);
+
+    color:
+        white;
+
+    border-color:
+        var(--gov-blue);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    background:
+        var(--gov-blue-dark);
+
+    color:
+        white;
+
+    border-top:
+        4px solid var(--saffron);
+
+    padding:
+        25px 5% 15px;
+}
+
+
+.footer-container {
+
+    width:
+        90%;
+
+    max-width:
+        1250px;
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        30px;
+}
+
+
+.footer-block h3 {
+
+    font-size:
+        13px;
+
+    margin-bottom:
+        5px;
+}
+
+
+.footer-block p {
+
+    color:
+        #c4cdd5;
+
+    font-size:
+        10px;
+}
+
+
+.footer-bottom {
+
+    width:
+        90%;
+
+    max-width:
+        1250px;
+
+    margin:
+        18px auto 0;
+
+    padding-top:
+        12px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    color:
+        #aeb9c2;
+
+    font-size:
+        9px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .stats-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .instrument-info-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .toolbar {
+
+        flex-wrap:
+            wrap;
+    }
+
+
+    .search-container {
+
+        flex-basis:
+            100%;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .top-bar {
+
+        justify-content:
+            center;
+    }
+
+
+    .top-bar-right {
+
+        display:
+            none;
+    }
+
+
+    .navbar {
+
+        min-height:
+            68px;
+    }
+
+
+    .brand img {
+
+        width:
+            43px;
+
+        height:
+            43px;
+    }
+
+
+    .brand-text h1 {
+
+        font-size:
+            18px;
+    }
+
+
+    .brand-text p {
+
+        font-size:
+            8px;
+    }
+
+
+    .dashboard-link {
+
+        display:
+            none;
+    }
+
+
+    main {
+
+        width:
+            94%;
+    }
+
+
+    .stats-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .filter-select {
+
+        width:
+            100%;
+    }
+
+
+    .register-button {
+
+        width:
+            100%;
+    }
+
+
+    .empty-state {
+
+        min-height:
+            350px;
+    }
+
+
+    .instrument-info-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .instrument-card-header {
+
+        flex-direction:
+            column;
+
+        gap:
+            10px;
+    }
+
+
+    .instrument-actions {
+
+        justify-content:
+            flex-start;
+
+        flex-wrap:
+            wrap;
+    }
+
+
+    .footer-container,
+    .footer-bottom {
+
+        flex-direction:
+            column;
+
+        gap:
+            8px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     GOVERNMENT TOP BAR
+===================================================== -->
+
+<div class="top-bar">
+
+    <div class="top-bar-left">
+
+        Government of India
+
+    </div>
+
+
+    <div class="top-bar-right">
+
+        Legal Metrology |
+        Department of Consumer Affairs
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <nav class="navbar">
+
+
+        <a
+            href="retaildashboard.html"
+            class="brand">
+
+
+            <img
+                src="../images/sihlogo.png"
+                alt="MaapSaarthi Logo">
+
+
+            <div class="brand-text">
+
+                <h1>
+                    MaapSaarthi
+                </h1>
+
+                <p>
+                    Digital Legal Metrology Platform
+                </p>
+
+            </div>
+
+        </a>
+
+
+        <div class="nav-actions">
+
+
+            <a
+                href="retaildashboard.html"
+                class="dashboard-link">
+
+                ← Retailer Dashboard
+
+            </a>
+
+
+            <div
+                class="profile-icon"
+                id="profileIcon">
+
+                N
+
+            </div>
+
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- =====================================================
+     PAGE HEADER
+===================================================== -->
+
+<section class="page-header">
+
+    <div class="page-header-inner">
+
+
+        <div class="breadcrumb">
+
+            <a href="retaildashboard.html">
+                Retailer Dashboard
+            </a>
+
+            <span>
+                /
+            </span>
+
+            My Instruments
+
+        </div>
+
+
+        <div class="page-title">
+
+            <h2>
+                My Instruments
+            </h2>
+
+            <p>
+                View and manage instruments registered
+                under your business.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main>
+
+
+    <!-- =================================================
+         INTRODUCTION
+    ================================================== -->
+
+    <section class="page-intro">
+
+        <h3>
+            Instrument Management
+        </h3>
+
+        <p>
+            This section allows you to view your registered
+            measuring instruments, certificate status,
+            verification validity and instrument details.
+            Instrument information will appear here after
+            successful registration.
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         STATISTICS
+         
+         These are intentionally empty until backend
+         data is available.
+    ================================================== -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Total Instruments
+            </div>
+
+            <div
+                class="stat-number"
+                id="totalInstruments">
+
+                —
+
+            </div>
+
+            <div class="stat-description">
+                Registered instruments
+            </div>
+
+        </div>
+
+
+        <div class="stat-card verified">
+
+            <div class="stat-label">
+                Verified
+            </div>
+
+            <div
+                class="stat-number"
+                id="verifiedInstruments">
+
+                —
+
+            </div>
+
+            <div class="stat-description">
+                Valid certificates
+            </div>
+
+        </div>
+
+
+        <div class="stat-card expiring">
+
+            <div class="stat-label">
+                Expiring Soon
+            </div>
+
+            <div
+                class="stat-number"
+                id="expiringInstruments">
+
+                —
+
+            </div>
+
+            <div class="stat-description">
+                Verification due soon
+            </div>
+
+        </div>
+
+
+        <div class="stat-card expired">
+
+            <div class="stat-label">
+                Expired
+            </div>
+
+            <div
+                class="stat-number"
+                id="expiredInstruments">
+
+                —
+
+            </div>
+
+            <div class="stat-description">
+                Verification required
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =================================================
+         SEARCH + FILTER + REGISTER
+    ================================================== -->
+
+    <section class="toolbar">
+
+
+        <div class="search-container">
+
+            <span class="search-icon">
+                🔍
+            </span>
+
+
+            <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="Search by instrument ID, type, manufacturer or model">
+
+        </div>
+
+
+        <select
+            id="statusFilter"
+            class="filter-select">
+
+            <option value="all">
+                All Instruments
+            </option>
+
+            <option value="verified">
+                Verified
+            </option>
+
+            <option value="expiring">
+                Expiring Soon
+            </option>
+
+            <option value="expired">
+                Expired
+            </option>
+
+        </select>
+
+
+        <a
+            href="instrumentregistration.html"
+            class="register-button">
+
+            + Register Instrument
+
+        </a>
+
+
+    </section>
+
+
+    <!-- =================================================
+         EMPTY STATE
+         
+         This is what the retailer sees before backend
+         data is available.
+    ================================================== -->
+
+    <section
+        class="empty-state"
+        id="emptyState">
+
+
+        <div class="empty-content">
+
+
+            <div class="empty-icon">
+
+                ⚖
+
+            </div>
+
+
+            <h3>
+                No Instruments Registered
+            </h3>
+
+
+            <p>
+                You have not registered any measuring
+                instruments yet. Register an instrument
+                to begin the verification and
+                certification process.
+            </p>
+
+
+            <a
+                href="instrumentregistration.html"
+                class="empty-register-button">
+
+                + Register Your First Instrument
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         BACKEND-POPULATED INSTRUMENT LIST
+         
+         Hidden for now.
+         
+         When FastAPI returns instrument data,
+         JavaScript will populate this section.
+    ================================================== -->
+
+    <section
+        class="instrument-list"
+        id="instrumentList">
+
+        <!--
+            Backend-generated instrument cards
+            will appear here.
+        -->
+
+    </section>
+
+
+    <!-- =================================================
+         BACKEND STATUS
+    ================================================== -->
+
+    <div class="backend-status">
+
+        <strong>
+            Instrument data:
+        </strong>
+
+        This page is connected to the frontend structure
+        only. Registered instruments, certificate status,
+        verification dates and instrument details will be
+        populated from the MaapSaarthi backend once
+        database integration is completed.
+
+    </div>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+
+    <div class="footer-container">
+
+
+        <div class="footer-block">
+
+            <h3>
+                MaapSaarthi
+            </h3>
+
+            <p>
+                Digital Legal Metrology Platform
+            </p>
+
+        </div>
+
+
+        <div class="footer-block">
+
+            <h3>
+                Government of India
+            </h3>
+
+            <p>
+                Department of Consumer Affairs
+            </p>
+
+        </div>
+
+
+        <div class="footer-block">
+
+            <h3>
+                Legal Metrology
+            </h3>
+
+            <p>
+                Instrument Registration & Verification
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 MaapSaarthi
+        </span>
+
+
+        <span>
+            Government of India | Legal Metrology
+        </span>
+
+    </div>
+
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   PROFILE INITIALIZATION
+===================================================== */
+
+/*
+    We don't depend on the backend yet.
+
+    If the retailer name is eventually stored in
+    localStorage or received from the backend,
+    the first letter can be displayed here.
+*/
+
+const profileIcon =
+    document.getElementById(
+        "profileIcon"
+    );
+
+
+const storedOwnerName =
+    localStorage.getItem(
+        "ownerName"
+    );
+
+
+if (
+    storedOwnerName &&
+    storedOwnerName.trim().length > 0
+) {
+
+    profileIcon.textContent =
+        storedOwnerName
+            .trim()
+            .charAt(0)
+            .toUpperCase();
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+/*
+    Search is prepared for the backend-generated
+    instrument cards.
+
+    There are currently no instrument records,
+    therefore nothing is filtered yet.
+*/
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+const statusFilter =
+    document.getElementById(
+        "statusFilter"
+    );
+
+
+searchInput.addEventListener(
+    "input",
+    filterInstruments
+);
+
+
+statusFilter.addEventListener(
+    "change",
+    filterInstruments
+);
+
+
+function filterInstruments() {
+
+    const searchValue =
+        searchInput
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    const selectedStatus =
+        statusFilter.value;
+
+
+    const instrumentCards =
+        document.querySelectorAll(
+            ".instrument-card"
+        );
+
+
+    instrumentCards.forEach(
+        card => {
+
+            const searchableText =
+                card
+                    .dataset
+                    .search
+                    ?.toLowerCase() || "";
+
+
+            const cardStatus =
+                card
+                    .dataset
+                    .status || "all";
+
+
+            const searchMatch =
+                searchableText
+                    .includes(
+                        searchValue
+                    );
+
+
+            const statusMatch =
+                selectedStatus === "all" ||
+                cardStatus === selectedStatus;
+
+
+            if (
+                searchMatch &&
+                statusMatch
+            ) {
+
+                card.style.display =
+                    "block";
+
+            }
+
+            else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   FUTURE BACKEND FUNCTION
+===================================================== */
+
+/*
+    Later, when the FastAPI backend is ready,
+    this function will call something like:
+
+        GET /api/retailer/instruments
+
+    and populate:
+
+        #totalInstruments
+        #verifiedInstruments
+        #expiringInstruments
+        #expiredInstruments
+        #instrumentList
+
+    No demo data is being inserted now.
+*/
+
+async function loadInstruments() {
+
+    /*
+        Backend integration will be added here.
+
+        Example future structure:
+
+        const response = await fetch(
+            "/api/retailer/instruments"
+        );
+
+        const data = await response.json();
+
+        renderInstruments(data);
+    */
+
+}
+
+
+/* =====================================================
+   FUTURE RENDER FUNCTION
+===================================================== */
+
+function renderInstruments(
+    instruments
+) {
+
+    /*
+        This function will receive real backend
+        records and create the instrument cards.
+
+        Expected backend data:
+
+        {
+            instrument_id,
+            instrument_type,
+            manufacturer,
+            model,
+            capacity,
+            certificate_status,
+            verification_date,
+            verification_expiry
+        }
+    */
+
+}
+
+
+/* =====================================================
+   PAGE INITIALIZATION
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        /*
+            Backend is not connected yet.
+
+            Therefore the page intentionally remains
+            in the "No Instruments Registered" state.
+        */
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
