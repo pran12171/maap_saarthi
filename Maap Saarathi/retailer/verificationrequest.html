@@ -1,0 +1,4366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Verification Request | MaapSaarthi
+    </title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =====================================================
+         QR CODE LIBRARY
+    ====================================================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+    <!-- =====================================================
+         PDF LIBRARY
+    ====================================================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+
+    --gov-blue: #003366;
+    --gov-blue-dark: #00264d;
+    --gov-blue-light: #005a9c;
+
+    --saffron: #e87500;
+    --green: #138808;
+
+    --background: #f3f5f7;
+    --white: #ffffff;
+
+    --text: #1c1c1c;
+    --muted: #68717a;
+
+    --border: #cdd4da;
+
+    --danger: #b3261e;
+
+    --shadow:
+        0 4px 18px rgba(0,0,0,0.08);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family:
+        "Noto Sans",
+        "Noto Sans Telugu",
+        Arial,
+        sans-serif;
+
+    background:
+        var(--background);
+
+    color:
+        var(--text);
+
+    min-height:
+        100vh;
+}
+
+
+body.telugu {
+
+    font-family:
+        "Noto Sans Telugu",
+        "Noto Sans",
+        Arial,
+        sans-serif;
+}
+
+
+/* =========================================================
+   GOVERNMENT TOP BAR
+========================================================= */
+
+.top-bar {
+
+    min-height:
+        34px;
+
+    background:
+        var(--gov-blue-dark);
+
+    color:
+        white;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        0 5%;
+
+    font-size:
+        11px;
+
+    border-bottom:
+        3px solid var(--saffron);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+
+    background:
+        white;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.navbar {
+
+    width:
+        90%;
+
+    max-width:
+        1150px;
+
+    min-height:
+        76px;
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+}
+
+
+.brand {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    text-decoration:
+        none;
+}
+
+
+.brand img {
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    object-fit:
+        contain;
+}
+
+
+.brand-text h1 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        21px;
+
+    font-weight:
+        800;
+
+    line-height:
+        1.1;
+}
+
+
+.brand-text p {
+
+    color:
+        #6d747a;
+
+    font-size:
+        9px;
+
+    margin-top:
+        3px;
+}
+
+
+.dashboard-link {
+
+    color:
+        var(--gov-blue);
+
+    text-decoration:
+        none;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+}
+
+
+.dashboard-link:hover {
+
+    color:
+        var(--saffron);
+}
+
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+.language-container {
+
+    width:
+        90%;
+
+    max-width:
+        1150px;
+
+    margin:
+        20px auto 0;
+
+    display:
+        flex;
+
+    justify-content:
+        flex-end;
+}
+
+
+.language-btn {
+
+    padding:
+        8px 18px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        white;
+
+    color:
+        #555;
+
+    cursor:
+        pointer;
+
+    font-family:
+        inherit;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+}
+
+
+.language-btn:first-child {
+
+    border-radius:
+        3px 0 0 3px;
+}
+
+
+.language-btn:last-child {
+
+    border-radius:
+        0 3px 3px 0;
+}
+
+
+.language-btn.active {
+
+    background:
+        var(--gov-blue);
+
+    color:
+        white;
+
+    border-color:
+        var(--gov-blue);
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+
+    width:
+        90%;
+
+    max-width:
+        1150px;
+
+    margin:
+        22px auto 25px;
+}
+
+
+.title-line {
+
+    width:
+        55px;
+
+    height:
+        4px;
+
+    background:
+        var(--saffron);
+
+    margin-bottom:
+        10px;
+}
+
+
+.page-header h2 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        28px;
+
+    font-weight:
+        800;
+}
+
+
+.page-header p {
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+
+    margin-top:
+        4px;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message {
+
+    display:
+        none;
+
+    width:
+        90%;
+
+    max-width:
+        1150px;
+
+    margin:
+        0 auto 20px;
+
+    padding:
+        13px 16px;
+
+    border-radius:
+        3px;
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+}
+
+
+.message.success {
+
+    display:
+        block;
+
+    background:
+        #edf8ed;
+
+    color:
+        #126b0a;
+
+    border:
+        1px solid #b9ddb5;
+}
+
+
+.message.error {
+
+    display:
+        block;
+
+    background:
+        #fff0ef;
+
+    color:
+        var(--danger);
+
+    border:
+        1px solid #e2b8b4;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main-container {
+
+    width:
+        90%;
+
+    max-width:
+        1150px;
+
+    margin:
+        0 auto 60px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+
+    background:
+        white;
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        var(--shadow);
+
+    margin-bottom:
+        22px;
+}
+
+
+.card-header {
+
+    padding:
+        18px 22px;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.card-header h3 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        17px;
+
+    font-weight:
+        800;
+}
+
+
+.card-header p {
+
+    color:
+        #777;
+
+    font-size:
+        10px;
+
+    margin-top:
+        2px;
+}
+
+
+.card-body {
+
+    padding:
+        22px;
+}
+
+
+/* =========================================================
+   INSTRUMENT SELECTOR
+========================================================= */
+
+.selector-row {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr auto;
+
+    gap:
+        15px;
+
+    align-items:
+        end;
+}
+
+
+.form-group {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+}
+
+
+label {
+
+    color:
+        #30353a;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        7px;
+}
+
+
+select {
+
+    width:
+        100%;
+
+    padding:
+        11px 12px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        3px;
+
+    background:
+        white;
+
+    font-family:
+        inherit;
+
+    font-size:
+        12px;
+
+    outline:
+        none;
+}
+
+
+select:focus {
+
+    border-color:
+        var(--gov-blue);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(0,51,102,0.08);
+}
+
+
+.load-btn {
+
+    min-width:
+        150px;
+
+    padding:
+        11px 18px;
+
+    border:
+        1px solid var(--gov-blue);
+
+    background:
+        var(--gov-blue);
+
+    color:
+        white;
+
+    border-radius:
+        3px;
+
+    cursor:
+        pointer;
+
+    font-family:
+        inherit;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+}
+
+
+.load-btn:hover {
+
+    background:
+        var(--gov-blue-dark);
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status-container {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    padding:
+        20px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        #fafbfc;
+}
+
+
+.status-left {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        15px;
+}
+
+
+.status-icon {
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    border-radius:
+        50%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        22px;
+
+    background:
+        #edf1f4;
+
+    color:
+        var(--gov-blue);
+
+    flex-shrink:
+        0;
+}
+
+
+.status-text h4 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        15px;
+
+    font-weight:
+        800;
+}
+
+
+.status-text p {
+
+    color:
+        #777;
+
+    font-size:
+        10px;
+
+    margin-top:
+        2px;
+}
+
+
+.status-badge {
+
+    padding:
+        8px 15px;
+
+    border-radius:
+        3px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+    text-transform:
+        uppercase;
+}
+
+
+.status-pending {
+
+    background:
+        #fff4df;
+
+    color:
+        #9a5700;
+}
+
+
+.status-review {
+
+    background:
+        #eaf2fb;
+
+    color:
+        var(--gov-blue);
+}
+
+
+.status-verified {
+
+    background:
+        #e9f7e8;
+
+    color:
+        #14750c;
+}
+
+
+.status-rejected {
+
+    background:
+        #fff0ef;
+
+    color:
+        var(--danger);
+}
+
+
+/* =========================================================
+   DETAILS GRID
+========================================================= */
+
+.details-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    border:
+        1px solid var(--border);
+}
+
+
+.detail-item {
+
+    padding:
+        15px 17px;
+
+    border-bottom:
+        1px solid #e3e7ea;
+}
+
+
+.detail-item:nth-child(odd) {
+
+    border-right:
+        1px solid #e3e7ea;
+}
+
+
+.detail-item:nth-last-child(-n+2) {
+
+    border-bottom:
+        none;
+}
+
+
+.detail-label {
+
+    display:
+        block;
+
+    color:
+        #777;
+
+    font-size:
+        9px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.3px;
+
+    margin-bottom:
+        4px;
+}
+
+
+.detail-value {
+
+    color:
+        #222;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    word-break:
+        break-word;
+}
+
+
+/* =========================================================
+   CERTIFICATE SECTION
+========================================================= */
+
+.certificate-wrapper {
+
+    background:
+        #e9edf0;
+
+    padding:
+        30px;
+
+    overflow:
+        auto;
+}
+
+
+/* =========================================================
+   CERTIFICATE
+========================================================= */
+
+.certificate {
+
+    width:
+        794px;
+
+    min-height:
+        1123px;
+
+    margin:
+        0 auto;
+
+    background:
+        white;
+
+    border:
+        12px double var(--gov-blue);
+
+    position:
+        relative;
+
+    padding:
+        38px 45px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.12);
+}
+
+
+.certificate::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    inset:
+        18px;
+
+    border:
+        1px solid #9aa6b1;
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   CERTIFICATE HEADER
+========================================================= */
+
+.certificate-header {
+
+    position:
+        relative;
+
+    text-align:
+        center;
+
+    min-height:
+        115px;
+
+    border-bottom:
+        2px solid var(--gov-blue);
+
+    padding-bottom:
+        15px;
+}
+
+
+.certificate-logo {
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    top:
+        0;
+
+    width:
+        75px;
+
+    height:
+        75px;
+
+    object-fit:
+        contain;
+}
+
+
+.certificate-emblem {
+
+    position:
+        absolute;
+
+    right:
+        0;
+
+    top:
+        0;
+
+    width:
+        70px;
+
+    height:
+        80px;
+
+    object-fit:
+        contain;
+}
+
+
+.department-name {
+
+    padding:
+        0 90px;
+}
+
+
+.department-name h2 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        17px;
+
+    font-weight:
+        800;
+
+    text-transform:
+        uppercase;
+}
+
+
+.department-name h3 {
+
+    color:
+        #333;
+
+    font-size:
+        14px;
+
+    margin-top:
+        4px;
+
+    font-weight:
+        700;
+}
+
+
+.department-name p {
+
+    color:
+        #555;
+
+    font-size:
+        10px;
+
+    margin-top:
+        5px;
+}
+
+
+/* =========================================================
+   CERTIFICATE TITLE
+========================================================= */
+
+.certificate-title {
+
+    text-align:
+        center;
+
+    margin:
+        28px 0 22px;
+}
+
+
+.certificate-title h1 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        23px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1px;
+
+    text-transform:
+        uppercase;
+}
+
+
+.certificate-title p {
+
+    color:
+        #666;
+
+    font-size:
+        10px;
+
+    margin-top:
+        5px;
+}
+
+
+/* =========================================================
+   CERTIFICATE INTRO
+========================================================= */
+
+.certificate-intro {
+
+    text-align:
+        center;
+
+    color:
+        #444;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.7;
+
+    margin-bottom:
+        22px;
+}
+
+
+/* =========================================================
+   CERTIFICATE DETAILS
+========================================================= */
+
+.certificate-details {
+
+    border:
+        1px solid #9fa8b0;
+
+    margin-bottom:
+        22px;
+}
+
+
+.cert-row {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        190px 1fr;
+
+    min-height:
+        34px;
+
+    border-bottom:
+        1px solid #cfd4d8;
+}
+
+
+.cert-row:last-child {
+
+    border-bottom:
+        none;
+}
+
+
+.cert-label {
+
+    padding:
+        8px 10px;
+
+    background:
+        #f1f4f6;
+
+    border-right:
+        1px solid #cfd4d8;
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        9px;
+
+    font-weight:
+        800;
+
+    text-transform:
+        uppercase;
+}
+
+
+.cert-value {
+
+    padding:
+        8px 10px;
+
+    color:
+        #222;
+
+    font-size:
+        10px;
+
+    font-weight:
+        600;
+}
+
+
+/* =========================================================
+   VERIFIED SECTION
+========================================================= */
+
+.verified-box {
+
+    border:
+        2px solid var(--green);
+
+    padding:
+        13px;
+
+    text-align:
+        center;
+
+    margin:
+        22px 0;
+}
+
+
+.verified-box h3 {
+
+    color:
+        var(--green);
+
+    font-size:
+        17px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1px;
+}
+
+
+.verified-box p {
+
+    color:
+        #555;
+
+    font-size:
+        9px;
+
+    margin-top:
+        3px;
+}
+
+
+/* =========================================================
+   CERTIFICATE FOOTER AREA
+========================================================= */
+
+.certificate-bottom {
+
+    position:
+        absolute;
+
+    left:
+        45px;
+
+    right:
+        45px;
+
+    bottom:
+        40px;
+}
+
+
+.verification-code-section {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.35fr 1.2fr 110px 120px;
+
+    gap:
+        16px;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        end;
+
+    border-top:
+        1px solid #bfc6cc;
+
+    padding-top:
+        18px;
+}
+
+
+.employee-signature h4 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        9px;
+
+    text-transform:
+        uppercase;
+
+    margin-bottom:
+        5px;
+}
+
+
+.employee-signature strong {
+
+    display:
+        block;
+
+    color:
+        #222;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.3;
+
+    word-break:
+        break-word;
+}
+
+
+.employee-signature p {
+
+    color:
+        #666;
+
+    font-size:
+        7px;
+
+    margin-top:
+        3px;
+
+    line-height:
+        1.35;
+}
+
+
+.unique-code h4 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        9px;
+
+    text-transform:
+        uppercase;
+}
+
+
+.unique-code strong {
+
+    display:
+        block;
+
+    color:
+        #222;
+
+    font-family:
+        monospace;
+
+    font-size:
+        15px;
+
+    letter-spacing:
+        1px;
+
+    margin-top:
+        5px;
+}
+
+
+.unique-code p {
+
+    color:
+        #777;
+
+    font-size:
+        8px;
+
+    margin-top:
+        4px;
+}
+
+
+/* =========================================================
+   QR
+========================================================= */
+
+.qr-area {
+
+    text-align:
+        center;
+}
+
+
+#qrcode {
+
+    width:
+        90px;
+
+    height:
+        90px;
+
+    padding:
+        5px;
+
+    background:
+        white;
+}
+
+
+.qr-area p {
+
+    color:
+        #555;
+
+    font-size:
+        7px;
+
+    margin-top:
+        3px;
+}
+
+
+/* =========================================================
+   VERIFIED STAMP
+========================================================= */
+
+.verified-stamp {
+
+    width:
+        105px;
+
+    height:
+        105px;
+
+    border:
+        4px solid var(--green);
+
+    border-radius:
+        50%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    transform:
+        rotate(-12deg);
+
+    color:
+        var(--green);
+
+    font-weight:
+        900;
+
+    text-align:
+        center;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.2;
+
+    position:
+        relative;
+}
+
+
+.verified-stamp::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        7px;
+
+    border:
+        1px solid var(--green);
+
+    border-radius:
+        50%;
+}
+
+
+/* =========================================================
+   CERTIFICATE NOTICE
+========================================================= */
+
+.certificate-notice {
+
+    margin-top:
+        12px;
+
+    color:
+        #666;
+
+    font-size:
+        8px;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   DOWNLOAD
+========================================================= */
+
+.download-area {
+
+    padding:
+        22px;
+
+    display:
+        flex;
+
+    justify-content:
+        flex-end;
+
+    gap:
+        10px;
+}
+
+
+.download-btn {
+
+    padding:
+        12px 24px;
+
+    border:
+        1px solid var(--green);
+
+    background:
+        var(--green);
+
+    color:
+        white;
+
+    border-radius:
+        3px;
+
+    cursor:
+        pointer;
+
+    font-family:
+        inherit;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+}
+
+
+.download-btn:hover {
+
+    background:
+        #0d6e07;
+
+    border-color:
+        #0d6e07;
+}
+
+
+.download-btn:disabled {
+
+    background:
+        #aab1b7;
+
+    border-color:
+        #aab1b7;
+
+    cursor:
+        not-allowed;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-state {
+
+    padding:
+        35px;
+
+    text-align:
+        center;
+
+    color:
+        #777;
+
+    font-size:
+        12px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    background:
+        var(--gov-blue-dark);
+
+    color:
+        white;
+
+    border-top:
+        4px solid var(--saffron);
+
+    padding:
+        28px 5% 15px;
+}
+
+
+.footer-container {
+
+    width:
+        90%;
+
+    max-width:
+        1150px;
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        30px;
+}
+
+
+.footer-block h3 {
+
+    font-size:
+        13px;
+
+    margin-bottom:
+        5px;
+}
+
+
+.footer-block p {
+
+    color:
+        #c3ccd4;
+
+    font-size:
+        10px;
+}
+
+
+.footer-bottom {
+
+    width:
+        90%;
+
+    max-width:
+        1150px;
+
+    margin:
+        18px auto 0;
+
+    padding-top:
+        12px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    color:
+        #aeb8c0;
+
+    font-size:
+        9px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:800px) {
+
+    .selector-row {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .details-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .detail-item:nth-child(odd) {
+
+        border-right:
+            none;
+    }
+
+
+    .status-container {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+
+    .certificate-wrapper {
+
+        padding:
+            10px;
+    }
+
+}
+
+
+@media(max-width:550px) {
+
+    .top-bar {
+
+        justify-content:
+            center;
+    }
+
+
+    .top-bar span:last-child {
+
+        display:
+            none;
+    }
+
+
+    .dashboard-link {
+
+        display:
+            none;
+    }
+
+
+    .certificate {
+
+        transform-origin:
+            top left;
+    }
+
+
+    .verification-code-section {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        align-items:
+            start;
+    }
+
+
+    .verified-stamp {
+
+        margin-top:
+            8px;
+    }
+
+
+    .footer-container,
+    .footer-bottom {
+
+        flex-direction:
+            column;
+
+        gap:
+            8px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     GOVERNMENT BAR
+========================================================= -->
+
+<div class="top-bar">
+
+    <span>
+        Government of India
+    </span>
+
+
+    <span>
+        Legal Metrology | Department of Consumer Affairs
+    </span>
+
+</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+<nav class="navbar">
+
+
+    <a
+        href="retaildashboard.html"
+        class="brand">
+
+
+        <img
+            src="../images/sihlogo.png"
+            alt="MaapSaarthi Logo">
+
+
+        <div class="brand-text">
+
+            <h1>
+                MaapSaarthi
+            </h1>
+
+
+            <p>
+                Digital Legal Metrology Platform
+            </p>
+
+        </div>
+
+    </a>
+
+
+    <a
+        href="retaildashboard.html"
+        class="dashboard-link">
+
+        ← Retailer Dashboard
+
+    </a>
+
+
+</nav>
+
+</header>
+
+
+<!-- =========================================================
+     LANGUAGE
+========================================================= -->
+
+<div class="language-container">
+
+    <div>
+
+
+        <button
+            type="button"
+            id="englishBtn"
+            class="language-btn active"
+            onclick="changeLanguage('english')">
+
+            English
+
+        </button>
+
+
+        <button
+            type="button"
+            id="teluguBtn"
+            class="language-btn"
+            onclick="changeLanguage('telugu')">
+
+            తెలుగు
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     PAGE HEADER
+========================================================= -->
+
+<section class="page-header">
+
+    <div class="title-line"></div>
+
+
+    <h2>
+        Verification Request
+    </h2>
+
+
+    <p>
+        Check instrument verification status and download
+        the verification certificate after official approval.
+    </p>
+
+</section>
+
+
+<!-- =========================================================
+     MESSAGE
+========================================================= -->
+
+<div
+    id="message"
+    class="message">
+</div>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="main-container">
+
+
+    <!-- =====================================================
+         SELECT INSTRUMENT
+    ====================================================== -->
+
+    <section class="card">
+
+
+        <div class="card-header">
+
+            <h3>
+                Select Instrument
+            </h3>
+
+
+            <p>
+                Select an instrument registered under your business.
+            </p>
+
+        </div>
+
+
+        <div class="card-body">
+
+
+            <div class="selector-row">
+
+
+                <div class="form-group">
+
+
+                    <label>
+                        Registered Instrument
+                    </label>
+
+
+                    <select
+                        id="instrumentSelect">
+
+                        <option value="">
+                            Loading instruments...
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="load-btn"
+                    onclick="loadSelectedInstrument()">
+
+                    Check Verification
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         VERIFICATION STATUS
+    ====================================================== -->
+
+    <section class="card">
+
+
+        <div class="card-header">
+
+            <h3>
+                Verification Status
+            </h3>
+
+
+            <p>
+                Current status of the selected instrument.
+            </p>
+
+        </div>
+
+
+        <div class="card-body">
+
+
+            <div
+                id="statusContainer"
+                class="status-container">
+
+
+                <div class="status-left">
+
+
+                    <div
+                        id="statusIcon"
+                        class="status-icon">
+
+                        ?
+
+                    </div>
+
+
+                    <div class="status-text">
+
+
+                        <h4
+                            id="statusTitle">
+
+                            Select an instrument
+
+                        </h4>
+
+
+                        <p
+                            id="statusDescription">
+
+                            Verification status will appear here.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <span
+                    id="statusBadge"
+                    class="status-badge status-pending">
+
+                    Not Loaded
+
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RETAILER + INSTRUMENT DETAILS
+    ====================================================== -->
+
+    <section class="card">
+
+
+        <div class="card-header">
+
+            <h3>
+                Registered Details
+            </h3>
+
+
+            <p>
+                Information retrieved from the retailer and
+                instrument registration records.
+            </p>
+
+        </div>
+
+
+        <div class="card-body">
+
+
+            <div class="details-grid">
+
+
+                <!-- OWNER -->
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Owner Name
+                    </span>
+
+
+                    <span
+                        id="ownerName"
+                        class="detail-value">
+
+                        —
+
+                    </span>
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Phone Number
+                    </span>
+
+
+                    <span
+                        id="phoneNumber"
+                        class="detail-value">
+
+                        —
+
+                    </span>
+
+                </div>
+
+
+                <!-- BUSINESS -->
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Store / Business Name
+                    </span>
+
+
+                    <span
+                        id="businessName"
+                        class="detail-value">
+
+                        —
+
+                    </span>
+
+                </div>
+
+
+                <!-- BUSINESS TYPE -->
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Business Type
+                    </span>
+
+
+                    <span
+                        id="businessType"
+                        class="detail-value">
+
+                        —
+
+                    </span>
+
+                </div>
+
+
+                <!-- ADDRESS -->
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Complete Address
+                    </span>
+
+
+                    <span
+                        id="businessAddress"
+                        class="detail-value">
+
+                        —
+
+                    </span>
+
+                </div>
+
+
+                <!-- INSTRUMENT ID -->
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Instrument ID
+                    </span>
+
+
+                    <span
+                        id="instrumentId"
+                        class="detail-value">
+
+                        —
+
+                    </span>
+
+                </div>
+
+
+                <!-- INSTRUMENT TYPE -->
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Instrument Type
+                    </span>
+
+
+                    <span
+                        id="instrumentType"
+                        class="detail-value">
+
+                        —
+
+                    </span>
+
+                </div>
+
+
+                <!-- MANUFACTURER -->
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Manufacturer
+                    </span>
+
+
+                    <span
+                        id="manufacturer"
+                        class="detail-value">
+
+                        —
+
+                    </span>
+
+                </div>
+
+
+                <!-- MODEL -->
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Model
+                    </span>
+
+
+                    <span
+                        id="model"
+                        class="detail-value">
+
+                        —
+
+                    </span>
+
+                </div>
+
+
+                <!-- SERIAL NUMBER -->
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Serial Number
+                    </span>
+
+
+                    <span
+                        id="serialNumber"
+                        class="detail-value">
+
+                        —
+
+                    </span>
+
+                </div>
+
+
+                <!-- VERIFICATION DATE -->
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Verification Date
+                    </span>
+
+
+                    <span
+                        id="verificationDate"
+                        class="detail-value">
+
+                        —
+
+                    </span>
+
+                </div>
+
+
+                <!-- EXPIRY -->
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Certificate Expiry
+                    </span>
+
+
+                    <span
+                        id="certificateExpiry"
+                        class="detail-value">
+
+                        —
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CERTIFICATE
+    ====================================================== -->
+
+    <section class="card">
+
+
+        <div class="card-header">
+
+            <h3>
+                Verification Certificate
+            </h3>
+
+
+            <p>
+                The certificate becomes available after
+                official verification.
+            </p>
+
+        </div>
+
+
+        <div
+            id="certificateArea"
+            class="certificate-wrapper">
+
+
+            <div class="empty-state">
+
+                Certificate will be displayed here after
+                the instrument is officially verified.
+
+                <br><br>
+
+                All certificate fields are populated from the
+                official verification record stored in the backend.
+
+            </div>
+
+
+        </div>
+
+
+        <div class="download-area">
+
+
+            <button
+                type="button"
+                id="downloadBtn"
+                class="download-btn"
+                onclick="downloadCertificate()"
+                disabled>
+
+                Download Verification Certificate
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+
+    <div class="footer-container">
+
+
+        <div class="footer-block">
+
+            <h3>
+                MaapSaarthi
+            </h3>
+
+
+            <p>
+                Digital Legal Metrology Platform
+            </p>
+
+        </div>
+
+
+        <div class="footer-block">
+
+            <h3>
+                Government of India
+            </h3>
+
+
+            <p>
+                Department of Consumer Affairs
+            </p>
+
+        </div>
+
+
+        <div class="footer-block">
+
+            <h3>
+                Legal Metrology
+            </h3>
+
+
+            <p>
+                Instrument Verification & Certification
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+
+        <span>
+            © 2026 MaapSaarthi
+        </span>
+
+
+        <span>
+            Government of India | Legal Metrology
+        </span>
+
+    </div>
+
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   CONFIGURATION
+========================================================= */
+
+/*
+    Your FastAPI server.
+*/
+
+const API_BASE =
+    "http://10.250.20.18:8000";
+
+
+/*
+    API endpoints.
+
+    These are kept in one place so they can easily
+    be changed when your backend routes are finalized.
+*/
+
+const API_ENDPOINTS = {
+
+    instruments:
+        API_BASE +
+        "/api/instruments/my",
+
+    verification:
+        API_BASE +
+        "/api/instruments/{instrumentId}/verification"
+
+};
+
+
+/* =========================================================
+   GLOBAL DATA
+========================================================= */
+
+let currentLanguage =
+    "english";
+
+
+let currentInstrument =
+    null;
+
+
+let currentCertificate =
+    null;
+
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+function changeLanguage(language) {
+
+    currentLanguage =
+        language;
+
+
+    document
+        .getElementById("englishBtn")
+        .classList
+        .toggle(
+            "active",
+            language === "english"
+        );
+
+
+    document
+        .getElementById("teluguBtn")
+        .classList
+        .toggle(
+            "active",
+            language === "telugu"
+        );
+
+
+    document.body.classList.toggle(
+        "telugu",
+        language === "telugu"
+    );
+
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+function showMessage(
+    text,
+    type
+) {
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    message.className =
+        "message " +
+        type;
+
+
+    message.textContent =
+        text;
+
+
+    message.scrollIntoView({
+
+        behavior:
+            "smooth",
+
+        block:
+            "center"
+
+    });
+
+}
+
+
+/* =========================================================
+   LOAD INSTRUMENT LIST
+========================================================= */
+
+async function loadInstruments() {
+
+    const select =
+        document.getElementById(
+            "instrumentSelect"
+        );
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_ENDPOINTS.instruments,
+                {
+                    method:
+                        "GET",
+
+                    headers: {
+
+                        "Accept":
+                            "application/json"
+
+                    }
+                }
+            );
+
+
+        if (
+            !response.ok
+        ) {
+
+            throw new Error(
+                "Unable to load registered instruments."
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        /*
+            Expected backend response:
+
+            [
+                {
+                    "instrument_id": "INS001",
+                    "instrument_type": "Weighing Scale",
+                    "manufacturer": "Essae-Teraoka",
+                    "model": "DS-252",
+                    "serial_number": "ABC123"
+                }
+            ]
+
+            OR:
+
+            {
+                "instruments": [...]
+            }
+        */
+
+
+        const instruments =
+            Array.isArray(data)
+                ? data
+                : (
+                    data.instruments ||
+                    []
+                );
+
+
+        select.innerHTML =
+            "";
+
+
+        if (
+            instruments.length === 0
+        ) {
+
+            select.innerHTML =
+
+                '<option value="">No registered instruments found</option>';
+
+            return;
+
+        }
+
+
+        const defaultOption =
+            document.createElement(
+                "option"
+            );
+
+
+        defaultOption.value =
+            "";
+
+
+        defaultOption.textContent =
+            "Select instrument";
+
+
+        select.appendChild(
+            defaultOption
+        );
+
+
+        instruments.forEach(
+            instrument => {
+
+                const option =
+                    document.createElement(
+                        "option"
+                    );
+
+
+                option.value =
+                    instrument.instrument_id;
+
+
+                option.textContent =
+
+                    instrument.instrument_id +
+                    " — " +
+                    (
+                        instrument.instrument_type ||
+                        "Instrument"
+                    );
+
+
+                select.appendChild(
+                    option
+                );
+
+            }
+        );
+
+
+        /*
+            If the page was opened from
+            My Instruments with:
+
+            verificationrequest.html?instrument_id=XXX
+
+            automatically select it.
+        */
+
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const instrumentId =
+            urlParams.get(
+                "instrument_id"
+            );
+
+
+        if (
+            instrumentId
+        ) {
+
+            select.value =
+                instrumentId;
+
+
+            loadSelectedInstrument();
+
+        }
+
+    }
+
+
+    catch(error) {
+
+        console.error(
+            error
+        );
+
+
+        select.innerHTML =
+
+            '<option value="">Unable to load instruments</option>';
+
+
+        showMessage(
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD SELECTED INSTRUMENT
+========================================================= */
+
+async function loadSelectedInstrument() {
+
+    const instrumentId =
+        document
+            .getElementById(
+                "instrumentSelect"
+            )
+            .value;
+
+
+    if (
+        !instrumentId
+    ) {
+
+        showMessage(
+            "Please select an instrument.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const endpoint =
+        API_ENDPOINTS.verification
+            .replace(
+                "{instrumentId}",
+                encodeURIComponent(
+                    instrumentId
+                )
+            );
+
+
+    try {
+
+        const response =
+            await fetch(
+                endpoint,
+                {
+                    method:
+                        "GET",
+
+                    headers: {
+
+                        "Accept":
+                            "application/json"
+
+                    }
+                }
+            );
+
+
+        if (
+            !response.ok
+        ) {
+
+            let errorMessage =
+                "Unable to retrieve verification information.";
+
+
+            try {
+
+                const error =
+                    await response.json();
+
+
+                if (
+                    error.detail
+                ) {
+
+                    errorMessage =
+                        error.detail;
+
+                }
+
+            }
+
+            catch {
+
+                /*
+                    Backend did not return JSON.
+                */
+
+            }
+
+
+            throw new Error(
+                errorMessage
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        currentInstrument =
+            data;
+
+
+        displayInstrumentData(
+            data
+        );
+
+
+        displayVerificationStatus(
+            data
+        );
+
+
+        const verificationStatus = String(
+            data.verification_status ||
+            data.status ||
+            ""
+        ).toLowerCase().trim();
+
+        if (
+            verificationStatus === "verified" ||
+            verificationStatus === "approved" ||
+            verificationStatus === "approved/verified"
+        ) {
+
+            currentCertificate =
+                data;
+
+
+            renderCertificate(
+                data
+            );
+
+
+            document
+                .getElementById(
+                    "downloadBtn"
+                )
+                .disabled =
+                false;
+
+        }
+
+
+        else {
+
+            currentCertificate =
+                null;
+
+
+            document
+                .getElementById(
+                    "downloadBtn"
+                )
+                .disabled =
+                true;
+
+
+            document
+                .getElementById(
+                    "certificateArea"
+                )
+                .innerHTML = `
+
+                    <div class="empty-state">
+
+                        The instrument has not been
+                        officially verified yet.
+
+                        <br><br>
+
+                        The verification certificate will
+                        become available after approval by
+                        the authorized official.
+
+                    </div>
+
+                `;
+
+        }
+
+
+    }
+
+
+    catch(error) {
+
+        console.error(
+            error
+        );
+
+
+        showMessage(
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   DISPLAY DETAILS
+========================================================= */
+
+function displayInstrumentData(
+    data
+) {
+
+    /*
+        Retailer information
+    */
+
+    setText(
+        "ownerName",
+        data.owner_name
+    );
+
+
+    setText(
+        "phoneNumber",
+        data.mobile_number ||
+        data.phone_number
+    );
+
+
+    setText(
+        "businessName",
+        data.store_name ||
+        data.business_name
+    );
+
+
+    setText(
+        "businessType",
+        data.business_type
+    );
+
+
+    setText(
+        "businessAddress",
+        data.complete_address ||
+        data.address
+    );
+
+
+    /*
+        Instrument information
+    */
+
+    setText(
+        "instrumentId",
+        data.instrument_id
+    );
+
+
+    setText(
+        "instrumentType",
+        data.instrument_type
+    );
+
+
+    setText(
+        "manufacturer",
+        data.manufacturer
+    );
+
+
+    setText(
+        "model",
+        data.model
+    );
+
+
+    setText(
+        "serialNumber",
+        data.serial_number
+    );
+
+
+    setText(
+        "verificationDate",
+        formatDate(
+            data.verification_date ||
+            data.verified_at
+        )
+    );
+
+
+    setText(
+        "certificateExpiry",
+        formatDate(
+            data.certificate_expiry ||
+            data.expiry_date ||
+            data.verification_expiry ||
+            data.valid_until
+        )
+    );
+
+}
+
+
+/* =========================================================
+   SAFE TEXT SETTER
+========================================================= */
+
+function setText(
+    id,
+    value
+) {
+
+    const element =
+        document.getElementById(
+            id
+        );
+
+
+    if (!element) {
+
+        return;
+
+    }
+
+
+    element.textContent =
+        value !== undefined &&
+        value !== null &&
+        value !== ""
+            ? value
+            : "—";
+
+}
+
+
+/* =========================================================
+   DATE FORMAT
+========================================================= */
+
+function formatDate(
+    value
+) {
+
+    if (
+        !value
+    ) {
+
+        return "—";
+
+    }
+
+
+    const date =
+        new Date(
+            value
+        );
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return value;
+
+    }
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day:
+                "2-digit",
+
+            month:
+                "2-digit",
+
+            year:
+                "numeric"
+        }
+    );
+
+}
+
+
+/* =========================================================
+   VERIFICATION STATUS
+========================================================= */
+
+function displayVerificationStatus(
+    data
+) {
+
+    const rawStatus =
+        (
+            data.verification_status ||
+            data.status ||
+            "pending"
+        )
+        .toString()
+        .toLowerCase();
+
+
+    const icon =
+        document.getElementById(
+            "statusIcon"
+        );
+
+
+    const title =
+        document.getElementById(
+            "statusTitle"
+        );
+
+
+    const description =
+        document.getElementById(
+            "statusDescription"
+        );
+
+
+    const badge =
+        document.getElementById(
+            "statusBadge"
+        );
+
+
+    /*
+        Reset classes
+    */
+
+    badge.className =
+        "status-badge";
+
+
+    if (
+        rawStatus ===
+        "verified"
+    ) {
+
+        icon.textContent =
+            "✓";
+
+
+        title.textContent =
+            "Instrument Verified";
+
+
+        description.textContent =
+            "The instrument has been officially verified by the authorized authority.";
+
+
+        badge.textContent =
+            "Verified";
+
+
+        badge.classList.add(
+            "status-verified"
+        );
+
+
+        return;
+
+    }
+
+
+    if (
+        rawStatus ===
+        "under_review" ||
+        rawStatus ===
+        "under review" ||
+        rawStatus ===
+        "review"
+    ) {
+
+        icon.textContent =
+            "↻";
+
+
+        title.textContent =
+            "Under Verification";
+
+
+        description.textContent =
+            "The verification request is currently under official review.";
+
+
+        badge.textContent =
+            "Under Review";
+
+
+        badge.classList.add(
+            "status-review"
+        );
+
+
+        return;
+
+    }
+
+
+    if (
+        rawStatus ===
+        "rejected"
+    ) {
+
+        icon.textContent =
+            "×";
+
+
+        title.textContent =
+            "Verification Rejected";
+
+
+        description.textContent =
+            data.rejection_reason ||
+            "The verification request was not approved.";
+
+
+        badge.textContent =
+            "Rejected";
+
+
+        badge.classList.add(
+            "status-rejected"
+        );
+
+
+        return;
+
+    }
+
+
+    icon.textContent =
+        "…";
+
+
+    title.textContent =
+        "Verification Pending";
+
+
+    description.textContent =
+        "The instrument is awaiting official verification.";
+
+
+    badge.textContent =
+        "Pending";
+
+
+    badge.classList.add(
+        "status-pending"
+    );
+
+}
+
+
+/* =========================================================
+   GENERATE UNIQUE CODE DISPLAY
+========================================================= */
+
+/*
+    IMPORTANT:
+
+    The actual certificate verification code should
+    be generated by the backend.
+
+    This function only reads it.
+
+    Expected field:
+
+    verification_code
+
+    Example:
+
+    MS-2026-INS-8F42K9
+*/
+
+function getVerificationCode(
+    data
+) {
+
+    return (
+        data.verification_code ||
+        data.machine_code ||
+        data.unique_machine_code ||
+        data.certificate_code ||
+        data.unique_code ||
+        "NOT AVAILABLE"
+    );
+
+}
+
+
+/* =========================================================
+   QR VERIFICATION URL
+========================================================= */
+
+function getVerificationUrl(
+    data
+) {
+
+    /*
+        The QR should point to a public verification
+        page rather than expose raw database information.
+
+        Example:
+
+        https://your-domain/verify.html?code=XXXX
+    */
+
+    const code =
+        getVerificationCode(
+            data
+        );
+
+
+    return (
+        window.location.origin +
+        "/verify.html?code=" +
+        encodeURIComponent(
+            code
+        )
+    );
+
+}
+
+
+/* =========================================================
+   CERTIFICATE HTML
+========================================================= */
+
+function renderCertificate(
+    data
+) {
+
+    const area =
+        document.getElementById(
+            "certificateArea"
+        );
+
+
+    const verificationCode =
+        getVerificationCode(
+            data
+        );
+
+
+    const qrUrl =
+        getVerificationUrl(
+            data
+        );
+
+
+    area.innerHTML = `
+
+        <div
+            id="certificate"
+            class="certificate">
+
+
+            <!-- =========================================
+                 CERTIFICATE HEADER
+            ========================================== -->
+
+            <div
+                class="certificate-header">
+
+
+                <img
+                    src="images/sihlogo.png"
+                    class="certificate-logo"
+                    alt="MaapSaarthi Logo">
+
+
+                <img
+                    src="../images/indian-emblem.png"
+                    class="certificate-emblem"
+                    alt="Government of India Emblem">
+
+
+                <div
+                    class="department-name">
+
+
+                    <h2>
+                        Government of India
+                    </h2>
+
+
+                    <h3>
+                        Department of Consumer Affairs
+                    </h3>
+
+
+                    <p>
+                        Legal Metrology
+                    </p>
+
+
+                    <p>
+                        Digital Instrument Verification System
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =========================================
+                 TITLE
+            ========================================== -->
+
+            <div
+                class="certificate-title">
+
+
+                <h1>
+                    Verification Certificate
+                </h1>
+
+
+                <p>
+                    Instrument Verification & Certification
+                </p>
+
+
+            </div>
+
+
+            <!-- =========================================
+                 INTRO
+            ========================================== -->
+
+            <div
+                class="certificate-intro">
+
+
+                This is to certify that the measuring
+                instrument identified below has been
+                verified through the MaapSaarthi
+                digital legal metrology system.
+
+
+            </div>
+
+
+            <!-- =========================================
+                 DETAILS
+            ========================================== -->
+
+            <div
+                class="certificate-details">
+
+
+                <div class="cert-row">
+
+                    <div class="cert-label">
+                        Owner Name
+                    </div>
+
+                    <div class="cert-value">
+                        ${safeValue(
+                            data.owner_name
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="cert-row">
+
+                    <div class="cert-label">
+                        Store / Business
+                    </div>
+
+                    <div class="cert-value">
+                        ${safeValue(
+                            data.store_name ||
+                            data.business_name
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="cert-row">
+
+                    <div class="cert-label">
+                        Business Type
+                    </div>
+
+                    <div class="cert-value">
+                        ${safeValue(
+                            data.business_type
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="cert-row">
+
+                    <div class="cert-label">
+                        Complete Address
+                    </div>
+
+                    <div class="cert-value">
+                        ${safeValue(
+                            data.complete_address ||
+                            data.address
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="cert-row">
+
+                    <div class="cert-label">
+                        Phone Number
+                    </div>
+
+                    <div class="cert-value">
+                        ${safeValue(
+                            data.phone_number ||
+                            data.mobile_number ||
+                            data.phone
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="cert-row">
+
+                    <div class="cert-label">
+                        Certificate Number
+                    </div>
+
+                    <div class="cert-value">
+                        ${safeValue(
+                            data.certificate_number ||
+                            data.certificate_id
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="cert-row">
+
+                    <div class="cert-label">
+                        Instrument ID
+                    </div>
+
+                    <div class="cert-value">
+                        ${safeValue(
+                            data.instrument_id
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="cert-row">
+
+                    <div class="cert-label">
+                        Instrument Type
+                    </div>
+
+                    <div class="cert-value">
+                        ${safeValue(
+                            data.instrument_type
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="cert-row">
+
+                    <div class="cert-label">
+                        Manufacturer
+                    </div>
+
+                    <div class="cert-value">
+                        ${safeValue(
+                            data.manufacturer
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="cert-row">
+
+                    <div class="cert-label">
+                        Model
+                    </div>
+
+                    <div class="cert-value">
+                        ${safeValue(
+                            data.model
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="cert-row">
+
+                    <div class="cert-label">
+                        Serial Number
+                    </div>
+
+                    <div class="cert-value">
+                        ${safeValue(
+                            data.serial_number
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="cert-row">
+
+                    <div class="cert-label">
+                        Verification Date
+                    </div>
+
+                    <div class="cert-value">
+                        ${safeValue(
+                            formatDate(
+                                data.verification_date
+                            )
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="cert-row">
+
+                    <div class="cert-label">
+                        Certificate Expiry
+                    </div>
+
+                    <div class="cert-value">
+                        ${safeValue(
+                            formatDate(
+                                data.certificate_expiry ||
+                                data.expiry_date
+                            )
+                        )}
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =========================================
+                 VERIFIED
+            ========================================== -->
+
+            <div
+                class="verified-box">
+
+
+                <h3>
+                    VERIFIED
+                </h3>
+
+
+                <p>
+                    Instrument verification approved
+                    by the authorized Legal Metrology authority.
+                </p>
+
+
+            </div>
+
+
+            <!-- =========================================
+                 BOTTOM
+            ========================================== -->
+
+            <div
+                class="certificate-bottom">
+
+
+                <div
+                    class="verification-code-section">
+
+
+                    <!-- EMPLOYEE -->
+
+                    <div
+                        class="employee-signature">
+
+                        <h4>
+                            Verified By
+                        </h4>
+
+                        <strong>
+                            ${safeValue(
+                                data.verified_by_name ||
+                                data.employee_name ||
+                                data.official_name
+                            )}
+                        </strong>
+
+                        <p>
+                            Employee ID:
+                            ${safeValue(
+                                data.verified_by_employee_id ||
+                                data.employee_id ||
+                                data.official_employee_id
+                            )}
+                        </p>
+
+                        <p>
+                            ${safeValue(
+                                data.verified_by_designation ||
+                                data.designation ||
+                                "Authorized Legal Metrology Official"
+                            )}
+                        </p>
+
+                    </div>
+
+
+                    <!-- UNIQUE CODE -->
+
+                    <div
+                        class="unique-code">
+
+
+                        <h4>
+                            Unique Verification Code
+                        </h4>
+
+
+                        <strong>
+                            ${safeValue(
+                                verificationCode
+                            )}
+                        </strong>
+
+
+                        <p>
+                            Use this code to verify
+                            certificate authenticity.
+                        </p>
+
+
+                    </div>
+
+
+                    <!-- QR -->
+
+                    <div
+                        class="qr-area">
+
+
+                        <div
+                            id="qrcode">
+                        </div>
+
+
+                        <p>
+                            Scan to verify certificate
+                        </p>
+
+
+                    </div>
+
+
+                    <!-- STAMP -->
+
+                    <div
+                        class="verified-stamp">
+
+                        VERIFIED
+                        <br>
+                        LEGAL
+                        <br>
+                        METROLOGY
+
+                    </div>
+
+
+                </div>
+
+
+                <div
+                    class="certificate-notice">
+
+                    This digitally generated certificate
+                    is subject to the records maintained
+                    by the Legal Metrology authority.
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    `;
+
+
+    /*
+        Generate QR after HTML exists.
+    */
+
+    new QRCode(
+        document.getElementById(
+            "qrcode"
+        ),
+        {
+            text:
+                qrUrl,
+
+            width:
+                80,
+
+            height:
+                80,
+
+            correctLevel:
+                QRCode.CorrectLevel.H
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SAFE HTML VALUE
+========================================================= */
+
+function safeValue(
+    value
+) {
+
+    if (
+        value === undefined ||
+        value === null ||
+        value === ""
+    ) {
+
+        return "—";
+
+    }
+
+
+    return String(
+        value
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =========================================================
+   DOWNLOAD PDF
+========================================================= */
+
+async function downloadCertificate() {
+
+    if (
+        !currentCertificate
+    ) {
+
+        showMessage(
+            "The certificate is available only after official verification.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const status =
+        (
+            currentCertificate.verification_status ||
+            currentCertificate.status ||
+            ""
+        )
+        .toString()
+        .toLowerCase();
+
+
+    if (
+        status !==
+        "verified"
+    ) {
+
+        showMessage(
+            "The instrument has not been officially verified.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const certificate =
+        document.getElementById(
+            "certificate"
+        );
+
+
+    if (
+        !certificate
+    ) {
+
+        return;
+
+    }
+
+
+    const button =
+        document.getElementById(
+            "downloadBtn"
+        );
+
+
+    button.disabled =
+        true;
+
+
+    button.textContent =
+        "Generating PDF...";
+
+
+    try {
+
+        /*
+            html2canvas is needed to convert the
+            certificate into a PDF image.
+        */
+
+        if (
+            typeof html2canvas ===
+            "undefined"
+        ) {
+
+            await loadHtml2Canvas();
+
+        }
+
+
+        const canvas =
+            await html2canvas(
+                certificate,
+                {
+                    scale:
+                        2,
+
+                    useCORS:
+                        true,
+
+                    backgroundColor:
+                        "#ffffff"
+                }
+            );
+
+
+        const {
+            jsPDF
+        } =
+            window.jspdf;
+
+
+        const pdf =
+            new jsPDF(
+                {
+                    orientation:
+                        "portrait",
+
+                    unit:
+                        "px",
+
+                    format:
+                        [
+                            canvas.width / 2,
+                            canvas.height / 2
+                        ]
+                }
+            );
+
+
+        const pdfWidth =
+            pdf.internal.pageSize.getWidth();
+
+
+        const pdfHeight =
+            pdf.internal.pageSize.getHeight();
+
+
+        pdf.addImage(
+
+            canvas.toDataURL(
+                "image/png"
+            ),
+
+            "PNG",
+
+            0,
+
+            0,
+
+            pdfWidth,
+
+            pdfHeight
+
+        );
+
+
+        const code =
+            getVerificationCode(
+                currentCertificate
+            );
+
+
+        pdf.save(
+            "MaapSaarthi_Verification_Certificate_" +
+            code +
+            ".pdf"
+        );
+
+
+    }
+
+
+    catch(error) {
+
+        console.error(
+            "PDF generation error:",
+            error
+        );
+
+
+        showMessage(
+            "Unable to generate the certificate PDF.",
+            "error"
+        );
+
+    }
+
+
+    finally {
+
+        button.disabled =
+            false;
+
+
+        button.textContent =
+            "Download Verification Certificate";
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD HTML2CANVAS
+========================================================= */
+
+function loadHtml2Canvas() {
+
+    return new Promise(
+        (
+            resolve,
+            reject
+        ) => {
+
+            const script =
+                document.createElement(
+                    "script"
+                );
+
+
+            script.src =
+                "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+
+
+            script.onload =
+                resolve;
+
+
+            script.onerror =
+                reject;
+
+
+            document
+                .head
+                .appendChild(
+                    script
+                );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadInstruments();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

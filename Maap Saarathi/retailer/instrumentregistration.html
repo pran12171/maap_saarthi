@@ -1,0 +1,3191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Instrument Registration | MaapSaarthi
+    </title>
+
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+<style>
+
+/* =====================================================
+   ROOT
+===================================================== */
+
+:root {
+
+    --gov-blue: #003366;
+    --gov-blue-dark: #00264d;
+    --gov-blue-light: #005a9c;
+
+    --saffron: #e87500;
+    --green: #138808;
+
+    --background: #f3f5f7;
+    --white: #ffffff;
+
+    --text: #1b1f23;
+    --muted: #68717a;
+
+    --border: #cbd2d8;
+
+    --danger: #b3261e;
+
+    --shadow:
+        0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family:
+        "Noto Sans",
+        "Noto Sans Telugu",
+        Arial,
+        sans-serif;
+
+    background:
+        var(--background);
+
+    color:
+        var(--text);
+
+    min-height:
+        100vh;
+}
+
+
+body.telugu {
+
+    font-family:
+        "Noto Sans Telugu",
+        "Noto Sans",
+        Arial,
+        sans-serif;
+}
+
+
+/* =====================================================
+   TOP GOVERNMENT BAR
+===================================================== */
+
+.top-bar {
+
+    min-height:
+        34px;
+
+    background:
+        var(--gov-blue-dark);
+
+    color:
+        white;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        0 5%;
+
+    font-size:
+        11px;
+
+    border-bottom:
+        3px solid var(--saffron);
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+
+    background:
+        white;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.navbar {
+
+    width:
+        90%;
+
+    max-width:
+        1100px;
+
+    min-height:
+        76px;
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+}
+
+
+.brand {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    text-decoration:
+        none;
+}
+
+
+.brand img {
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    object-fit:
+        contain;
+}
+
+
+.brand-text h1 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        21px;
+
+    font-weight:
+        800;
+
+    line-height:
+        1.1;
+}
+
+
+.brand-text p {
+
+    color:
+        #70777d;
+
+    font-size:
+        9px;
+
+    margin-top:
+        3px;
+}
+
+
+.back-dashboard {
+
+    color:
+        var(--gov-blue);
+
+    text-decoration:
+        none;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+}
+
+
+.back-dashboard:hover {
+
+    color:
+        var(--saffron);
+}
+
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
+
+.language-container {
+
+    width:
+        90%;
+
+    max-width:
+        1100px;
+
+    margin:
+        22px auto 0;
+
+    display:
+        flex;
+
+    justify-content:
+        flex-end;
+}
+
+
+.language-btn {
+
+    padding:
+        8px 18px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        white;
+
+    color:
+        #555;
+
+    cursor:
+        pointer;
+
+    font-family:
+        inherit;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+}
+
+
+.language-btn:first-child {
+
+    border-radius:
+        3px 0 0 3px;
+}
+
+
+.language-btn:last-child {
+
+    border-radius:
+        0 3px 3px 0;
+}
+
+
+.language-btn.active {
+
+    background:
+        var(--gov-blue);
+
+    color:
+        white;
+
+    border-color:
+        var(--gov-blue);
+}
+
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.page-header {
+
+    width:
+        90%;
+
+    max-width:
+        1100px;
+
+    margin:
+        22px auto 28px;
+}
+
+
+.title-line {
+
+    width:
+        55px;
+
+    height:
+        4px;
+
+    background:
+        var(--saffron);
+
+    margin-bottom:
+        10px;
+}
+
+
+.page-header h2 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        28px;
+
+    font-weight:
+        800;
+}
+
+
+.page-header p {
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+
+    margin-top:
+        4px;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message {
+
+    display:
+        none;
+
+    width:
+        90%;
+
+    max-width:
+        1100px;
+
+    margin:
+        0 auto 20px;
+
+    padding:
+        13px 16px;
+
+    border-radius:
+        3px;
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+}
+
+
+.message.success {
+
+    display:
+        block;
+
+    background:
+        #edf8ed;
+
+    color:
+        #116b0a;
+
+    border:
+        1px solid #b9ddb5;
+}
+
+
+.message.error {
+
+    display:
+        block;
+
+    background:
+        #fff0ef;
+
+    color:
+        var(--danger);
+
+    border:
+        1px solid #e1b8b4;
+}
+
+
+/* =====================================================
+   FORM CONTAINER
+===================================================== */
+
+.form-container {
+
+    width:
+        90%;
+
+    max-width:
+        1100px;
+
+    margin:
+        0 auto 60px;
+
+    background:
+        white;
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        var(--shadow);
+}
+
+
+/* =====================================================
+   FORM SECTION
+===================================================== */
+
+.form-section {
+
+    padding:
+        28px 35px;
+
+    border-bottom:
+        1px solid #e2e6ea;
+}
+
+
+.form-section:last-of-type {
+
+    border-bottom:
+        none;
+}
+
+
+/* =====================================================
+   SECTION TITLE
+===================================================== */
+
+.section-title {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    margin-bottom:
+        24px;
+}
+
+
+.section-number {
+
+    width:
+        32px;
+
+    height:
+        32px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--gov-blue);
+
+    color:
+        white;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+
+    flex-shrink:
+        0;
+}
+
+
+.section-title h3 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        18px;
+
+    font-weight:
+        800;
+}
+
+
+.section-title p {
+
+    color:
+        #777;
+
+    font-size:
+        11px;
+
+    margin-top:
+        1px;
+}
+
+
+/* =====================================================
+   FORM GRID
+===================================================== */
+
+.form-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        20px 25px;
+}
+
+
+.form-group {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+}
+
+
+.form-group.full {
+
+    grid-column:
+        1 / -1;
+}
+
+
+label {
+
+    color:
+        #30353a;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        7px;
+}
+
+
+.required {
+
+    color:
+        var(--danger);
+}
+
+
+input,
+select,
+textarea {
+
+    width:
+        100%;
+
+    padding:
+        11px 12px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        3px;
+
+    background:
+        white;
+
+    color:
+        #202428;
+
+    font-family:
+        inherit;
+
+    font-size:
+        12px;
+
+    outline:
+        none;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+
+    border-color:
+        var(--gov-blue);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(0, 51, 102, 0.08);
+}
+
+
+textarea {
+
+    min-height:
+        90px;
+
+    resize:
+        vertical;
+}
+
+
+.field-help {
+
+    color:
+        #747c83;
+
+    font-size:
+        10px;
+
+    margin-top:
+        5px;
+
+    line-height:
+        1.5;
+}
+
+
+/* =====================================================
+   SELECT NOTE
+===================================================== */
+
+.selection-note {
+
+    margin-top:
+        8px;
+
+    padding:
+        9px 12px;
+
+    background:
+        #f2f6f9;
+
+    border-left:
+        3px solid var(--gov-blue);
+
+    color:
+        #5e6972;
+
+    font-size:
+        10px;
+}
+
+
+/* =====================================================
+   CAPACITY
+===================================================== */
+
+.capacity-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 180px;
+
+    gap:
+        10px;
+}
+
+
+/* =====================================================
+   PURCHASE INFORMATION
+===================================================== */
+
+.purchase-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        20px 25px;
+}
+
+
+/* =====================================================
+   PDF UPLOAD
+===================================================== */
+
+.upload-box {
+
+    border:
+        1px dashed #aeb8c2;
+
+    background:
+        #fafbfc;
+
+    padding:
+        20px;
+
+    border-radius:
+        3px;
+}
+
+
+.upload-box h4 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        14px;
+
+    margin-bottom:
+        4px;
+}
+
+
+.upload-box p {
+
+    color:
+        #777;
+
+    font-size:
+        10px;
+
+    margin-bottom:
+        12px;
+}
+
+
+.upload-box input {
+
+    padding:
+        8px;
+
+    font-size:
+        10px;
+}
+
+
+/* =====================================================
+   MACHINE PHOTOGRAPHS
+===================================================== */
+
+.photo-note {
+
+    padding:
+        14px 16px;
+
+    background:
+        #fff7ed;
+
+    border-left:
+        4px solid var(--saffron);
+
+    color:
+        #744300;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.6;
+
+    margin-bottom:
+        20px;
+}
+
+
+.photo-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        15px;
+}
+
+
+.photo-card {
+
+    border:
+        1px dashed #aeb8c2;
+
+    background:
+        #fafbfc;
+
+    padding:
+        17px;
+
+    border-radius:
+        3px;
+}
+
+
+.photo-card h4 {
+
+    color:
+        var(--gov-blue);
+
+    font-size:
+        12px;
+
+    margin-bottom:
+        4px;
+}
+
+
+.photo-card p {
+
+    color:
+        #777;
+
+    font-size:
+        9px;
+
+    margin-bottom:
+        10px;
+
+    line-height:
+        1.4;
+}
+
+
+.photo-card input {
+
+    width:
+        100%;
+
+    font-size:
+        9px;
+
+    padding:
+        7px;
+}
+
+
+/* =====================================================
+   PHOTO STATUS
+===================================================== */
+
+.photo-status {
+
+    margin-top:
+        15px;
+
+    display:
+        none;
+
+    padding:
+        11px 14px;
+
+    background:
+        #edf8ed;
+
+    color:
+        #126b0a;
+
+    border:
+        1px solid #b9ddb5;
+
+    font-size:
+        10px;
+
+    font-weight:
+        600;
+}
+
+
+/* =====================================================
+   DECLARATION
+===================================================== */
+
+.declaration {
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        10px;
+
+    margin-top:
+        5px;
+}
+
+
+.declaration input {
+
+    width:
+        17px;
+
+    height:
+        17px;
+
+    flex-shrink:
+        0;
+
+    margin-top:
+        2px;
+}
+
+
+.declaration label {
+
+    color:
+        #555;
+
+    font-size:
+        11px;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.6;
+}
+
+
+/* =====================================================
+   SUBMIT AREA
+===================================================== */
+
+.submit-section {
+
+    padding:
+        25px 35px;
+
+    background:
+        #f8f9fa;
+
+    border-top:
+        1px solid var(--border);
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        20px;
+}
+
+
+.submit-info {
+
+    color:
+        #777;
+
+    font-size:
+        10px;
+}
+
+
+.submit-btn {
+
+    min-width:
+        200px;
+
+    padding:
+        12px 25px;
+
+    background:
+        var(--gov-blue);
+
+    color:
+        white;
+
+    border:
+        1px solid var(--gov-blue);
+
+    border-radius:
+        3px;
+
+    cursor:
+        pointer;
+
+    font-family:
+        inherit;
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+}
+
+
+.submit-btn:hover {
+
+    background:
+        var(--gov-blue-dark);
+
+    border-color:
+        var(--gov-blue-dark);
+}
+
+
+.submit-btn:disabled {
+
+    opacity:
+        0.6;
+
+    cursor:
+        not-allowed;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    background:
+        var(--gov-blue-dark);
+
+    color:
+        white;
+
+    border-top:
+        4px solid var(--saffron);
+
+    padding:
+        28px 5% 15px;
+}
+
+
+.footer-container {
+
+    width:
+        90%;
+
+    max-width:
+        1100px;
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        30px;
+}
+
+
+.footer-block h3 {
+
+    font-size:
+        13px;
+
+    margin-bottom:
+        5px;
+}
+
+
+.footer-block p {
+
+    color:
+        #c2cbd3;
+
+    font-size:
+        10px;
+}
+
+
+.footer-bottom {
+
+    width:
+        90%;
+
+    max-width:
+        1100px;
+
+    margin:
+        18px auto 0;
+
+    padding-top:
+        12px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    color:
+        #aeb8c0;
+
+    font-size:
+        9px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:800px) {
+
+    .form-grid,
+    .purchase-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .form-group.full {
+
+        grid-column:
+            auto;
+    }
+
+
+    .photo-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .submit-section {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+    }
+
+
+    .submit-btn {
+
+        width:
+            100%;
+    }
+
+}
+
+
+@media(max-width:550px) {
+
+    .navbar {
+
+        width:
+            94%;
+    }
+
+
+    .back-dashboard {
+
+        display:
+            none;
+    }
+
+
+    .form-container,
+    .page-header,
+    .language-container,
+    .message {
+
+        width:
+            94%;
+    }
+
+
+    .form-section {
+
+        padding:
+            24px 17px;
+    }
+
+
+    .photo-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .capacity-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .footer-container,
+    .footer-bottom {
+
+        flex-direction:
+            column;
+
+        gap:
+            8px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     GOVERNMENT BAR
+===================================================== -->
+
+<div class="top-bar">
+
+    <span
+        data-en="Government of India"
+        data-te="భారత ప్రభుత్వం">
+
+        Government of India
+
+    </span>
+
+
+    <span
+        data-en="Legal Metrology | Department of Consumer Affairs"
+        data-te="లీగల్ మెట్రాలజీ | వినియోగదారుల వ్యవహారాల శాఖ">
+
+        Legal Metrology |
+        Department of Consumer Affairs
+
+    </span>
+
+</div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+<nav class="navbar">
+
+
+    <a
+        href="retaildashboard.html"
+        class="brand">
+
+
+        <img
+            src="../images/sihlogo.png"
+            alt="MaapSaarthi Logo">
+
+
+        <div class="brand-text">
+
+            <h1>
+                MaapSaarthi
+            </h1>
+
+
+            <p
+                data-en="Digital Legal Metrology Platform"
+                data-te="డిజిటల్ లీగల్ మెట్రాలజీ ప్లాట్‌ఫారమ్">
+
+                Digital Legal Metrology Platform
+
+            </p>
+
+        </div>
+
+    </a>
+
+
+    <a
+        href="retaildashboard.html"
+        class="back-dashboard"
+        data-en="← Retailer Dashboard"
+        data-te="← రిటైలర్ డ్యాష్‌బోర్డ్">
+
+        ← Retailer Dashboard
+
+    </a>
+
+</nav>
+
+</header>
+
+
+<!-- =====================================================
+     LANGUAGE SWITCH
+===================================================== -->
+
+<div class="language-container">
+
+    <div>
+
+
+        <button
+            type="button"
+            class="language-btn active"
+            id="englishBtn"
+            onclick="changeLanguage('english')">
+
+            English
+
+        </button>
+
+
+        <button
+            type="button"
+            class="language-btn"
+            id="teluguBtn"
+            onclick="changeLanguage('telugu')">
+
+            తెలుగు
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE TITLE
+===================================================== -->
+
+<section class="page-header">
+
+    <div class="title-line"></div>
+
+
+    <h2
+        data-en="Instrument Registration"
+        data-te="పరికర నమోదు">
+
+        Instrument Registration
+
+    </h2>
+
+
+    <p
+        data-en="Register a measuring instrument for verification and certification."
+        data-te="ధృవీకరణ మరియు సర్టిఫికేషన్ కోసం కొలిచే పరికరాన్ని నమోదు చేయండి.">
+
+        Register a measuring instrument for verification
+        and certification.
+
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     MESSAGE
+===================================================== -->
+
+<div
+    id="message"
+    class="message">
+</div>
+
+
+<!-- =====================================================
+     REGISTRATION FORM
+===================================================== -->
+
+<form
+    id="instrumentForm"
+    class="form-container"
+    enctype="multipart/form-data">
+
+
+<!-- =====================================================
+     SECTION 1 — BASIC INSTRUMENT DETAILS
+===================================================== -->
+
+<section class="form-section">
+
+
+    <div class="section-title">
+
+
+        <div class="section-number">
+            1
+        </div>
+
+
+        <div>
+
+            <h3>
+                Instrument Details
+            </h3>
+
+
+            <p>
+                Basic identification details of the instrument
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="form-grid">
+
+
+        <!-- Instrument ID -->
+
+        <div class="form-group">
+
+            <label>
+
+                Instrument ID
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <input
+                type="text"
+                name="instrument_id"
+                id="instrumentId"
+                required
+                placeholder="Enter instrument ID">
+
+
+            <span class="field-help">
+
+                Enter the unique instrument identification
+                number assigned to the measuring instrument.
+
+            </span>
+
+        </div>
+
+
+        <!-- Instrument Type -->
+
+        <div class="form-group">
+
+            <label>
+
+                Instrument Type
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <select
+                name="instrument_type"
+                id="instrumentType"
+                required>
+
+                <option value="">
+                    Select instrument type
+                </option>
+
+                <option value="Weighing Scale">
+                    Weighing Scale
+                </option>
+
+                <option value="Electronic Weighing Machine">
+                    Electronic Weighing Machine
+                </option>
+
+                <option value="Platform Scale">
+                    Platform Scale
+                </option>
+
+                <option value="Retail Weighing Scale">
+                    Retail Weighing Scale
+                </option>
+
+                <option value="Counter Scale">
+                    Counter Scale
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Manufacturer -->
+
+        <div class="form-group">
+
+            <label>
+
+                Manufacturer
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <select
+                name="manufacturer"
+                id="manufacturer"
+                required
+                onchange="updateModels()">
+
+                <option value="">
+                    Select manufacturer
+                </option>
+
+                <option value="A&D Company Limited">
+                    A&D Company Limited
+                </option>
+
+                <option value="Essae-Teraoka">
+                    Essae-Teraoka
+                </option>
+
+                <option value="Mettler Toledo">
+                    Mettler Toledo
+                </option>
+
+                <option value="Contech Instruments">
+                    Contech Instruments
+                </option>
+
+            </select>
+
+
+            <div class="selection-note">
+
+                Select the manufacturer from the
+                registered manufacturer list.
+
+            </div>
+
+        </div>
+
+
+        <!-- Model -->
+
+        <div class="form-group">
+
+            <label>
+
+                Model
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <select
+                name="model"
+                id="model"
+                required
+                disabled>
+
+                <option value="">
+                    Select manufacturer first
+                </option>
+
+            </select>
+
+
+            <span class="field-help">
+
+                Available models will appear after
+                selecting the manufacturer.
+
+            </span>
+
+        </div>
+
+
+        <!-- Serial Number -->
+
+        <div class="form-group">
+
+            <label>
+
+                Serial Number
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <input
+                type="text"
+                name="serial_number"
+                id="serialNumber"
+                required
+                placeholder="Enter serial number">
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 2 — CAPACITY & SPECIFICATION
+===================================================== -->
+
+<section class="form-section">
+
+
+    <div class="section-title">
+
+
+        <div class="section-number">
+            2
+        </div>
+
+
+        <div>
+
+            <h3>
+                Capacity & Specifications
+            </h3>
+
+
+            <p>
+                Technical details of the instrument
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+
+        <!-- Capacity -->
+
+        <div class="form-group">
+
+            <label>
+
+                Capacity
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <div class="capacity-grid">
+
+
+                <input
+                    type="number"
+                    name="capacity_value"
+                    id="capacityValue"
+                    required
+                    min="0"
+                    step="any"
+                    placeholder="Capacity">
+
+
+                <select
+                    name="capacity_unit"
+                    id="capacityUnit"
+                    required>
+
+                    <option value="">
+                        Unit
+                    </option>
+
+                    <option value="kg">
+                        kg
+                    </option>
+
+                    <option value="g">
+                        g
+                    </option>
+
+                    <option value="tonne">
+                        Tonne
+                    </option>
+
+                    <option value="litre">
+                        Litre
+                    </option>
+
+                    <option value="other">
+                        Other
+                    </option>
+
+                </select>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- Specification -->
+
+        <div class="form-group">
+
+            <label>
+
+                Specification
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <textarea
+                name="specification"
+                id="specification"
+                required
+                placeholder="Enter technical specifications such as accuracy, least count, dimensions, etc."></textarea>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 3 — PURCHASE INFORMATION
+===================================================== -->
+
+<section class="form-section">
+
+
+    <div class="section-title">
+
+
+        <div class="section-number">
+            3
+        </div>
+
+
+        <div>
+
+            <h3>
+                Purchase Information
+            </h3>
+
+
+            <p>
+                Details relating to purchase and invoice
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="purchase-grid">
+
+
+        <!-- Purchase Date -->
+
+        <div class="form-group">
+
+            <label>
+
+                Purchase Date
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <input
+                type="date"
+                name="purchase_date"
+                id="purchaseDate"
+                required>
+
+        </div>
+
+
+        <!-- Purchase Source -->
+
+        <div class="form-group">
+
+            <label>
+
+                Purchased From
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <input
+                type="text"
+                name="purchase_source"
+                id="purchaseSource"
+                required
+                placeholder="Dealer / supplier name">
+
+        </div>
+
+
+        <!-- Invoice Number -->
+
+        <div class="form-group">
+
+            <label>
+
+                Invoice Number
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <input
+                type="text"
+                name="invoice_number"
+                id="invoiceNumber"
+                required
+                placeholder="Enter invoice number">
+
+        </div>
+
+
+        <!-- Invoice Upload -->
+
+        <div class="form-group">
+
+            <label>
+
+                Purchase Invoice
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <div class="upload-box">
+
+
+                <h4>
+                    Invoice PDF
+                </h4>
+
+
+                <p>
+                    Upload the purchase invoice in PDF format.
+                </p>
+
+
+                <input
+                    type="file"
+                    name="invoice_file"
+                    id="invoiceFile"
+                    required
+                    accept=".pdf,application/pdf">
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <span class="field-help">
+
+        Maximum recommended file size: 5 MB.
+        Only PDF files are accepted.
+
+    </span>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 4 — MACHINE PHOTOGRAPHS
+===================================================== -->
+
+<section class="form-section">
+
+
+    <div class="section-title">
+
+
+        <div class="section-number">
+            4
+        </div>
+
+
+        <div>
+
+            <h3>
+                Machine Photographs
+            </h3>
+
+
+            <p>
+                Optional geotagged photographs of the instrument
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="photo-note">
+
+        <strong>
+            Optional:
+        </strong>
+
+        Machine photographs are not mandatory for
+        registration. If photographs are uploaded,
+        they must contain valid GPS/geolocation metadata.
+        The backend will verify the photograph location
+        against the retailer's registered shop location.
+
+    </div>
+
+
+    <div class="photo-grid">
+
+
+        <!-- FRONT -->
+
+        <div class="photo-card">
+
+            <h4>
+                1. Front View
+            </h4>
+
+
+            <p>
+                Clear front view of the complete instrument.
+            </p>
+
+
+            <input
+                type="file"
+                name="front_photo"
+                accept="image/jpeg,image/png,image/webp">
+
+        </div>
+
+
+        <!-- BACK -->
+
+        <div class="photo-card">
+
+            <h4>
+                2. Back View
+            </h4>
+
+
+            <p>
+                Clear rear view of the instrument.
+            </p>
+
+
+            <input
+                type="file"
+                name="back_photo"
+                accept="image/jpeg,image/png,image/webp">
+
+        </div>
+
+
+        <!-- SERIAL NUMBER -->
+
+        <div class="photo-card">
+
+            <h4>
+                3. Serial Number
+            </h4>
+
+
+            <p>
+                Photograph showing the instrument serial number.
+            </p>
+
+
+            <input
+                type="file"
+                name="serial_photo"
+                accept="image/jpeg,image/png,image/webp">
+
+        </div>
+
+
+        <!-- MANUFACTURER LABEL -->
+
+        <div class="photo-card">
+
+            <h4>
+                4. Manufacturer Label
+            </h4>
+
+
+            <p>
+                Photograph showing the manufacturer's label.
+            </p>
+
+
+            <input
+                type="file"
+                name="manufacturer_label_photo"
+                accept="image/jpeg,image/png,image/webp">
+
+        </div>
+
+
+        <!-- DISPLAY -->
+
+        <div class="photo-card">
+
+            <h4>
+                5. Display
+            </h4>
+
+
+            <p>
+                Photograph showing the instrument display.
+            </p>
+
+
+            <input
+                type="file"
+                name="display_photo"
+                accept="image/jpeg,image/png,image/webp">
+
+        </div>
+
+
+        <!-- FULL PICTURE -->
+
+        <div class="photo-card">
+
+            <h4>
+                6. Full Picture
+            </h4>
+
+
+            <p>
+                Complete photograph of the instrument.
+            </p>
+
+
+            <input
+                type="file"
+                name="full_photo"
+                accept="image/jpeg,image/png,image/webp">
+
+        </div>
+
+
+    </div>
+
+
+    <div
+        id="photoStatus"
+        class="photo-status">
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     DECLARATION
+===================================================== -->
+
+<section class="form-section">
+
+
+    <div class="declaration">
+
+
+        <input
+            type="checkbox"
+            id="declaration"
+            name="declaration"
+            value="true"
+            required>
+
+
+        <label for="declaration">
+
+            I confirm that the information provided
+            for this instrument is complete and accurate,
+            and that the uploaded invoice belongs to
+            the registered instrument.
+
+            <span class="required">*</span>
+
+        </label>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SUBMIT
+===================================================== -->
+
+<div class="submit-section">
+
+
+    <div class="submit-info">
+
+        <span
+            data-en="All fields marked with * are mandatory."
+            data-te="* గుర్తు ఉన్న అన్ని ఫీల్డ్‌లు తప్పనిసరి.">
+
+            All fields marked with * are mandatory.
+
+        </span>
+
+    </div>
+
+
+    <button
+        type="submit"
+        id="submitBtn"
+        class="submit-btn">
+
+        Submit Instrument Registration
+
+    </button>
+
+
+</div>
+
+
+</form>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+
+    <div class="footer-container">
+
+
+        <div class="footer-block">
+
+            <h3>
+                MaapSaarthi
+            </h3>
+
+
+            <p>
+                Digital Legal Metrology Platform
+            </p>
+
+        </div>
+
+
+        <div class="footer-block">
+
+            <h3>
+                Government of India
+            </h3>
+
+
+            <p>
+                Department of Consumer Affairs
+            </p>
+
+        </div>
+
+
+        <div class="footer-block">
+
+            <h3>
+                Legal Metrology
+            </h3>
+
+
+            <p>
+                Instrument Registration & Verification
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+
+        <span>
+            © 2026 MaapSaarthi
+        </span>
+
+
+        <span>
+            Government of India | Legal Metrology
+        </span>
+
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   CONFIGURATION
+===================================================== */
+
+/*
+    Change this URL if your FastAPI server is running
+    on another machine or port.
+*/
+
+const API_URL =
+    "http://10.250.20.18:8000/api/instruments/register";
+
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
+
+let currentLanguage =
+    "english";
+
+
+function changeLanguage(language) {
+
+    currentLanguage =
+        language;
+
+
+    document
+        .getElementById("englishBtn")
+        .classList
+        .toggle(
+            "active",
+            language === "english"
+        );
+
+
+    document
+        .getElementById("teluguBtn")
+        .classList
+        .toggle(
+            "active",
+            language === "telugu"
+        );
+
+
+    document.body.classList.toggle(
+        "telugu",
+        language === "telugu"
+    );
+
+
+    document
+        .querySelectorAll(
+            "[data-en][data-te]"
+        )
+        .forEach(
+            element => {
+
+                element.textContent =
+                    language === "english"
+                        ? element.dataset.en
+                        : element.dataset.te;
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   MANUFACTURER → MODEL DATA
+===================================================== */
+
+const manufacturerModels = {
+
+    "A&D Company Limited": [
+
+        "EK-i Series",
+        "GF Series",
+        "SJ-WP Series"
+
+    ],
+
+
+    "Essae-Teraoka": [
+
+        "DS-252",
+        "DS-215",
+        "DS-852"
+
+    ],
+
+
+    "Mettler Toledo": [
+
+        "IND231",
+        "ICS439",
+        "BBA236"
+
+    ],
+
+
+    "Contech Instruments": [
+
+        "Contech CT-600",
+        "Contech CT-1000",
+        "Contech CT-2000"
+
+    ]
+
+};
+
+
+/* =====================================================
+   UPDATE MODELS
+===================================================== */
+
+function updateModels() {
+
+    const manufacturer =
+        document.getElementById(
+            "manufacturer"
+        ).value;
+
+
+    const modelSelect =
+        document.getElementById(
+            "model"
+        );
+
+
+    modelSelect.innerHTML =
+        "";
+
+
+    if (
+        !manufacturer ||
+        !manufacturerModels[manufacturer]
+    ) {
+
+        modelSelect.disabled =
+            true;
+
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+
+        option.value =
+            "";
+
+
+        option.textContent =
+            "Select manufacturer first";
+
+
+        modelSelect.appendChild(
+            option
+        );
+
+
+        return;
+
+    }
+
+
+    modelSelect.disabled =
+        false;
+
+
+    const defaultOption =
+        document.createElement(
+            "option"
+        );
+
+
+    defaultOption.value =
+        "";
+
+
+    defaultOption.textContent =
+        "Select model";
+
+
+    modelSelect.appendChild(
+        defaultOption
+    );
+
+
+    manufacturerModels[
+        manufacturer
+    ].forEach(
+        model => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                model;
+
+
+            option.textContent =
+                model;
+
+
+            modelSelect.appendChild(
+                option
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   INVOICE VALIDATION
+===================================================== */
+
+document
+    .getElementById(
+        "invoiceFile"
+    )
+    .addEventListener(
+        "change",
+        function() {
+
+            const file =
+                this.files[0];
+
+
+            if (!file) {
+
+                return;
+
+            }
+
+
+            if (
+                file.type !==
+                "application/pdf"
+            ) {
+
+                alert(
+                    "Please upload the purchase invoice as a PDF file."
+                );
+
+
+                this.value =
+                    "";
+
+                return;
+
+            }
+
+
+            const maxSize =
+                5 * 1024 * 1024;
+
+
+            if (
+                file.size >
+                maxSize
+            ) {
+
+                alert(
+                    "Invoice PDF must be smaller than 5 MB."
+                );
+
+
+                this.value =
+                    "";
+
+            }
+
+        }
+    );
+
+
+/* =====================================================
+   PHOTO VALIDATION
+===================================================== */
+
+const photoInputs =
+    document.querySelectorAll(
+        '.photo-card input[type="file"]'
+    );
+
+
+photoInputs.forEach(
+    input => {
+
+        input.addEventListener(
+            "change",
+            function() {
+
+                const file =
+                    this.files[0];
+
+
+                if (!file) {
+
+                    return;
+
+                }
+
+
+                const allowedTypes = [
+
+                    "image/jpeg",
+                    "image/png",
+                    "image/webp"
+
+                ];
+
+
+                if (
+                    !allowedTypes.includes(
+                        file.type
+                    )
+                ) {
+
+                    alert(
+                        "Please upload a JPG, PNG or WEBP image."
+                    );
+
+
+                    this.value =
+                        "";
+
+                    return;
+
+                }
+
+
+                const maxSize =
+                    10 * 1024 * 1024;
+
+
+                if (
+                    file.size >
+                    maxSize
+                ) {
+
+                    alert(
+                        "Each machine photograph must be smaller than 10 MB."
+                    );
+
+
+                    this.value =
+                        "";
+
+                    return;
+
+                }
+
+
+                updatePhotoStatus();
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   PHOTO STATUS
+===================================================== */
+
+function updatePhotoStatus() {
+
+    const selectedPhotos =
+        document.querySelectorAll(
+            '.photo-card input[type="file"]'
+        );
+
+
+    let count =
+        0;
+
+
+    selectedPhotos.forEach(
+        input => {
+
+            if (
+                input.files &&
+                input.files.length > 0
+            ) {
+
+                count++;
+
+            }
+
+        }
+    );
+
+
+    const status =
+        document.getElementById(
+            "photoStatus"
+        );
+
+
+    if (
+        count === 0
+    ) {
+
+        status.style.display =
+            "none";
+
+
+        return;
+
+    }
+
+
+    status.style.display =
+        "block";
+
+
+    status.textContent =
+        count +
+        " machine photograph" +
+        (
+            count > 1
+                ? "s"
+                : ""
+        ) +
+        " selected. GPS/geotag verification will be performed by the backend.";
+
+}
+
+
+/* =====================================================
+   GET RETAILER SHOP LOCATION
+===================================================== */
+
+/*
+    The retailer's registration page should eventually
+    store the registered shop coordinates.
+
+    These values can later come from your FastAPI
+    retailer profile endpoint.
+
+    For now we attempt to read them from localStorage
+    if your login/registration flow has already stored
+    them.
+*/
+
+function getRetailerLocation() {
+
+    const latitude =
+        localStorage.getItem(
+            "shopLatitude"
+        );
+
+
+    const longitude =
+        localStorage.getItem(
+            "shopLongitude"
+        );
+
+
+    const address =
+        localStorage.getItem(
+            "shopAddress"
+        );
+
+
+    return {
+
+        latitude:
+            latitude || "",
+
+        longitude:
+            longitude || "",
+
+        address:
+            address || ""
+
+    };
+
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+const form =
+    document.getElementById(
+        "instrumentForm"
+    );
+
+
+const submitBtn =
+    document.getElementById(
+        "submitBtn"
+    );
+
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
+form.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        /* ================================================
+           HTML VALIDATION
+        ================================================ */
+
+        if (
+            !form.checkValidity()
+        ) {
+
+            form.reportValidity();
+
+            return;
+
+        }
+
+
+        /* ================================================
+           MANUFACTURER / MODEL CHECK
+        ================================================ */
+
+        const manufacturer =
+            document.getElementById(
+                "manufacturer"
+            ).value;
+
+
+        const model =
+            document.getElementById(
+                "model"
+            ).value;
+
+
+        if (
+            !manufacturer ||
+            !model
+        ) {
+
+            alert(
+                "Please select both manufacturer and model."
+            );
+
+            return;
+
+        }
+
+
+        /* ================================================
+           DISABLE BUTTON
+        ================================================ */
+
+        submitBtn.disabled =
+            true;
+
+
+        submitBtn.textContent =
+            currentLanguage === "english"
+
+                ?
+
+                "Submitting..."
+
+                :
+
+                "సమర్పిస్తోంది...";
+
+
+        /* ================================================
+           FORM DATA
+        ================================================ */
+
+        const formData =
+            new FormData(form);
+
+
+        /* ================================================
+           RETAILER LOCATION
+        ================================================ */
+
+        const location =
+            getRetailerLocation();
+
+
+        /*
+            These fields allow the backend to compare
+            photograph GPS coordinates with the shop.
+        */
+
+        formData.append(
+            "shop_latitude",
+            location.latitude
+        );
+
+
+        formData.append(
+            "shop_longitude",
+            location.longitude
+        );
+
+
+        formData.append(
+            "shop_address",
+            location.address
+        );
+
+
+        /* ================================================
+           PHOTO INFORMATION
+        ================================================ */
+
+        formData.append(
+            "photo_verification_required",
+            "true"
+        );
+
+
+        try {
+
+
+            /* ============================================
+               SEND TO FASTAPI
+            ============================================ */
+
+            const response =
+                await fetch(
+                    API_URL,
+                    {
+                        method:
+                            "POST",
+
+                        body:
+                            formData
+                    }
+                );
+
+
+            /* ============================================
+               CHECK RESPONSE
+            ============================================ */
+
+            if (
+                !response.ok
+            ) {
+
+                let errorText =
+                    "Instrument registration failed.";
+
+
+                try {
+
+                    const errorData =
+                        await response.json();
+
+
+                    if (
+                        errorData.detail
+                    ) {
+
+                        if (
+                            Array.isArray(
+                                errorData.detail
+                            )
+                        ) {
+
+                            errorText =
+                                errorData.detail
+                                    .map(
+                                        item =>
+                                            item.msg ||
+                                            "Validation error"
+                                    )
+                                    .join(
+                                        ", "
+                                    );
+
+                        }
+
+                        else {
+
+                            errorText =
+                                errorData.detail;
+
+                        }
+
+                    }
+
+                }
+
+                catch {
+
+                    /*
+                        Backend response was not JSON.
+                    */
+
+                }
+
+
+                throw new Error(
+                    errorText
+                );
+
+            }
+
+
+            /* ============================================
+               SUCCESS
+            ============================================ */
+
+            message.className =
+                "message success";
+
+
+            message.textContent =
+
+                currentLanguage === "english"
+
+                    ?
+
+                    "Instrument registration submitted successfully. Redirecting to retailer dashboard..."
+
+                    :
+
+                    "పరికర నమోదు విజయవంతంగా సమర్పించబడింది. రిటైలర్ డ్యాష్‌బోర్డ్‌కు మళ్లించబడుతోంది...";
+
+
+            message.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "center"
+
+            });
+
+
+            /* ============================================
+               REDIRECT
+            ============================================ */
+
+            setTimeout(
+                function() {
+
+                    window.location.replace(
+                        "retaildashboard.html"
+                    );
+
+                },
+                1000
+            );
+
+
+        }
+
+
+        catch(error) {
+
+
+            /* ============================================
+               ERROR
+            ============================================ */
+
+            console.error(
+                "Instrument registration error:",
+                error
+            );
+
+
+            message.className =
+                "message error";
+
+
+            message.textContent =
+
+                currentLanguage === "english"
+
+                    ?
+
+                    (
+                        error.message ||
+                        "Instrument registration could not be completed."
+                    )
+
+                    :
+
+                    "పరికర నమోదును పూర్తి చేయలేకపోయాము. దయచేసి మళ్లీ ప్రయత్నించండి.";
+
+
+            /* ============================================
+               ENABLE BUTTON
+            ============================================ */
+
+            submitBtn.disabled =
+                false;
+
+
+            submitBtn.textContent =
+
+                currentLanguage === "english"
+
+                    ?
+
+                    "Submit Instrument Registration"
+
+                    :
+
+                    "పరికర నమోదు సమర్పించండి";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   INITIALIZATION
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        updateModels();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verify Instrument | MaapSaarthi</title>
+<style>
+:root{--blue:#003b73;--navy:#002b55;--saffron:#e87516;--green:#16823a;--red:#b3261e;--bg:#f2f4f6;--border:#cbd3da;--muted:#69747c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#202428;font-family:Arial,"Noto Sans",sans-serif}
+.top{height:34px;background:var(--navy);border-bottom:3px solid var(--saffron);color:#fff;padding:0 5%;display:flex;align-items:center;justify-content:space-between;font-size:11px}
+header{background:#fff;border-bottom:1px solid var(--border);box-shadow:0 2px 5px #0000000a}
+.head{width:90%;max-width:1200px;min-height:75px;margin:auto;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px}.brand img{width:52px;height:52px;object-fit:contain}.brand h1{margin:0;color:var(--blue);font-size:21px}.brand p{margin:3px 0 0;color:#777;font-size:9px}
+.user{text-align:right;color:var(--blue);font-size:10px;font-weight:800}.user span{display:block;color:#777;font-size:8px;margin-top:3px}
+.nav{background:#fff;border-bottom:1px solid var(--border)}.navin{width:90%;max-width:1200px;margin:auto;display:flex}.nav a{padding:0 17px;min-height:46px;display:flex;align-items:center;text-decoration:none;color:#28333b;font-size:10px;font-weight:800;border-right:1px solid #e5e9ec}.nav a:hover,.nav a.active{color:var(--blue);background:#f7f9fa;border-bottom:3px solid var(--saffron)}
+main{width:90%;max-width:1200px;margin:27px auto 55px}.back{display:inline-block;color:var(--blue);font-size:10px;font-weight:800;text-decoration:none;margin-bottom:15px}.back:hover{text-decoration:underline}
+.title{margin-bottom:18px}.line{width:48px;height:4px;background:var(--saffron);margin-bottom:9px}.title h2{margin:0;color:var(--blue);font-size:25px}.title p{margin:5px 0 0;color:var(--muted);font-size:10px}
+.alert{display:none;padding:11px 13px;border-radius:3px;font-size:9px;font-weight:800;margin-bottom:15px}.alert.show{display:block}.error{background:#fff0ef;border:1px solid #dfb8b4;color:var(--red)}.success{background:#edf8ed;border:1px solid #b9dbb5;color:var(--green)}.warning{background:#fff5df;border:1px solid #ead0a0;color:#895600}
+.card{background:#fff;border:1px solid var(--border);box-shadow:0 4px 13px #0000000d;margin-bottom:16px}.card-head{background:#fafbfc;border-bottom:1px solid var(--border);padding:13px 17px}.card-head h3{margin:0;color:var(--blue);font-size:12px}.card-head p{margin:4px 0 0;color:#777;font-size:8px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr)}.field{padding:12px 15px;border-bottom:1px solid #e3e7ea}.field:nth-child(odd){border-right:1px solid #e3e7ea}.field label{display:block;font-size:8px;color:#747d84;text-transform:uppercase;margin-bottom:4px}.field span{display:block;font-size:10px;font-weight:700;min-height:13px;word-break:break-word}
+.document-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px}.doc{border:1px solid var(--border);padding:12px;background:#fafbfc}.doc h4{font-size:10px;color:var(--blue);margin:0 0 7px}.doc a{font-size:9px;color:var(--blue);font-weight:800;text-decoration:none}.doc a:hover{text-decoration:underline}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px}.photo{border:1px solid var(--border);background:#fafbfc;min-height:150px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}.photo img{width:100%;height:150px;object-fit:cover}.photo .placeholder{color:#89939a;font-size:9px;text-align:center;padding:10px}.photo-name{position:absolute;bottom:0;left:0;right:0;background:#002b55e8;color:#fff;padding:6px;font-size:8px;font-weight:800}
+.geo{margin:0 16px 16px;border:1px solid var(--border);background:#fafbfc;padding:13px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.geo-item label{display:block;color:#777;font-size:8px;text-transform:uppercase;margin-bottom:4px}.geo-item strong{font-size:10px;color:#222}.geo-ok{color:var(--green)!important}.geo-bad{color:var(--red)!important}.geo-pending{color:#956000!important}
+.decision{background:#fff;border:2px solid var(--blue);box-shadow:0 5px 16px #00000012;padding:19px;margin-top:18px}.decision h3{margin:0;color:var(--blue);font-size:14px}.decision p{font-size:9px;color:#6b747b;margin:5px 0 14px}.decision textarea{width:100%;min-height:80px;border:1px solid var(--border);border-radius:3px;padding:10px;font-family:inherit;font-size:10px;resize:vertical;outline:none}.decision textarea:focus{border-color:var(--blue);box-shadow:0 0 0 2px #003b7312}.buttons{display:flex;gap:10px;margin-top:12px}.btn{padding:11px 18px;border-radius:3px;cursor:pointer;font-size:9px;font-weight:900}.verify{background:var(--green);border:1px solid var(--green);color:#fff}.reject{background:var(--red);border:1px solid var(--red);color:#fff}.disabled{opacity:.55;pointer-events:none}
+.status{display:inline-block;padding:6px 10px;border-radius:3px;font-size:8px;font-weight:900}.pending{background:#fff4df;color:#956000}.verified{background:#e8f6e6;color:var(--green)}.rejected{background:#fff0ef;color:var(--red)}
+.loading{text-align:center;padding:55px;color:#777;font-size:10px}.spinner{width:23px;height:23px;border:3px solid #dbe1e5;border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 10px}@keyframes spin{to{transform:rotate(360deg)}}
+footer{background:var(--navy);border-top:4px solid var(--saffron);color:#fff;padding:24px 5% 15px}.foot{width:90%;max-width:1200px;margin:auto;display:flex;justify-content:space-between}.foot h4{font-size:11px;margin:0 0 4px}.foot p{font-size:8px;color:#c0cad1;margin:0}.bottom{width:90%;max-width:1200px;margin:14px auto 0;padding-top:9px;border-top:1px solid #ffffff26;display:flex;justify-content:space-between;font-size:8px;color:#aeb9c1}
+@media(max-width:800px){.grid,.geo{grid-template-columns:1fr}.field:nth-child(odd){border-right:0}.photos{grid-template-columns:1fr 1fr}.document-grid{grid-template-columns:1fr}}
+@media(max-width:550px){.top{justify-content:center}.top span:last-child,.user{display:none}.head,main,.navin{width:94%}.navin{overflow-x:auto}.nav a{white-space:nowrap}.photos{grid-template-columns:1fr}.buttons{flex-direction:column}.foot,.bottom{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+
+<div class="top"><span>Government of India</span><span>Legal Metrology | Department of Consumer Affairs</span></div>
+
+<header>
+<div class="head">
+<div class="brand">
+<img src="images/sihlogo.png" alt="MaapSaarthi Logo">
+<div><h1>MaapSaarthi</h1><p>Digital Legal Metrology Platform</p></div>
+</div>
+<div class="user">Official Verification Portal<span id="employeeNameHeader">Authorized Personnel</span></div>
+</div>
+</header>
+
+<nav class="nav"><div class="navin">
+<a href="officialdashboard.html">Dashboard</a>
+<a href="verificationrequests.html" class="active">Verification Requests</a>
+<a href="verificationrequests.html">Records</a>
+</div></nav>
+
+<main>
+<a href="verificationrequests.html" class="back">← Back to Verification Requests</a>
+
+<section class="title">
+<div class="line"></div>
+<h2>Verify Instrument</h2>
+<p>Review the submitted retailer information and instrument evidence before making an official verification decision.</p>
+</section>
+
+<div id="pageAlert" class="alert"></div>
+
+<div id="loading" class="card">
+<div class="loading"><div class="spinner"></div><strong>Loading verification request...</strong><br>Retrieving the request from the backend.</div>
+</div>
+
+<div id="content" style="display:none">
+
+<section class="card">
+<div class="card-head"><h3>Request Status</h3><p>Current status recorded by the MaapSaarthi backend.</p></div>
+<div class="grid">
+<div class="field"><label>Request ID</label><span id="requestId">—</span></div>
+<div class="field"><label>Current Status</label><span id="currentStatus">—</span></div>
+</div>
+</section>
+
+<section class="card">
+<div class="card-head"><h3>Retailer / Owner Details</h3></div>
+<div class="grid">
+<div class="field"><label>Owner Name</label><span id="ownerName">—</span></div>
+<div class="field"><label>Phone Number</label><span id="phone">—</span></div>
+<div class="field"><label>Email Address</label><span id="email">—</span></div>
+<div class="field"><label>Store / Business Name</label><span id="businessName">—</span></div>
+<div class="field"><label>Business Type</label><span id="businessType">—</span></div>
+<div class="field"><label>City</label><span id="city">—</span></div>
+<div class="field"><label>Complete Address</label><span id="address">—</span></div>
+</div>
+</section>
+
+<section class="card">
+<div class="card-head"><h3>Instrument Details</h3></div>
+<div class="grid">
+<div class="field"><label>Instrument ID</label><span id="instrumentId">—</span></div>
+<div class="field"><label>Instrument Type</label><span id="instrumentType">—</span></div>
+<div class="field"><label>Manufacturer</label><span id="manufacturer">—</span></div>
+<div class="field"><label>Model</label><span id="model">—</span></div>
+<div class="field"><label>Serial Number</label><span id="serialNumber">—</span></div>
+<div class="field"><label>Capacity</label><span id="capacity">—</span></div>
+<div class="field"><label>Specification</label><span id="specification">—</span></div>
+<div class="field"><label>Submitted On</label><span id="submittedOn">—</span></div>
+</div>
+</section>
+
+<section class="card">
+<div class="card-head"><h3>Purchase & Supporting Documents</h3><p>Review the invoice and other submitted files.</p></div>
+<div class="document-grid" id="documents"></div>
+</section>
+
+<section class="card">
+<div class="card-head"><h3>Machine Photographs</h3><p>Photographs are optional, but only valid geo-tagged photographs should be accepted for verification.</p></div>
+<div class="photos" id="photos"></div>
+<div class="geo">
+<div class="geo-item"><label>Geo-tag Verification</label><strong id="geoStatus" class="geo-pending">Checking...</strong></div>
+<div class="geo-item"><label>Shop Address Match</label><strong id="geoMatch" class="geo-pending">Checking...</strong></div>
+<div class="geo-item"><label>Latitude</label><strong id="latitude">—</strong></div>
+<div class="geo-item"><label>Longitude</label><strong id="longitude">—</strong></div>
+</div>
+</section>
+
+<section class="decision" id="decisionBox">
+<h3>Official Verification Decision</h3>
+<p>Verify the instrument only after reviewing the submitted information and evidence.</p>
+<textarea id="remarks" placeholder="Enter official remarks. A rejection reason is mandatory when rejecting."></textarea>
+<div class="buttons">
+<button id="verifyBtn" class="btn verify" onclick="makeDecision('verified')">✓ Verify Instrument</button>
+<button id="rejectBtn" class="btn reject" onclick="makeDecision('rejected')">✕ Reject Request</button>
+</div>
+</section>
+
+</div>
+</main>
+
+<footer>
+<div class="foot">
+<div><h4>MaapSaarthi</h4><p>Digital Legal Metrology Platform</p></div>
+<div><h4>Government of India</h4><p>Department of Consumer Affairs</p></div>
+<div><h4>Legal Metrology</h4><p>Official Verification Portal</p></div>
+</div>
+<div class="bottom"><span>© 2026 MaapSaarthi</span><span>Government of India | Legal Metrology</span></div>
+</footer>
+
+<script>
+const API_BASE="http://10.250.20.18:8000";
+const API={
+ get:id=>API_BASE+"/api/official/verifications/"+encodeURIComponent(id),
+ update:id=>API_BASE+"/api/official/verifications/"+encodeURIComponent(id)
+};
+
+const params=new URLSearchParams(location.search);
+const REQUEST_ID=
+ params.get("id")||
+ params.get("request_id")||
+ params.get("verification_id")||
+ localStorage.getItem("selectedVerificationId")||
+ localStorage.getItem("verificationRequestId");
+
+const EMPLOYEE_ID=localStorage.getItem("officialEmployeeId")||"";
+const EMPLOYEE_NAME=localStorage.getItem("officialEmployeeName")||"";
+
+if(EMPLOYEE_NAME)document.getElementById("employeeNameHeader").textContent=EMPLOYEE_NAME;
+
+let requestData=null;
+
+function val(o,...keys){
+ for(const k of keys){
+  if(o&&o[k]!==undefined&&o[k]!==null&&String(o[k]).trim()!=="")return o[k];
+ }
+ return "—";
+}
+function set(id,v){document.getElementById(id).textContent=v??"—"}
+function esc(v){return String(v??"—").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}
+function date(v){
+ if(!v||v==="—")return"—";
+ const d=new Date(v);if(Number.isNaN(d.getTime()))return v;
+ return d.toLocaleDateString("en-IN",{day:"2-digit",month:"long",year:"numeric"});
+}
+function alertBox(text,type){
+ const a=document.getElementById("pageAlert");a.textContent=text;a.className="alert show "+type;
+}
+function statusValue(d){
+ const s=String(val(d,"status","verification_status")).toLowerCase();
+ if(s.includes("reject"))return"rejected";
+ if(s.includes("verify")||s.includes("approv"))return"verified";
+ return"pending";
+}
+
+function renderDocuments(d){
+ const list=[];
+ const files=[
+ ["Invoice PDF",val(d,"invoice_url","invoice","invoice_file","invoice_pdf")],
+ ["Trade / Licence Document",val(d,"license_url","licence_url","trade_license_url","trade_licence_url")],
+ ["Supporting Document",val(d,"document_url","supporting_document_url")]
+ ].filter(x=>x[1]!=="—");
+ const box=document.getElementById("documents");
+ if(!files.length){
+  box.innerHTML='<div class="doc"><h4>Documents</h4><span style="font-size:9px;color:#777">No document links were returned by the backend.</span></div>';
+  return;
+ }
+ box.innerHTML=files.map(x=>`<div class="doc"><h4>${esc(x[0])}</h4><a href="${esc(x[1])}" target="_blank" rel="noopener noreferrer">Open submitted document →</a></div>`).join("");
+}
+
+function renderPhotos(d){
+ const photos=[
+ ["Front Photo",val(d,"front_photo_url","front_photo")],
+ ["Back Photo",val(d,"back_photo_url","back_photo")],
+ ["Serial Number Photo",val(d,"serial_photo_url","serial_number_photo","serial_photo")],
+ ["Manufacturer Label",val(d,"manufacturer_label_url","manufacturer_label")],
+ ["Display Photo",val(d,"display_photo_url","display_photo")],
+ ["Full Machine Photo",val(d,"full_photo_url","full_photo")]
+ ];
+ const box=document.getElementById("photos");
+ box.innerHTML=photos.map(x=>{
+  if(x[1]==="—")return`<div class="photo"><div class="placeholder">No photograph submitted</div><div class="photo-name">${esc(x[0])}</div></div>`;
+  return`<div class="photo"><img src="${esc(x[1])}" alt="${esc(x[0])}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="placeholder" style="display:none">Unable to preview image</div><div class="photo-name">${esc(x[0])}</div></div>`;
+ }).join("");
+}
+
+function renderGeo(d){
+ const geoValid=d.geotag_verified??d.geo_tag_verified??d.geotag_valid??d.geo_verified;
+ const match=d.address_match??d.location_match??d.geotag_address_match??d.geo_match;
+
+ set("latitude",val(d,"latitude","geo_latitude","lat"));
+ set("longitude",val(d,"longitude","geo_longitude","lng","lon"));
+
+ const gs=document.getElementById("geoStatus");
+ const gm=document.getElementById("geoMatch");
+
+ if(geoValid===true||String(geoValid).toLowerCase()==="true"){
+  gs.textContent="VALID GEO-TAG";
+  gs.className="geo-ok";
+ }else if(geoValid===false||String(geoValid).toLowerCase()==="false"){
+  gs.textContent="GEO-TAG NOT VERIFIED";
+  gs.className="geo-bad";
+ }else{
+  gs.textContent="Not returned by backend";
+  gs.className="geo-pending";
+ }
+
+ if(match===true||String(match).toLowerCase()==="true"){
+  gm.textContent="MATCHES SHOP ADDRESS";
+  gm.className="geo-ok";
+ }else if(match===false||String(match).toLowerCase()==="false"){
+  gm.textContent="DOES NOT MATCH";
+  gm.className="geo-bad";
+ }else{
+  gm.textContent="Not returned by backend";
+  gm.className="geo-pending";
+ }
+}
+
+function render(d){
+ requestData=d;
+ set("requestId",val(d,"id","request_id","verification_id"));
+ set("currentStatus",val(d,"status","verification_status"));
+ set("ownerName",val(d,"owner_name","ownerName"));
+ set("phone",val(d,"phone_number","phone","mobile_number"));
+ set("email",val(d,"email","owner_email"));
+ set("businessName",val(d,"business_name","store_name","businessName"));
+ set("businessType",val(d,"business_type"));
+ set("city",val(d,"city"));
+ set("address",val(d,"address","complete_address"));
+
+ set("instrumentId",val(d,"instrument_id","instrumentId"));
+ set("instrumentType",val(d,"instrument_type","instrumentType"));
+ set("manufacturer",val(d,"manufacturer"));
+ set("model",val(d,"model"));
+ set("serialNumber",val(d,"serial_number","serialNumber"));
+ set("capacity",val(d,"capacity"));
+ set("specification",val(d,"specification","specifications"));
+ set("submittedOn",date(val(d,"created_at","submitted_at","submission_date")));
+
+ renderDocuments(d);
+ renderPhotos(d);
+ renderGeo(d);
+
+ const s=statusValue(d);
+ document.getElementById("currentStatus").innerHTML=`<span class="status ${s}">${esc(val(d,"status","verification_status"))}</span>`;
+
+ if(s!=="pending"){
+  document.getElementById("decisionBox").style.display="none";
+  alertBox(s==="verified"?"This instrument has already been verified.":"This request has already been rejected.","warning");
+ }
+}
+
+async function load(){
+ if(!REQUEST_ID){
+  document.getElementById("loading").style.display="none";
+  alertBox("No verification request ID was supplied. Open this page using the Review button in verificationrequests.html.","error");
+  return;
+ }
+ try{
+  const r=await fetch(API.get(REQUEST_ID));
+  if(!r.ok)throw new Error("HTTP "+r.status);
+  const raw=await r.json();
+  const d=raw.data||raw.verification||raw;
+  document.getElementById("loading").style.display="none";
+  document.getElementById("content").style.display="block";
+  render(d);
+ }catch(e){
+  console.error(e);
+  document.getElementById("loading").style.display="none";
+  alertBox("Unable to load this verification request from the backend. Check the backend connection and request ID.","error");
+ }
+}
+
+async function makeDecision(newStatus){
+ if(!requestData)return;
+
+ const reason=document.getElementById("remarks").value.trim();
+
+ if(newStatus==="rejected"&&!reason){
+  alertBox("A rejection reason is mandatory.","error");
+  return;
+ }
+
+ const id=val(requestData,"id","request_id","verification_id");
+ if(id==="—"){
+  alertBox("The backend did not return a request ID. The decision cannot be submitted.","error");
+  return;
+ }
+
+ const verify=document.getElementById("verifyBtn");
+ const reject=document.getElementById("rejectBtn");
+ verify.disabled=true;reject.disabled=true;
+
+ try{
+  /*
+   Expected backend contract:
+   PATCH /api/official/verifications/{id}
+   {
+     status: "verified" | "rejected",
+     reason: "...",
+     verified_by: employee ID
+   }
+
+   On verification, the backend should generate/store:
+   certificate_number
+   machine_code
+   verification_date
+   expiry_date
+   qr_url (optional)
+  */
+  const response=await fetch(API.update(id),{
+   method:"PATCH",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({
+    status:newStatus,
+    reason:reason,
+    verified_by:EMPLOYEE_ID||null,
+    verified_by_name:EMPLOYEE_NAME||null
+   })
+  });
+
+  if(!response.ok)throw new Error("HTTP "+response.status);
+
+  const raw=await response.json();
+  const updated=raw.data||raw.verification||raw;
+
+  Object.assign(requestData,updated);
+  requestData.status=newStatus;
+
+  if(newStatus==="verified"){
+   alertBox("Instrument verified successfully. Certificate data has been updated in the backend.","success");
+  }else{
+   alertBox("Verification request rejected successfully.","success");
+  }
+
+  render(requestData);
+
+  if(newStatus==="verified"){
+   const certificateId=val(requestData,"id","request_id","verification_id");
+   setTimeout(()=>{
+    window.location.href="verificationcertificate.html?id="+encodeURIComponent(certificateId);
+   },900);
+  }
+
+ }catch(e){
+  console.error(e);
+  alertBox("The decision could not be submitted. Check the backend PATCH endpoint and try again.","error");
+ }finally{
+  verify.disabled=false;reject.disabled=false;
+ }
+}
+
+document.addEventListener("DOMContentLoaded",load);
+</script>
+</body>
+</html>

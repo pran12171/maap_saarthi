@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Complaints & Violations | MaapSaarthi</title>
+<style>
+:root{
+ --blue:#003b73;--navy:#002b55;--saffron:#e87516;--green:#16823a;
+ --red:#b3261e;--bg:#f2f4f6;--border:#cbd3da;--muted:#68747c;--amber:#956000;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#202428;font-family:Arial,"Noto Sans",sans-serif}
+.top{height:34px;background:var(--navy);border-bottom:3px solid var(--saffron);color:#fff;padding:0 5%;display:flex;align-items:center;justify-content:space-between;font-size:11px}
+header{background:#fff;border-bottom:1px solid var(--border)}
+.head{width:90%;max-width:1200px;min-height:75px;margin:auto;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px}.brand img{width:52px;height:52px;object-fit:contain}
+.brand h1{margin:0;color:var(--blue);font-size:21px}.brand p{margin:3px 0 0;color:#777;font-size:9px}
+.user{text-align:right;color:var(--blue);font-size:10px;font-weight:800}.user span{display:block;color:#777;font-size:8px;margin-top:3px}
+.nav{background:#fff;border-bottom:1px solid var(--border);box-shadow:0 2px 5px #0000000a}
+.navin{width:90%;max-width:1200px;margin:auto;display:flex}
+.nav-item{position:relative}.nav-link{min-height:46px;padding:0 18px;display:flex;align-items:center;gap:7px;color:#28333b;font-size:10px;font-weight:800;border-right:1px solid #e5e9ec;cursor:pointer}
+.nav-link:hover,.nav-item:hover .nav-link,.nav-item.active .nav-link{color:var(--blue);background:#f7f9fa;border-bottom:3px solid var(--saffron)}
+.dropdown{display:none;position:absolute;top:46px;left:0;min-width:220px;background:#fff;border:1px solid var(--border);box-shadow:0 7px 18px #00000018;z-index:50}
+.nav-item:hover .dropdown{display:block}.dropdown a{display:block;padding:13px 16px;color:var(--blue);text-decoration:none;font-size:10px;font-weight:700;border-bottom:1px solid #e7eaec}.dropdown a:hover{background:#f2f6f9}
+main{width:90%;max-width:1200px;margin:27px auto 55px}.back{display:inline-block;color:var(--blue);font-size:10px;font-weight:800;text-decoration:none;margin-bottom:15px}.back:hover{text-decoration:underline}
+.title{margin-bottom:18px}.line{width:48px;height:4px;background:var(--saffron);margin-bottom:9px}.title h2{margin:0;color:var(--blue);font-size:25px}.title p{margin:5px 0 0;color:var(--muted);font-size:10px}
+.alert{display:none;padding:11px 13px;border-radius:3px;font-size:9px;font-weight:800;margin-bottom:15px}.alert.show{display:block}.error{background:#fff0ef;border:1px solid #dfb8b4;color:var(--red)}.success{background:#edf8ed;border:1px solid #b9dbb5;color:var(--green)}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:18px 0}.sum{background:#fff;border:1px solid var(--border);padding:15px;position:relative}.sum:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}
+.sum.pending:before{background:var(--saffron)}.sum.resolved:before{background:var(--green)}.sum.violation:before{background:var(--red)}
+.sl{font-size:8px;color:#777;text-transform:uppercase;font-weight:800}.sv{font-size:24px;color:var(--blue);font-weight:900;margin-top:5px}
+.filters{background:#fff;border:1px solid var(--border);padding:17px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr auto;gap:11px;align-items:end;box-shadow:0 4px 13px #0000000d;margin-bottom:18px}
+label{display:block;font-size:8px;color:#707a82;text-transform:uppercase;font-weight:800;margin-bottom:5px}
+input,select,textarea{width:100%;padding:10px 11px;border:1px solid var(--border);border-radius:3px;background:#fff;font-family:inherit;font-size:10px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 2px #003b7312}
+.btn{padding:10px 15px;border-radius:3px;cursor:pointer;font-size:9px;font-weight:900}.primary{background:var(--blue);border:1px solid var(--blue);color:#fff}.secondary{background:#fff;border:1px solid #b8c5ce;color:var(--blue)}.danger{background:var(--red);border:1px solid var(--red);color:#fff}
+.panel{background:#fff;border:1px solid var(--border);box-shadow:0 4px 13px #0000000d}.panel-head{padding:14px 17px;background:#fafbfc;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}.panel-head h3{margin:0;color:var(--blue);font-size:12px}.count{background:var(--blue);color:#fff;border-radius:3px;padding:5px 9px;font-size:8px;font-weight:900}
+.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:1100px}th{background:#f0f3f5;color:#4e5960;font-size:8px;text-transform:uppercase;text-align:left;padding:11px 10px;border-bottom:1px solid var(--border)}td{padding:12px 10px;border-bottom:1px solid #e4e8eb;font-size:9px}td strong{font-size:9px}
+.status{display:inline-block;padding:5px 8px;border-radius:3px;font-size:8px;font-weight:900}.active{background:#e8f6e6;color:var(--green)}.pending{background:#fff4df;color:var(--amber)}.resolved{background:#e8f6e6;color:var(--green)}.rejected{background:#fff0ef;color:var(--red)}.investigating{background:#edf3f8;color:var(--blue)}.high{background:#fff0ef;color:var(--red)}.medium{background:#fff4df;color:var(--amber)}.low{background:#edf0f2;color:#68747c}
+.state{text-align:center;padding:45px 20px;color:#777;font-size:10px}.state strong{display:block;color:var(--blue);font-size:12px;margin-bottom:5px}
+.spinner{width:23px;height:23px;border:3px solid #dbe1e5;border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 10px}@keyframes spin{to{transform:rotate(360deg)}}
+.modal{display:none;position:fixed;inset:0;background:#00000078;z-index:100;padding:25px 15px;overflow:auto}.modal.show{display:flex;justify-content:center;align-items:flex-start}
+.modal-card{width:100%;max-width:900px;background:#fff;border:1px solid var(--border);box-shadow:0 10px 35px #00000030}.modal-head{background:var(--blue);border-top:4px solid var(--saffron);color:#fff;padding:14px 18px;display:flex;justify-content:space-between;align-items:center}.modal-head h3{margin:0;font-size:14px}.close{background:none;border:0;color:#fff;font-size:23px;cursor:pointer}.modal-body{padding:18px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid #dce1e5}.detail{padding:11px;border-bottom:1px solid #e1e5e8}.detail:nth-child(odd){border-right:1px solid #e1e5e8}.detail label{margin-bottom:4px}.detail span{font-size:10px;font-weight:700;word-break:break-word}
+.evidence{margin-top:17px;border-top:1px solid var(--border);padding-top:15px}.evidence h4,.actionbox h4{font-size:11px;color:var(--blue);margin:0 0 9px}.evidence-list{display:flex;flex-wrap:wrap;gap:8px}.evidence-list a{padding:8px 10px;border:1px solid #b8c5ce;border-radius:3px;color:var(--blue);font-size:9px;font-weight:800;text-decoration:none}
+.actionbox{margin-top:18px;border-top:1px solid var(--border);padding-top:15px}.actionbox textarea{min-height:75px;resize:vertical}.modal-actions{display:flex;gap:9px;margin-top:10px}
+footer{background:var(--navy);border-top:4px solid var(--saffron);color:#fff;padding:24px 5% 15px}.foot{width:90%;max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:25px}.foot h4{font-size:11px;margin:0 0 4px}.foot p{font-size:8px;color:#c0cad1;margin:0}.bottom{width:90%;max-width:1200px;margin:14px auto 0;padding-top:9px;border-top:1px solid #ffffff26;display:flex;justify-content:space-between;font-size:8px;color:#aeb9c1}
+@media(max-width:1050px){.filters{grid-template-columns:1fr 1fr}.summary{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.top{justify-content:center}.top span:last-child,.user{display:none}.head,main,.navin{width:94%}.navin{overflow-x:auto}.nav-link{white-space:nowrap;padding:0 12px}.filters,.summary,.detail-grid{grid-template-columns:1fr}.detail:nth-child(odd){border-right:0}.foot,.bottom{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<div class="top"><span>Government of India</span><span>Legal Metrology | Department of Consumer Affairs</span></div>
+
+<header><div class="head">
+<div class="brand"><img src="../images/sihlogo.png" alt="MaapSaarthi Logo"><div><h1>MaapSaarthi</h1><p>Digital Legal Metrology Platform</p></div></div>
+<div class="user">Official Portal<span id="employeeName">Authorized Personnel</span></div>
+</div></header>
+
+<nav class="nav"><div class="navin">
+<div class="nav-item"><div class="nav-link">Dashboard</div><div class="dropdown"><a href="officialdashboard.html">Official Dashboard</a></div></div>
+<div class="nav-item"><div class="nav-link">Verification <span>⌄</span></div><div class="dropdown"><a href="verificationrequests.html">Verification Requests</a><a href="verificationrequests.html">Pending Verifications</a><a href="verificationrequests.html">Certificate Records</a></div></div>
+<div class="nav-item"><div class="nav-link">Instruments <span>⌄</span></div><div class="dropdown"><a href="verifyinstrument.html">Registered Instruments</a><a href="verifiedinstruments.html">Verified Instruments</a><a href="expiredinstruments.html">Expired Instruments</a></div></div>
+<div class="nav-item"><div class="nav-link">Retailers <span>⌄</span></div><div class="dropdown"><a href="retailerrecords.html">Retailer Records</a><a href="retailerrecords.html">Registered Retailers</a><a href="retailerrecords.html">Compliance Records</a></div></div>
+<div class="nav-item active"><div class="nav-link">Complaints <span>⌄</span></div><div class="dropdown"><a href="complaints.html">Active Complaints</a><a href="complaints.html">Complaint Records</a><a href="complaints.html">Violations</a></div></div>
+<div class="nav-item"><div class="nav-link">Reports <span>⌄</span></div><div class="dropdown"><a href="compliancereport.html">Compliance Overview</a><a href="cityverificationreport.html">City-wise Verification Report</a><a href="instrumentverificationreport.html">Instrument Verification Report</a></div></div>
+</div></nav>
+
+<main>
+<a href="officialdashboard.html" class="back">← Back to Official Dashboard</a>
+<section class="title"><div class="line"></div><h2>Complaints & Violations</h2><p>Review consumer complaints, investigate reported issues and record official action.</p></section>
+<div id="pageAlert" class="alert"></div>
+
+<section class="summary">
+<div class="sum"><div class="sl">Total Complaints</div><div id="total" class="sv">—</div></div>
+<div class="sum pending"><div class="sl">Pending / Active</div><div id="pending" class="sv">—</div></div>
+<div class="sum resolved"><div class="sl">Resolved</div><div id="resolved" class="sv">—</div></div>
+<div class="sum violation"><div class="sl">Violations</div><div id="violations" class="sv">—</div></div>
+</section>
+
+<section class="filters">
+<div><label for="search">Search Complaint</label><input id="search" placeholder="Complaint ID, consumer, business or instrument"></div>
+<div><label for="city">City</label><input id="city" placeholder="Enter city"></div>
+<div><label for="status">Status</label><select id="status"><option value="">All Statuses</option><option value="pending">Pending</option><option value="investigating">Investigating</option><option value="resolved">Resolved</option><option value="rejected">Rejected</option></select></div>
+<div><label for="priority">Priority</label><select id="priority"><option value="">All Priorities</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></div>
+<button class="btn primary" onclick="loadComplaints()">Search</button>
+</section>
+
+<section class="panel">
+<div class="panel-head"><h3>Complaint Records</h3><span id="count" class="count">0</span></div>
+<div id="tableContainer"><div class="state"><div class="spinner"></div><strong>Loading complaint records</strong>Connecting to the backend...</div></div>
+</section>
+</main>
+
+<div id="modal" class="modal">
+<div class="modal-card">
+<div class="modal-head"><h3>Complaint Details</h3><button class="close" onclick="closeModal()">×</button></div>
+<div class="modal-body">
+<div id="details" class="detail-grid"></div>
+<div class="evidence"><h4>Submitted Evidence</h4><div id="evidence" class="evidence-list"></div></div>
+<div id="actionbox" class="actionbox">
+<h4>Official Action</h4>
+<textarea id="remarks" placeholder="Enter investigation remarks or official action."></textarea>
+<div class="modal-actions">
+<button class="btn primary" onclick="updateComplaint('investigating')">Mark Investigating</button>
+<button class="btn resolved" style="border:1px solid var(--green);background:var(--green);color:#fff" onclick="updateComplaint('resolved')">Resolve Complaint</button>
+<button class="btn danger" onclick="updateComplaint('rejected')">Reject</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<footer><div class="foot"><div><h4>MaapSaarthi</h4><p>Digital Legal Metrology Platform</p></div><div><h4>Government of India</h4><p>Department of Consumer Affairs</p></div><div><h4>Legal Metrology</h4><p>Official Complaint Records</p></div></div><div class="bottom"><span>© 2026 MaapSaarthi</span><span>Government of India | Legal Metrology</span></div></footer>
+
+<script>
+const API_BASE="http://10.250.20.18:8000";
+const ENDPOINT=API_BASE+"/api/complaints";
+let complaints=[],selected=null;
+const employeeId=localStorage.getItem("officialEmployeeId")||"";
+const employeeName=localStorage.getItem("officialEmployeeName")||"";
+if(employeeName)document.getElementById("employeeName").textContent=employeeName;
+
+function val(o,...keys){for(const k of keys)if(o&&o[k]!==undefined&&o[k]!==null&&String(o[k]).trim()!=="")return o[k];return"—"}
+function esc(v){return String(v??"—").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}
+function cls(v){return String(v||"").toLowerCase().replace(/[^a-z]/g,"")}
+function status(r){const s=String(val(r,"status","complaint_status")).toLowerCase();if(s.includes("invest"))return"investigating";if(s.includes("resolv"))return"resolved";if(s.includes("reject"))return"rejected";return"pending"}
+function priority(r){const p=String(val(r,"priority","severity")).toLowerCase();return p.includes("high")?"high":p.includes("medium")?"medium":"low"}
+function updateSummary(){
+ document.getElementById("total").textContent=complaints.length;
+ document.getElementById("pending").textContent=complaints.filter(r=>["pending","investigating"].includes(status(r))).length;
+ document.getElementById("resolved").textContent=complaints.filter(r=>status(r)==="resolved").length;
+ document.getElementById("violations").textContent=complaints.filter(r=>r.is_violation===true||String(val(r,"violation_status","violation")).toLowerCase().includes("violation")).length;
+ document.getElementById("count").textContent=complaints.length;
+}
+function render(){
+ const box=document.getElementById("tableContainer");
+ if(!complaints.length){box.innerHTML='<div class="state"><strong>No complaint records found</strong>No records match the current search or filter.</div>';return}
+ box.innerHTML=`<div class="tablewrap"><table><thead><tr><th>Complaint ID</th><th>Consumer</th><th>Business</th><th>City</th><th>Instrument ID</th><th>Issue</th><th>Priority</th><th>Status</th><th>Action</th></tr></thead><tbody>`+
+ complaints.map((r,i)=>`<tr>
+ <td><strong>${esc(val(r,"complaint_id","id","complaintId"))}</strong></td>
+ <td>${esc(val(r,"consumer_name","consumerName","name"))}</td>
+ <td>${esc(val(r,"business_name","store_name","businessName"))}</td>
+ <td>${esc(val(r,"city"))}</td>
+ <td>${esc(val(r,"instrument_id","instrumentId"))}</td>
+ <td>${esc(val(r,"complaint_type","issue","subject"))}</td>
+ <td><span class="status ${priority(r)}">${esc(val(r,"priority","severity")||"Low")}</span></td>
+ <td><span class="status ${status(r)}">${esc(val(r,"status","complaint_status")||"Pending")}</span></td>
+ <td><button class="btn secondary" onclick="openComplaint(${i})">Review</button></td>
+ </tr>`).join("")+
+ `</tbody></table></div>`;
+}
+async function loadComplaints(){
+ const box=document.getElementById("tableContainer");
+ box.innerHTML='<div class="state"><div class="spinner"></div><strong>Loading complaint records</strong>Searching the backend...</div>';
+ const q=new URLSearchParams();
+ const s=document.getElementById("search").value.trim(),c=document.getElementById("city").value.trim(),st=document.getElementById("status").value,p=document.getElementById("priority").value;
+ if(s)q.set("search",s);if(c)q.set("city",c);if(st)q.set("status",st);if(p)q.set("priority",p);
+ try{
+  const r=await fetch(ENDPOINT+(q.toString()?"?"+q:""));
+  if(!r.ok)throw new Error("HTTP "+r.status);
+  const raw=await r.json();
+  complaints=Array.isArray(raw)?raw:(raw.complaints||raw.results||raw.data||[]);
+  updateSummary();render();hideAlert();
+ }catch(e){
+  console.error(e);complaints=[];updateSummary();
+  box.innerHTML='<div class="state"><strong>Unable to load complaint records</strong>Check the FastAPI backend connection and complaints endpoint.</div>';
+  showAlert("Backend connection failed. No demonstration complaint records are displayed.","error");
+ }
+}
+function openComplaint(i){
+ selected=complaints[i];if(!selected)return;
+ const fields=[
+ ["Complaint ID",val(selected,"complaint_id","id","complaintId")],
+ ["Submitted On",val(selected,"created_at","submitted_at","submission_date")],
+ ["Consumer Name",val(selected,"consumer_name","consumerName","name")],
+ ["Consumer Phone",val(selected,"consumer_phone","phone","phone_number")],
+ ["Business Name",val(selected,"business_name","store_name","businessName")],
+ ["Owner Name",val(selected,"owner_name","ownerName")],
+ ["City",val(selected,"city")],
+ ["Complete Address",val(selected,"address","complete_address")],
+ ["Instrument ID",val(selected,"instrument_id","instrumentId")],
+ ["Instrument Type",val(selected,"instrument_type","instrumentType")],
+ ["Manufacturer",val(selected,"manufacturer")],
+ ["Serial Number",val(selected,"serial_number","serialNumber")],
+ ["Complaint Type",val(selected,"complaint_type","issue","subject")],
+ ["Description",val(selected,"description","complaint_description")],
+ ["Priority",val(selected,"priority","severity")],
+ ["Status",val(selected,"status","complaint_status")],
+ ["Violation",val(selected,"violation_status","violation")]
+ ];
+ document.getElementById("details").innerHTML=fields.map(f=>`<div class="detail"><label>${esc(f[0])}</label><span>${esc(f[1])}</span></div>`).join("");
+ const evidence=selected.evidence||selected.attachments||[];
+ const ev=Array.isArray(evidence)?evidence:[];
+ document.getElementById("evidence").innerHTML=ev.length?ev.map((x,i)=>{
+  const u=typeof x==="string"?x:(x.url||x.file_url||x.path);
+  return u?`<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">Evidence ${i+1} →</a>`:"";
+ }).join(""):'<span style="font-size:9px;color:#777">No evidence links returned by the backend.</span>';
+ const st=status(selected);document.getElementById("actionbox").style.display=(st==="pending"||st==="investigating")?"block":"none";
+ document.getElementById("remarks").value="";
+ document.getElementById("modal").classList.add("show");
+}
+async function updateComplaint(newStatus){
+ if(!selected)return;
+ const id=val(selected,"id","complaint_id","complaintId");if(id==="—"){showAlert("The backend did not return a complaint ID.","error");return}
+ try{
+  const r=await fetch(ENDPOINT+"/"+encodeURIComponent(id),{
+   method:"PATCH",headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({status:newStatus,remarks:document.getElementById("remarks").value.trim(),handled_by:employeeId||null,handled_by_name:employeeName||null})
+  });
+  if(!r.ok)throw new Error("HTTP "+r.status);
+  showAlert("Complaint status updated successfully.","success");closeModal();loadComplaints();
+ }catch(e){console.error(e);showAlert("Unable to update the complaint. Check the backend PATCH endpoint.","error")}
+}
+function closeModal(){document.getElementById("modal").classList.remove("show");selected=null}
+function showAlert(t,type){const a=document.getElementById("pageAlert");a.textContent=t;a.className="alert show "+type}
+function hideAlert(){const a=document.getElementById("pageAlert");a.textContent="";a.className="alert"}
+document.getElementById("modal").addEventListener("click",e=>{if(e.target===document.getElementById("modal"))closeModal()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+document.addEventListener("DOMContentLoaded",loadComplaints);
+</script>
+</body>
+</html>

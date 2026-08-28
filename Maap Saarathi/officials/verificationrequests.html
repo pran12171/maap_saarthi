@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Verification Requests | MaapSaarthi</title>
+<style>
+:root{--blue:#003366;--dark:#00264d;--saffron:#e87500;--green:#138808;--red:#b3261e;--bg:#f3f5f7;--border:#ccd4da;--muted:#69727a}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;background:var(--bg);color:#202428}
+.top{height:35px;background:var(--dark);border-bottom:3px solid var(--saffron);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:0 5%;font-size:11px}
+header{background:#fff;border-bottom:1px solid var(--border)}.head{width:90%;max-width:1250px;min-height:74px;margin:auto;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px}.brand img{width:50px;height:50px;object-fit:contain}.brand h1{font-size:21px;color:var(--blue)}.brand p{font-size:9px;color:#777;margin-top:3px}
+.portal{text-align:right;color:var(--blue);font-size:10px;font-weight:bold}.portal span{display:block;color:#777;font-size:8px;margin-top:3px}
+.logout{border:1px solid #d1aaa6;background:#fff;color:var(--red);padding:8px 14px;border-radius:3px;cursor:pointer;font-size:10px;font-weight:bold;margin-left:15px}
+.nav{background:#fff;border-bottom:1px solid var(--border);box-shadow:0 2px 5px #0000000a}.navin{width:90%;max-width:1250px;margin:auto;display:flex}.nav a{min-height:48px;padding:0 18px;display:flex;align-items:center;color:#28333b;text-decoration:none;font-size:11px;font-weight:bold;border-right:1px solid #e7eaec}.nav a:hover,.nav a.active{color:var(--blue);background:#f7f9fa;border-bottom:3px solid var(--saffron)}
+main{width:90%;max-width:1250px;margin:28px auto 60px}.line{width:48px;height:4px;background:var(--saffron);margin-bottom:9px}.title h2{color:var(--blue);font-size:25px}.title p{color:var(--muted);font-size:10px;margin-top:5px}
+.filters{margin-top:18px;background:#fff;border:1px solid var(--border);padding:18px;display:grid;grid-template-columns:1.3fr 1fr 1fr auto;gap:12px;align-items:end;box-shadow:0 4px 12px #0000000d}
+label{display:block;font-size:9px;font-weight:bold;margin-bottom:6px}input,select,textarea{width:100%;padding:10px 11px;border:1px solid var(--border);border-radius:3px;background:#fff;font-family:inherit;font-size:10px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 2px #00336612}
+.btn{padding:10px 15px;border-radius:3px;font-size:9px;font-weight:bold;cursor:pointer;border:1px solid var(--blue)}.primary{background:var(--blue);color:#fff}.primary:hover{background:var(--dark)}.secondary{background:#fff;color:var(--blue);border-color:#b8c5ce}.secondary:hover{background:#eef4f8}.verify{background:var(--green);color:#fff;border-color:var(--green)}.reject{background:var(--red);color:#fff;border-color:var(--red)}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:18px 0}.sum{background:#fff;border:1px solid var(--border);padding:15px;position:relative}.sum:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}.sum.pending:before{background:var(--saffron)}.sum.verified:before{background:var(--green)}.sum.rejected:before{background:var(--red)}.sl{font-size:9px;color:#777;font-weight:bold;text-transform:uppercase}.sv{font-size:24px;color:var(--blue);font-weight:800;margin-top:5px}
+.panel{background:#fff;border:1px solid var(--border);box-shadow:0 4px 12px #0000000d}.phead{padding:14px 18px;background:#fafbfc;border-bottom:1px solid var(--border);display:flex;justify-content:space-between}.phead h3{font-size:13px;color:var(--blue)}.count{background:var(--blue);color:#fff;padding:5px 9px;border-radius:3px;font-size:8px;font-weight:bold}
+.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:950px}th{background:#f0f3f5;color:#4c565d;font-size:8px;text-transform:uppercase;padding:11px 10px;text-align:left;border-bottom:1px solid var(--border)}td{padding:12px 10px;border-bottom:1px solid #e5e8ea;font-size:9px}td strong{font-size:9px}.status{display:inline-block;padding:5px 8px;border-radius:3px;font-size:8px;font-weight:bold}.pending{background:#fff4df;color:#965900}.verified{background:#e8f6e6;color:var(--green)}.rejected{background:#fff0ef;color:var(--red)}
+.state{text-align:center;padding:42px 20px;color:#777;font-size:10px}.state strong{display:block;color:var(--blue);font-size:12px;margin-bottom:5px}.spinner{width:22px;height:22px;border:3px solid #dbe2e7;border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 10px}@keyframes spin{to{transform:rotate(360deg)}}
+.alert{display:none;padding:10px 12px;margin-top:15px;border-radius:3px;font-size:9px;font-weight:bold}.alert.show{display:block}.alert.error{background:#fff0ef;border:1px solid #e2b8b4;color:var(--red)}.alert.success{background:#edf8ed;border:1px solid #b8dcb4;color:var(--green)}
+.modal{display:none;position:fixed;inset:0;background:#0000007a;z-index:100;padding:25px 15px;overflow:auto}.modal.show{display:flex;justify-content:center;align-items:flex-start}.modalcard{width:100%;max-width:850px;background:#fff;border:1px solid var(--border)}.mhead{background:var(--blue);border-top:5px solid var(--saffron);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}.mhead h3{font-size:15px}.close{border:0;background:none;color:#fff;font-size:24px;cursor:pointer}.mbody{padding:20px}.details{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid #e0e5e8}.detail{padding:12px;border-bottom:1px solid #e0e5e8}.detail:nth-child(odd){border-right:1px solid #e0e5e8}.detail label{color:#777;margin-bottom:4px}.detail span{font-size:10px;font-weight:bold;word-break:break-word}.docs{margin-top:18px;border-top:1px solid var(--border);padding-top:15px}.docs h4,.decision h4{font-size:11px;color:var(--blue);margin-bottom:9px}.doclist{display:flex;flex-wrap:wrap;gap:8px}.doclist a{padding:8px 10px;border:1px solid #b8c5ce;border-radius:3px;color:var(--blue);font-size:9px;font-weight:bold;text-decoration:none}.decision{margin-top:18px;border-top:1px solid var(--border);padding-top:15px}.actions{display:flex;gap:9px;margin-top:10px}
+footer{background:var(--dark);border-top:4px solid var(--saffron);color:#fff;padding:25px 5% 15px}.foot{width:90%;max-width:1250px;margin:auto;display:flex;justify-content:space-between;gap:25px}.foot h4{font-size:12px;margin-bottom:4px}.foot p{font-size:9px;color:#bdc8d0}.bottom{width:90%;max-width:1250px;margin:15px auto 0;padding-top:10px;border-top:1px solid #ffffff26;display:flex;justify-content:space-between;font-size:8px;color:#aeb9c1}
+@media(max-width:900px){.filters{grid-template-columns:1fr 1fr}.summary{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.top{justify-content:center}.top span:last-child,.portal{display:none}.head,main,.navin{width:94%}.filters,.summary{grid-template-columns:1fr}.navin{overflow-x:auto}.nav a{white-space:nowrap;padding:0 12px}.details{grid-template-columns:1fr}.detail:nth-child(odd){border-right:0}.foot,.bottom{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<div class="top"><span>Government of India</span><span>Legal Metrology | Department of Consumer Affairs</span></div>
+
+<header>
+<div class="head">
+<div class="brand">
+<img src="../images/sihlogo.png" alt="MaapSaarthi Logo">
+<div><h1>MaapSaarthi</h1><p>Digital Legal Metrology Platform</p></div>
+</div>
+<div style="display:flex;align-items:center">
+<div class="portal">Government Official Portal<span id="officialName">Authorized Personnel Access</span></div>
+<button class="logout" onclick="logout()">Logout</button>
+</div>
+</div>
+</header>
+
+<nav class="nav">
+<div class="navin">
+<a href="officialdashboard.html">Dashboard</a>
+<a class="active" href="verificationrequests.html">Verification Requests</a>
+<a href="#filters">Search & Filters</a>
+<a href="#records">Records</a>
+</div>
+</nav>
+
+<main>
+<section class="title">
+<div class="line"></div>
+<h2>Verification Requests</h2>
+<p>Review retailer-submitted instruments and take official verification action.</p>
+</section>
+
+<div id="pageAlert" class="alert"></div>
+
+<section id="filters" class="filters">
+<div><label for="searchInput">Search</label><input id="searchInput" placeholder="Instrument ID, retailer or serial number"></div>
+<div><label for="cityInput">City</label><input id="cityInput" placeholder="Enter city name"></div>
+<div><label for="statusFilter">Verification Status</label><select id="statusFilter"><option value="">All Statuses</option><option value="pending">Pending</option><option value="verified">Verified</option><option value="rejected">Rejected</option></select></div>
+<button class="btn primary" onclick="loadRequests()">Search</button>
+</section>
+
+<section class="summary">
+<div class="sum"><div class="sl">Total Requests</div><div id="total" class="sv">—</div></div>
+<div class="sum pending"><div class="sl">Pending</div><div id="pending" class="sv">—</div></div>
+<div class="sum verified"><div class="sl">Verified</div><div id="verified" class="sv">—</div></div>
+<div class="sum rejected"><div class="sl">Rejected</div><div id="rejected" class="sv">—</div></div>
+</section>
+
+<section id="records" class="panel">
+<div class="phead"><h3>Verification Request Records</h3><span id="recordCount" class="count">0</span></div>
+<div id="tableContainer"><div class="state"><div class="spinner"></div><strong>Loading verification requests</strong>Connecting to the backend...</div></div>
+</section>
+</main>
+
+<div id="modal" class="modal">
+<div class="modalcard">
+<div class="mhead"><h3>Verification Request Details</h3><button class="close" onclick="closeModal()">×</button></div>
+<div class="mbody">
+<div id="modalAlert" class="alert" style="margin-top:0"></div>
+<div id="details" class="details"></div>
+<div class="docs"><h4>Submitted Documents & Photographs</h4><div id="doclist" class="doclist"></div></div>
+<div id="decision" class="decision">
+<h4>Official Decision</h4>
+<textarea id="reason" placeholder="Enter a rejection reason when rejecting. You may also add an official note when verifying."></textarea>
+<div class="actions">
+<button class="btn verify" onclick="decide('verified')">Verify Instrument</button>
+<button class="btn reject" onclick="decide('rejected')">Reject Request</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="foot">
+<div><h4>MaapSaarthi</h4><p>Digital Legal Metrology Platform</p></div>
+<div><h4>Government of India</h4><p>Department of Consumer Affairs</p></div>
+<div><h4>Official Portal</h4><p>Authorized Personnel Access</p></div>
+</div>
+<div class="bottom"><span>© 2026 MaapSaarthi</span><span>Government of India | Legal Metrology</span></div>
+</footer>
+
+<script>
+const API_BASE="http://10.250.20.18:8000";
+const API={requests:API_BASE+"/api/official/verifications"};
+const employeeId=localStorage.getItem("officialEmployeeId");
+const employeeName=localStorage.getItem("officialEmployeeName");
+let records=[],selected=null;
+
+if(employeeName)document.getElementById("officialName").textContent=employeeName;
+
+async function getJSON(url,options={}){
+ const r=await fetch(url,options);
+ if(!r.ok)throw new Error("HTTP "+r.status);
+ return r.json();
+}
+
+function normalize(data){
+ return Array.isArray(data)?data:(data.verifications||data.requests||data.results||data.data||[]);
+}
+
+function val(r,...keys){
+ for(const k of keys)if(r[k]!==undefined&&r[k]!==null&&String(r[k]).trim()!=="")return r[k];
+ return "—";
+}
+
+function status(r){
+ const s=String(r.status||r.verification_status||"pending").toLowerCase();
+ if(s.includes("reject"))return"rejected";
+ if(s.includes("verify")||s.includes("approv"))return"verified";
+ return"pending";
+}
+
+function esc(v){
+ return String(v??"—").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+}
+
+async function loadRequests(){
+ const search=document.getElementById("searchInput").value.trim();
+ const city=document.getElementById("cityInput").value.trim();
+ const stat=document.getElementById("statusFilter").value;
+ const box=document.getElementById("tableContainer");
+ box.innerHTML='<div class="state"><div class="spinner"></div>Loading verification requests...</div>';
+ const p=new URLSearchParams();
+ if(search)p.set("search",search);
+ if(city)p.set("city",city);
+ if(stat)p.set("status",stat);
+ try{
+   const data=await getJSON(API.requests+(p.toString()?"?"+p:""));
+   records=normalize(data);
+   updateSummary();
+   render();
+   hideAlert();
+ }catch(e){
+   records=[];
+   updateSummary();
+   box.innerHTML='<div class="state"><strong>Unable to load verification requests</strong>Check the FastAPI backend connection and endpoint.</div>';
+   alertBox("Backend connection failed. No demonstration records are displayed.","error");
+ }
+}
+
+function updateSummary(){
+ document.getElementById("total").textContent=records.length;
+ document.getElementById("pending").textContent=records.filter(r=>status(r)==="pending").length;
+ document.getElementById("verified").textContent=records.filter(r=>status(r)==="verified").length;
+ document.getElementById("rejected").textContent=records.filter(r=>status(r)==="rejected").length;
+ document.getElementById("recordCount").textContent=records.length;
+}
+
+function render(){
+ const box=document.getElementById("tableContainer");
+ if(!records.length){
+  box.innerHTML='<div class="state"><strong>No verification requests found</strong>No records match the current search or filter.</div>';
+  return;
+ }
+ let rows="";
+ records.forEach((r,i)=>{
+  rows+=`<tr>
+   <td><strong>${esc(val(r,"instrument_id","instrumentId"))}</strong></td>
+   <td>${esc(val(r,"business_name","store_name","businessName"))}</td>
+   <td>${esc(val(r,"city"))}</td>
+   <td>${esc(val(r,"instrument_type","instrumentType"))}</td>
+   <td>${esc(val(r,"manufacturer"))}</td>
+   <td>${esc(val(r,"serial_number","serialNumber"))}</td>
+   <td><span class="status ${status(r)}">${esc(r.status||r.verification_status||"Pending")}</span></td>
+   <td><button class="btn secondary" onclick="openRequest(${i})">Review</button></td>
+  </tr>`;
+ });
+ box.innerHTML=`<div class="tablewrap"><table><thead><tr><th>Instrument ID</th><th>Retailer / Business</th><th>City</th><th>Instrument</th><th>Manufacturer</th><th>Serial Number</th><th>Status</th><th>Action</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+function openRequest(i){
+ selected=records[i];
+ if(!selected)return;
+ const fields=[
+ ["Instrument ID",val(selected,"instrument_id","instrumentId")],
+ ["Instrument Type",val(selected,"instrument_type","instrumentType")],
+ ["Manufacturer",val(selected,"manufacturer")],
+ ["Model",val(selected,"model")],
+ ["Serial Number",val(selected,"serial_number","serialNumber")],
+ ["Capacity",val(selected,"capacity")],
+ ["Specification",val(selected,"specification","specifications")],
+ ["Owner Name",val(selected,"owner_name","ownerName")],
+ ["Phone Number",val(selected,"phone_number","phone")],
+ ["Business Name",val(selected,"business_name","store_name","businessName")],
+ ["Business Type",val(selected,"business_type")],
+ ["City",val(selected,"city")],
+ ["Complete Address",val(selected,"address","complete_address")],
+ ["Submitted On",val(selected,"created_at","submitted_at","submission_date")],
+ ["Verification Status",val(selected,"status","verification_status")]
+ ];
+ document.getElementById("details").innerHTML=fields.map(f=>`<div class="detail"><label>${esc(f[0])}</label><span>${esc(f[1])}</span></div>`).join("");
+ renderDocs();
+ document.getElementById("reason").value="";
+ hideModalAlert();
+ const pending=status(selected)==="pending";
+ document.getElementById("decision").style.display=pending?"block":"none";
+ document.getElementById("modal").classList.add("show");
+}
+
+function renderDocs(){
+ const c=document.getElementById("doclist");
+ const files=[
+ ["Invoice PDF",selected.invoice_url||selected.invoice],
+ ["Front Photograph",selected.front_photo_url],
+ ["Back Photograph",selected.back_photo_url],
+ ["Serial Number Photograph",selected.serial_photo_url],
+ ["Manufacturer Label",selected.manufacturer_label_url],
+ ["Display Photograph",selected.display_photo_url],
+ ["Full Machine Photograph",selected.full_photo_url]
+ ].filter(x=>x[1]);
+ if(!files.length){
+  c.innerHTML='<span class="muted">No document or photograph links were returned by the backend.</span>';
+  return;
+ }
+ c.innerHTML=files.map(x=>`<a href="${esc(x[1])}" target="_blank" rel="noopener noreferrer">${esc(x[0])}</a>`).join("");
+}
+
+async function decide(newStatus){
+ if(!selected)return;
+ const reason=document.getElementById("reason").value.trim();
+ if(newStatus==="rejected"&&!reason){
+  modalAlert("A rejection reason is required.","error");return;
+ }
+ const id=val(selected,"id","request_id","verification_id");
+ if(id==="—"){
+  modalAlert("This request has no backend request ID, so the decision cannot be submitted.","error");return;
+ }
+ try{
+  await getJSON(API.requests+"/"+encodeURIComponent(id),{
+   method:"PATCH",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({status:newStatus,reason,verified_by:employeeId||null})
+  });
+  modalAlert(newStatus==="verified"?"Instrument verified successfully.":"Verification request rejected successfully.","success");
+  setTimeout(()=>{closeModal();loadRequests()},700);
+ }catch(e){
+  console.error(e);
+  modalAlert("The decision could not be submitted. Check the backend endpoint.","error");
+ }
+}
+
+function alertBox(text,type){
+ const a=document.getElementById("pageAlert");a.textContent=text;a.className="alert show "+type;
+}
+function hideAlert(){
+ const a=document.getElementById("pageAlert");a.className="alert";a.textContent="";
+}
+function modalAlert(text,type){
+ const a=document.getElementById("modalAlert");a.textContent=text;a.className="alert show "+type;
+}
+function hideModalAlert(){
+ const a=document.getElementById("modalAlert");a.className="alert";a.textContent="";
+}
+function closeModal(){document.getElementById("modal").classList.remove("show");selected=null}
+function logout(){
+ localStorage.removeItem("officialEmployeeId");
+ localStorage.removeItem("officialEmployeeName");
+ location.href="officiallogin.html";
+}
+
+document.getElementById("modal").addEventListener("click",e=>{if(e.target===document.getElementById("modal"))closeModal()});
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape")closeModal();
+ if(e.key==="Enter"&&!e.target.matches("textarea")&&!document.getElementById("modal").classList.contains("show"))loadRequests();
+});
+document.addEventListener("DOMContentLoaded",loadRequests);
+</script>
+</body>
+</html>

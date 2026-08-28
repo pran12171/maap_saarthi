@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Official Dashboard | MaapSaarthi</title>
+
+<style>
+:root{
+    --blue:#003366;
+    --dark:#00264d;
+    --blue2:#005a9c;
+    --saffron:#e87500;
+    --green:#138808;
+    --bg:#f3f5f7;
+    --white:#fff;
+    --text:#202428;
+    --muted:#68727b;
+    --border:#cbd3da;
+    --danger:#b3261e;
+    --warning:#a86400;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+    font-family:Arial,"Noto Sans",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+/* TOP GOVERNMENT STRIP */
+.top-strip{
+    height:35px;
+    background:var(--dark);
+    border-bottom:3px solid var(--saffron);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    font-size:11px;
+}
+
+/* HEADER */
+header{
+    background:#fff;
+    border-bottom:1px solid var(--border);
+}
+.header-inner{
+    width:90%;
+    max-width:1250px;
+    min-height:74px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+.brand img{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+}
+.brand h1{
+    color:var(--blue);
+    font-size:21px;
+    font-weight:800;
+}
+.brand p{
+    color:#737b82;
+    font-size:9px;
+    margin-top:3px;
+}
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+.portal-label{
+    text-align:right;
+    color:var(--blue);
+    font-size:10px;
+    font-weight:800;
+}
+.portal-label span{
+    display:block;
+    color:#777;
+    font-size:8px;
+    margin-top:3px;
+}
+.logout{
+    border:1px solid #d1aaa6;
+    background:#fff;
+    color:var(--danger);
+    padding:8px 14px;
+    border-radius:3px;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:800;
+}
+.logout:hover{background:#fff2f0}
+
+/* DROPDOWN NAV */
+.navbar{
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    box-shadow:0 2px 5px rgba(0,0,0,.04);
+}
+.nav-inner{
+    width:90%;
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    align-items:stretch;
+}
+.nav-item{
+    position:relative;
+}
+.nav-link{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    min-height:48px;
+    padding:0 18px;
+    color:#28333b;
+    text-decoration:none;
+    font-size:11px;
+    font-weight:800;
+    border-right:1px solid #e7eaec;
+    cursor:pointer;
+}
+.nav-link:hover,
+.nav-item.active .nav-link{
+    color:var(--blue);
+    background:#f7f9fa;
+    border-bottom:3px solid var(--saffron);
+}
+.arrow{
+    font-size:12px;
+    line-height:1;
+}
+.dropdown{
+    display:none;
+    position:absolute;
+    top:48px;
+    left:0;
+    min-width:235px;
+    background:#fff;
+    border:1px solid var(--border);
+    box-shadow:0 7px 18px rgba(0,0,0,.12);
+    z-index:100;
+}
+.nav-item:hover .dropdown,
+.nav-item.open .dropdown{
+    display:block;
+}
+.dropdown a{
+    display:block;
+    padding:12px 15px;
+    color:#3e78ae;
+    text-decoration:none;
+    border-bottom:1px solid #e7eaec;
+    font-size:11px;
+    font-weight:600;
+}
+.dropdown a:last-child{border-bottom:none}
+.dropdown a:hover{
+    background:#f1f5f8;
+    color:var(--blue);
+}
+.mobile-menu{
+    display:none;
+}
+
+/* MAIN */
+main{
+    width:90%;
+    max-width:1250px;
+    margin:0 auto 60px;
+}
+
+/* WELCOME */
+.welcome{
+    margin-top:28px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-left:5px solid var(--blue);
+    box-shadow:0 4px 13px rgba(0,0,0,.06);
+    padding:21px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:25px;
+}
+.welcome h2{
+    color:var(--blue);
+    font-size:25px;
+    margin-bottom:5px;
+}
+.welcome p{
+    color:var(--muted);
+    font-size:11px;
+}
+.datetime{
+    min-width:205px;
+    text-align:right;
+}
+.datetime .date{
+    color:var(--blue);
+    font-size:12px;
+    font-weight:800;
+}
+.datetime .time{
+    color:#4d555b;
+    font-size:11px;
+    margin-top:5px;
+}
+
+/* SECTION TITLE */
+.section-title{
+    margin:28px 0 15px;
+}
+.section-title .line{
+    width:48px;
+    height:4px;
+    background:var(--saffron);
+    margin-bottom:9px;
+}
+.section-title h3{
+    color:var(--blue);
+    font-size:18px;
+}
+.section-title p{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:4px;
+}
+
+/* METRICS */
+.metrics{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+.metric{
+    background:#fff;
+    border:1px solid var(--border);
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+    padding:20px;
+    position:relative;
+    overflow:hidden;
+}
+.metric:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:4px;
+    height:100%;
+    background:var(--blue);
+}
+.metric.complaints:before{background:var(--saffron)}
+.metric.violations:before{background:var(--danger)}
+.metric.compliance:before{background:var(--green)}
+.metric-label{
+    color:#69737b;
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.35px;
+}
+.metric-value{
+    color:var(--blue);
+    font-size:30px;
+    font-weight:800;
+    margin-top:7px;
+}
+.metric-sub{
+    color:#777;
+    font-size:9px;
+    margin-top:4px;
+}
+
+/* CITY FILTER */
+.city-panel{
+    background:#fff;
+    border:1px solid var(--border);
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+    padding:20px;
+}
+.filter-row{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:15px;
+    align-items:end;
+}
+.form-group label{
+    display:block;
+    color:#30363b;
+    font-size:10px;
+    font-weight:800;
+    margin-bottom:7px;
+}
+select{
+    width:100%;
+    padding:11px 12px;
+    border:1px solid var(--border);
+    border-radius:3px;
+    background:#fff;
+    color:#222;
+    font-family:inherit;
+    font-size:11px;
+    outline:none;
+}
+select:focus{
+    border-color:var(--blue);
+    box-shadow:0 0 0 2px rgba(0,51,102,.08);
+}
+.form-group input{
+    width:100%;
+    padding:11px 12px;
+    border:1px solid var(--border);
+    border-radius:3px;
+    background:#fff;
+    color:#222;
+    font-family:inherit;
+    font-size:11px;
+    outline:none;
+}
+.form-group input:focus{
+    border-color:var(--blue);
+    box-shadow:0 0 0 2px rgba(0,51,102,.08);
+}
+.city-hint{
+    color:#777;
+    font-size:8px;
+    margin-top:6px;
+    line-height:1.5;
+}
+.related-cities{
+    display:none;
+    margin-top:15px;
+    padding:12px;
+    background:#f7f9fa;
+    border:1px solid #dbe1e5;
+}
+.related-cities.show{
+    display:block;
+}
+.related-title{
+    color:var(--blue);
+    font-size:9px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+.related-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+.related-city{
+    border:1px solid #b8c5ce;
+    background:#fff;
+    color:var(--blue);
+    border-radius:3px;
+    padding:7px 10px;
+    font-size:9px;
+    font-weight:700;
+    cursor:pointer;
+}
+.related-city:hover{
+    background:#eef4f8;
+}
+.refresh-btn{
+    padding:11px 20px;
+    background:var(--blue);
+    color:#fff;
+    border:1px solid var(--blue);
+    border-radius:3px;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:800;
+}
+.refresh-btn:hover{background:var(--dark)}
+
+/* REQUEST LIST */
+.request-panel{
+    margin-top:18px;
+    background:#fff;
+    border:1px solid var(--border);
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+.request-header{
+    padding:14px 18px;
+    background:#fafbfc;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.request-header h4{
+    color:var(--blue);
+    font-size:13px;
+}
+.count{
+    color:#fff;
+    background:var(--blue);
+    padding:5px 9px;
+    border-radius:3px;
+    font-size:9px;
+    font-weight:800;
+}
+.request-list{
+    display:flex;
+    flex-direction:column;
+}
+.request-row{
+    padding:16px 18px;
+    border-bottom:1px solid #e5e8ea;
+    display:grid;
+    grid-template-columns:1.1fr 1fr 1fr 1fr auto;
+    gap:14px;
+    align-items:center;
+}
+.request-row:last-child{border-bottom:none}
+.request-field label{
+    display:block;
+    color:#7b8389;
+    font-size:8px;
+    text-transform:uppercase;
+    letter-spacing:.35px;
+    margin-bottom:4px;
+}
+.request-field span{
+    display:block;
+    color:#252b30;
+    font-size:10px;
+    font-weight:700;
+}
+.status{
+    display:inline-block;
+    padding:6px 9px;
+    border-radius:3px;
+    font-size:8px;
+    font-weight:800;
+}
+.status.pending{background:#fff4df;color:#965900}
+.status.verified{background:#e8f6e6;color:var(--green)}
+.status.rejected{background:#fff0ef;color:var(--danger)}
+.view-btn{
+    padding:8px 12px;
+    background:#fff;
+    color:var(--blue);
+    border:1px solid #b8c5ce;
+    border-radius:3px;
+    cursor:pointer;
+    font-size:9px;
+    font-weight:800;
+}
+.view-btn:hover{background:#eef4f8}
+
+/* EMPTY / LOADING */
+.state{
+    padding:35px 20px;
+    text-align:center;
+    color:#777;
+    font-size:10px;
+}
+.state strong{
+    display:block;
+    color:var(--blue);
+    font-size:12px;
+    margin-bottom:5px;
+}
+.spinner{
+    width:22px;
+    height:22px;
+    border:3px solid #dbe2e7;
+    border-top-color:var(--blue);
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+    margin:0 auto 10px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.48);
+    z-index:500;
+    padding:35px 15px;
+    overflow:auto;
+}
+.modal.show{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+.modal-card{
+    width:100%;
+    max-width:760px;
+    background:#fff;
+    border:1px solid var(--border);
+    box-shadow:0 12px 35px rgba(0,0,0,.25);
+}
+.modal-head{
+    background:var(--blue);
+    color:#fff;
+    border-top:5px solid var(--saffron);
+    padding:16px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.modal-head h3{font-size:15px}
+.close{
+    border:none;
+    background:transparent;
+    color:#fff;
+    font-size:23px;
+    cursor:pointer;
+}
+.modal-body{
+    padding:22px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+}
+.detail{
+    padding:12px;
+    border-bottom:1px solid #e4e8eb;
+}
+.detail:nth-child(odd){border-right:1px solid #e4e8eb}
+.detail label{
+    display:block;
+    color:#777;
+    font-size:8px;
+    text-transform:uppercase;
+    margin-bottom:4px;
+}
+.detail span{
+    color:#222;
+    font-size:10px;
+    font-weight:700;
+}
+.modal-footer{
+    padding:13px 20px;
+    border-top:1px solid var(--border);
+    background:#fafbfc;
+    display:flex;
+    justify-content:flex-end;
+}
+
+/* FOOTER */
+footer{
+    background:var(--dark);
+    border-top:4px solid var(--saffron);
+    color:#fff;
+    padding:25px 5% 15px;
+}
+.footer-inner{
+    width:90%;
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:25px;
+}
+.footer-inner h4{font-size:12px;margin-bottom:4px}
+.footer-inner p{font-size:9px;color:#bdc8d0}
+.footer-bottom{
+    width:90%;
+    max-width:1250px;
+    margin:15px auto 0;
+    padding-top:10px;
+    border-top:1px solid rgba(255,255,255,.15);
+    display:flex;
+    justify-content:space-between;
+    font-size:8px;
+    color:#aeb9c1;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .nav-inner{overflow-x:auto}
+    .nav-link{padding:0 12px;white-space:nowrap}
+    .metrics{grid-template-columns:1fr}
+    .request-row{grid-template-columns:repeat(2,1fr)}
+    .request-row .view-btn{justify-self:start}
+}
+@media(max-width:650px){
+    .top-strip{justify-content:center}
+    .top-strip span:last-child,.portal-label{display:none}
+    .header-inner{width:94%}
+    .header-right{gap:8px}
+    .nav-inner,main{width:94%}
+    .welcome{flex-direction:column;align-items:flex-start}
+    .datetime{text-align:left}
+    .filter-row{grid-template-columns:1fr}
+    .request-row{grid-template-columns:1fr}
+    .modal-body{grid-template-columns:1fr}
+    .detail:nth-child(odd){border-right:none}
+    .footer-inner,.footer-bottom{flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+
+<!-- GOVERNMENT BAR -->
+<div class="top-strip">
+    <span>Government of India</span>
+    <span>Legal Metrology | Department of Consumer Affairs</span>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="header-inner">
+
+        <div class="brand">
+            <img src="../images/sihlogo.png" alt="MaapSaarthi Logo">
+            <div>
+                <h1>MaapSaarthi</h1>
+                <p>Digital Legal Metrology Platform</p>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <div class="portal-label">
+                Government Official Portal
+                <span>Authorized Personnel Access</span>
+            </div>
+
+            <button class="logout" onclick="logout()">
+                Logout
+            </button>
+        </div>
+
+    </div>
+</header>
+
+<!-- DROPDOWN NAVIGATION -->
+<nav class="navbar">
+    <div class="nav-inner">
+
+        <div class="nav-item active">
+            <a class="nav-link" href="officialdashboard.html">
+                Dashboard
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <div class="nav-link">
+                Verification
+                <span class="arrow">⌄</span>
+            </div>
+
+            <div class="dropdown">
+                <a href="verificationrequests.html">Verification Requests</a>
+                <a href="verificationrequests.html">Pending Verifications</a>
+                <a href="verificationrequests.html">Certificate Records</a>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <div class="nav-link">
+                Instruments
+                <span class="arrow">⌄</span>
+            </div>
+
+            <div class="dropdown">
+                <a href="instrumentrecords.html?view=registered">Registered Instruments</a>
+                <a href="instrumentrecords.html?view=verified">Verified Instruments</a>
+                <a href="instrumentrecords.html?view=expired">Expired Instruments</a>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <div class="nav-link">
+                Retailers
+                <span class="arrow">⌄</span>
+            </div>
+
+            <div class="dropdown">
+                <a href="retailerrecords.html">Retailer Records</a>
+                <a href="retailerrecords.html">Registered Retailers</a>
+                <a href="retailerrecords.html">Compliance Records</a>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <div class="nav-link">
+                Complaints
+                <span class="arrow">⌄</span>
+            </div>
+
+            <div class="dropdown">
+                <a href="complaints.html">Active Complaints</a>
+                <a href="complaints.html">Complaint Records</a>
+                <a href="complaints.html">Violations</a>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <div class="nav-link">
+                Reports
+                <span class="arrow">⌄</span>
+            </div>
+
+            <div class="dropdown">
+                <a href="compliancereport.html">Compliance Overview</a>
+                <a href="cityverificationreport.html">City-wise Verification Report</a>
+                <a href="instrumentverificationreport.html">Instrument Verification Report</a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+<main>
+
+    <!-- WELCOME -->
+    <section class="welcome">
+
+        <div>
+            <h2 id="welcomeName">
+                Welcome, Official
+            </h2>
+
+            <p>
+                Government Legal Metrology Official Dashboard
+            </p>
+        </div>
+
+        <div class="datetime">
+            <div id="currentDate" class="date">
+                --
+            </div>
+
+            <div id="currentTime" class="time">
+                --
+            </div>
+        </div>
+
+    </section>
+
+    <!-- MONITORING -->
+    <section id="metrics">
+
+        <div class="section-title">
+            <div class="line"></div>
+
+            <h3>
+                Compliance Monitoring
+            </h3>
+
+            <p>
+                Current system-wide monitoring indicators.
+            </p>
+        </div>
+
+        <div class="metrics">
+
+            <div class="metric complaints">
+                <div class="metric-label">
+                    Active Complaints
+                </div>
+
+                <div id="activeComplaints" class="metric-value">
+                    —
+                </div>
+
+                <div class="metric-sub">
+                    Complaints requiring official attention
+                </div>
+            </div>
+
+            <div class="metric violations">
+                <div class="metric-label">
+                    Violations
+                </div>
+
+                <div id="violations" class="metric-value">
+                    —
+                </div>
+
+                <div class="metric-sub">
+                    Recorded compliance violations
+                </div>
+            </div>
+
+            <div class="metric compliance">
+                <div class="metric-label">
+                    Compliance
+                </div>
+
+                <div id="compliance" class="metric-value">
+                    —
+                </div>
+
+                <div class="metric-sub">
+                    Current compliance indicator
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CITY FILTER -->
+    <section id="requests">
+
+        <div class="section-title">
+            <div class="line"></div>
+
+            <h3>
+                City-wise Verification Requests
+            </h3>
+
+            <p>
+                Select a city to view verification requests
+                associated with retailers registered in that city.
+            </p>
+        </div>
+
+        <div class="city-panel">
+
+            <div class="filter-row">
+
+                <div class="form-group">
+
+                    <label for="cityInput">
+                        Enter City Name
+                    </label>
+
+                    <input
+                        id="cityInput"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Enter city name"
+                        oninput="clearCitySearchState()"
+                        onkeydown="if(event.key === 'Enter') loadCityRequests()">
+
+                    <div id="cityHint" class="city-hint">
+                        Enter the city name exactly or approximately. The backend will search registered retailer locations.
+                    </div>
+
+                </div>
+
+                <button
+                    class="refresh-btn"
+                    type="button"
+                    onclick="loadCityRequests()">
+
+                    Search City
+
+                </button>
+
+            </div>
+
+            <div id="relatedCities" class="related-cities"></div>
+
+        </div>
+
+        <div class="request-panel">
+
+            <div class="request-header">
+
+                <h4 id="requestTitle">
+                    Verification Requests
+                </h4>
+
+                <span id="requestCount" class="count">
+                    0
+                </span>
+
+            </div>
+
+            <div id="requestList" class="request-list">
+
+                <div class="state">
+                    <strong>
+                        Select a city
+                    </strong>
+
+                    Select a city above to load its
+                    verification requests from the backend.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- COMPLAINT REFERENCE -->
+    <section id="complaints">
+
+        <div class="section-title">
+            <div class="line"></div>
+
+            <h3>
+                Complaint & Violation Monitoring
+            </h3>
+
+            <p>
+                Active complaints and compliance issues
+                requiring official review.
+            </p>
+        </div>
+
+        <div class="request-panel">
+
+            <div class="request-header">
+
+                <h4>
+                    Complaint Monitoring
+                </h4>
+
+                <span class="count">
+                    Live
+                </span>
+
+            </div>
+
+            <div class="state">
+
+                <strong>
+                    Backend Connected Monitoring
+                </strong>
+
+                Complaint counts shown above are intended
+                to be loaded from the MaapSaarthi backend.
+                No demonstration records are inserted here.
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- DETAILS MODAL -->
+<div id="detailsModal" class="modal">
+
+    <div class="modal-card">
+
+        <div class="modal-head">
+
+            <h3>
+                Verification Request Details
+            </h3>
+
+            <button
+                class="close"
+                onclick="closeModal()">
+                ×
+            </button>
+
+        </div>
+
+        <div id="modalBody" class="modal-body">
+        </div>
+
+        <div class="modal-footer">
+
+            <button
+                class="view-btn"
+                onclick="closeModal()">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-inner">
+
+        <div>
+            <h4>MaapSaarthi</h4>
+            <p>Digital Legal Metrology Platform</p>
+        </div>
+
+        <div>
+            <h4>Government of India</h4>
+            <p>Department of Consumer Affairs</p>
+        </div>
+
+        <div>
+            <h4>Official Portal</h4>
+            <p>Authorized Personnel Access</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 MaapSaarthi
+        </span>
+
+        <span>
+            Government of India | Legal Metrology
+        </span>
+
+    </div>
+
+</footer>
+
+<script>
+
+/* =========================================================
+   BACKEND CONFIGURATION
+
+   Change only API_BASE if your FastAPI server runs
+   at another address.
+========================================================= */
+
+const API_BASE = "http://10.250.20.18:8000";
+
+const API = {
+
+    cities:
+        API_BASE + "/api/official/cities",
+
+    verifications:
+        API_BASE + "/api/official/verifications",
+
+    metrics:
+        API_BASE + "/api/official/metrics"
+
+};
+
+
+/* =========================================================
+   EMPLOYEE SESSION
+========================================================= */
+
+const employeeId =
+    localStorage.getItem(
+        "officialEmployeeId"
+    );
+
+const employeeName =
+    localStorage.getItem(
+        "officialEmployeeName"
+    );
+
+
+if(employeeName){
+
+    document.getElementById(
+        "welcomeName"
+    ).textContent =
+        "Welcome, " + employeeName;
+
+}
+
+
+/* =========================================================
+   LIVE DATE & TIME
+========================================================= */
+
+function updateDateTime(){
+
+    const now =
+        new Date();
+
+    const date =
+        now.toLocaleDateString(
+            "en-IN",
+            {
+                weekday:"long",
+                day:"2-digit",
+                month:"long",
+                year:"numeric"
+            }
+        );
+
+    const time =
+        now.toLocaleTimeString(
+            "en-IN",
+            {
+                hour:"2-digit",
+                minute:"2-digit",
+                second:"2-digit",
+                hour12:true
+            }
+        );
+
+    document.getElementById(
+        "currentDate"
+    ).textContent =
+        date;
+
+    document.getElementById(
+        "currentTime"
+    ).textContent =
+        time;
+
+}
+
+updateDateTime();
+
+setInterval(
+    updateDateTime,
+    1000
+);
+
+
+/* =========================================================
+   FETCH JSON HELPER
+========================================================= */
+
+async function fetchJSON(
+    url,
+    options={}
+){
+
+    const response =
+        await fetch(
+            url,
+            options
+        );
+
+    if(
+        !response.ok
+    ){
+
+        throw new Error(
+            "Server returned HTTP " +
+            response.status
+        );
+
+    }
+
+    return await response.json();
+
+}
+
+
+/* =========================================================
+   LOAD DASHBOARD METRICS
+========================================================= */
+
+async function loadMetrics(){
+
+    try{
+
+        const data =
+            await fetchJSON(
+                API.metrics
+            );
+
+        /*
+            Supported response examples:
+
+            {
+                "active_complaints": 12,
+                "violations": 5,
+                "compliance": 94
+            }
+
+            OR nested:
+
+            {
+                "data": {
+                    ...
+                }
+            }
+        */
+
+        const metrics =
+            data.data ||
+            data;
+
+        setMetric(
+            "activeComplaints",
+            metrics.active_complaints ??
+            metrics.activeComplaints
+        );
+
+        setMetric(
+            "violations",
+            metrics.violations ??
+            metrics.active_violations
+        );
+
+        setMetric(
+            "compliance",
+            metrics.compliance ??
+            metrics.compliance_percentage
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "Metrics error:",
+            error
+        );
+
+        /*
+            Do not show fake numbers.
+        */
+
+        setMetric(
+            "activeComplaints",
+            "—"
+        );
+
+        setMetric(
+            "violations",
+            "—"
+        );
+
+        setMetric(
+            "compliance",
+            "—"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SET METRIC
+========================================================= */
+
+function setMetric(
+    id,
+    value
+){
+
+    const element =
+        document.getElementById(
+            id
+        );
+
+    if(
+        value === undefined ||
+        value === null ||
+        value === ""
+    ){
+
+        element.textContent =
+            "—";
+
+        return;
+
+    }
+
+    /*
+        Add % only to compliance if the backend
+        returns a numeric percentage without it.
+    */
+
+    if(
+        id === "compliance" &&
+        typeof value === "number"
+    ){
+
+        element.textContent =
+            value + "%";
+
+    }
+    else{
+
+        element.textContent =
+            value;
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD CITIES
+========================================================= */
+
+async function searchCities(cityName){
+
+    const relatedBox =
+        document.getElementById(
+            "relatedCities"
+        );
+
+    relatedBox.innerHTML = "";
+    relatedBox.classList.remove("show");
+
+    if(!cityName){
+        return [];
+    }
+
+    try{
+
+        /*
+            Backend should return either:
+            ["Hyderabad","Vijayawada"]
+
+            or:
+            {"cities":["Hyderabad","Vijayawada"]}
+
+            or:
+            {"data":["Hyderabad","Vijayawada"]}
+        */
+
+        const url =
+            API.cities +
+            "?search=" +
+            encodeURIComponent(cityName);
+
+        const data =
+            await fetchJSON(url);
+
+        const cities =
+            Array.isArray(data)
+                ? data
+                : (
+                    data.cities ||
+                    data.data ||
+                    data.related_cities ||
+                    []
+                );
+
+        return cities
+            .map(city =>
+                typeof city === "object"
+                    ? (
+                        city.name ||
+                        city.city ||
+                        ""
+                    )
+                    : city
+            )
+            .filter(Boolean);
+
+    }
+    catch(error){
+
+        console.error(
+            "City search error:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================================
+   CITY SEARCH STATE
+========================================================= */
+
+function clearCitySearchState(){
+
+    document.getElementById(
+        "relatedCities"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =========================================================
+   SHOW RELATED CITIES
+========================================================= */
+
+function showRelatedCities(
+    cities
+){
+
+    const box =
+        document.getElementById(
+            "relatedCities"
+        );
+
+    if(!cities.length){
+        box.innerHTML = "";
+        box.classList.remove("show");
+        return;
+    }
+
+    const uniqueCities =
+        [...new Set(
+            cities.map(
+                city => String(city).trim()
+            )
+        )];
+
+    box.innerHTML = `
+        <div class="related-title">
+            Related cities found in the backend
+        </div>
+
+        <div class="related-list">
+            ${uniqueCities.map(
+                city => `
+                    <button
+                        type="button"
+                        class="related-city"
+                        data-city="${escapeHTML(city)}">
+                        ${escapeHTML(city)}
+                    </button>
+                `
+            ).join("")}
+        </div>
+    `;
+
+    box.classList.add("show");
+
+    box.querySelectorAll(
+        ".related-city"
+    ).forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    document.getElementById(
+                        "cityInput"
+                    ).value =
+                        this.dataset.city;
+
+                    box.classList.remove(
+                        "show"
+                    );
+
+                    loadCityRequests();
+
+                }
+            );
+
+        }
+    );
+
+}
+
+/* =========================================================
+   LOAD CITY VERIFICATIONS
+========================================================= */
+
+async function loadCityRequests(){
+
+    const cityInput =
+        document.getElementById(
+            "cityInput"
+        );
+
+    const city =
+        cityInput.value.trim();
+
+    const list =
+        document.getElementById(
+            "requestList"
+        );
+
+    const count =
+        document.getElementById(
+            "requestCount"
+        );
+
+    const title =
+        document.getElementById(
+            "requestTitle"
+        );
+
+    const hint =
+        document.getElementById(
+            "cityHint"
+        );
+
+    const relatedBox =
+        document.getElementById(
+            "relatedCities"
+        );
+
+
+    if(!city){
+
+        title.textContent =
+            "Verification Requests";
+
+        count.textContent =
+            "0";
+
+        relatedBox.classList.remove("show");
+
+        hint.textContent =
+            "Please enter a city name.";
+
+        list.innerHTML = `
+            <div class="state">
+                <strong>City name required</strong>
+                Enter a city name to search the backend.
+            </div>
+        `;
+
+        cityInput.focus();
+
+        return;
+
+    }
+
+
+    hint.textContent =
+        "Searching the backend for \"" +
+        city +
+        "\"...";
+
+    relatedBox.classList.remove("show");
+
+    list.innerHTML = `
+        <div class="state">
+            <div class="spinner"></div>
+            Searching city and loading verification requests...
+        </div>
+    `;
+
+
+    try{
+
+        /*
+            First search the backend for the city.
+            This lets the backend perform the authoritative
+            city-name lookup against retailer records.
+        */
+
+        const cityMatches =
+            await searchCities(city);
+
+
+        /*
+            Then request verification records using the
+            exact city name typed by the official.
+        */
+
+        const url =
+            API.verifications +
+            "?city=" +
+            encodeURIComponent(city);
+
+
+        const data =
+            await fetchJSON(url);
+
+
+        const records =
+            Array.isArray(data)
+                ? data
+                : (
+                    data.verifications ||
+                    data.requests ||
+                    data.data ||
+                    []
+                );
+
+
+        /*
+            Exact/usable result found.
+        */
+
+        if(records.length){
+
+            title.textContent =
+                city +
+                " Verification Requests";
+
+            count.textContent =
+                records.length;
+
+            hint.textContent =
+                "Showing verification requests available for " +
+                city +
+                ".";
+
+            renderRequests(
+                records
+            );
+
+            return;
+
+        }
+
+
+        /*
+            No records for typed city.
+            Show related backend cities when available.
+        */
+
+        title.textContent =
+            "Verification Requests";
+
+        count.textContent =
+            "0";
+
+
+        if(cityMatches.length){
+
+            hint.textContent =
+                "City not found for verification records. Select a related city stored in the backend.";
+
+            showRelatedCities(
+                cityMatches
+            );
+
+            list.innerHTML = `
+                <div class="state">
+                    <strong>No exact city match found</strong>
+                    Select one of the related cities above to view its verification requests.
+                </div>
+            `;
+
+        }
+        else{
+
+            hint.textContent =
+                "No matching city was found in the backend.";
+
+            list.innerHTML = `
+                <div class="state">
+                    <strong>City not found</strong>
+                    No registered city matching "${escapeHTML(city)}" was found in the backend.
+                </div>
+            `;
+
+        }
+
+    }
+    catch(error){
+
+        console.error(
+            "Verification loading error:",
+            error
+        );
+
+        count.textContent =
+            "0";
+
+        title.textContent =
+            "Verification Requests";
+
+        hint.textContent =
+            "Unable to search the backend.";
+
+        list.innerHTML = `
+            <div class="state">
+                <strong>Backend connection unavailable</strong>
+                The city search could not be completed. Please check the backend connection and try again.
+            </div>
+        `;
+
+    }
+
+}
+
+/* =========================================================
+   RENDER REQUESTS
+========================================================= */
+
+function renderRequests(
+    records
+){
+
+    const list =
+        document.getElementById(
+            "requestList"
+        );
+
+
+    if(
+        !records.length
+    ){
+
+        list.innerHTML = `
+            <div class="state">
+                <strong>No verification requests found</strong>
+                There are currently no records available for this city.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+        "";
+
+
+    records.forEach(
+        (
+            record,
+            index
+        ) => {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+            row.className =
+                "request-row";
+
+
+            const status =
+                String(
+                    record.status ||
+                    record.verification_status ||
+                    "Pending"
+                );
+
+
+            row.innerHTML = `
+
+                <div class="request-field">
+                    <label>Instrument ID</label>
+                    <span>
+                        ${escapeHTML(
+                            value(
+                                record.instrument_id,
+                                record.instrumentId,
+                                "—"
+                            )
+                        )}
+                    </span>
+                </div>
+
+                <div class="request-field">
+                    <label>Retailer / Business</label>
+                    <span>
+                        ${escapeHTML(
+                            value(
+                                record.business_name,
+                                record.store_name,
+                                record.businessName,
+                                "—"
+                            )
+                        )}
+                    </span>
+                </div>
+
+                <div class="request-field">
+                    <label>Instrument</label>
+                    <span>
+                        ${escapeHTML(
+                            value(
+                                record.instrument_type,
+                                record.instrumentType,
+                                "—"
+                            )
+                        )}
+                    </span>
+                </div>
+
+                <div class="request-field">
+                    <label>Manufacturer</label>
+                    <span>
+                        ${escapeHTML(
+                            value(
+                                record.manufacturer,
+                                "—"
+                            )
+                        )}
+                    </span>
+                </div>
+
+                <div>
+                    <span class="status ${statusClass(status)}">
+                        ${escapeHTML(status)}
+                    </span>
+
+                    <button
+                        class="view-btn"
+                        style="margin-top:6px"
+                        onclick="showRequestDetails(${index})">
+
+                        View Details
+
+                    </button>
+                </div>
+
+            `;
+
+
+            list.appendChild(
+                row
+            );
+
+        }
+    );
+
+
+    /*
+        Keep records available for modal details.
+    */
+
+    window.currentVerificationRecords =
+        records;
+
+}
+
+
+/* =========================================================
+   VALUE HELPER
+========================================================= */
+
+function value(
+    ...values
+){
+
+    for(
+        const item of values
+    ){
+
+        if(
+            item !== undefined &&
+            item !== null &&
+            String(item).trim() !== ""
+        ){
+
+            return item;
+
+        }
+
+    }
+
+    return "—";
+
+}
+
+
+/* =========================================================
+   STATUS CLASS
+========================================================= */
+
+function statusClass(
+    status
+){
+
+    const normalized =
+        String(
+            status
+        )
+        .toLowerCase();
+
+
+    if(
+        normalized.includes(
+            "verified"
+        ) ||
+        normalized.includes(
+            "approved"
+        )
+    ){
+
+        return "verified";
+
+    }
+
+
+    if(
+        normalized.includes(
+            "reject"
+        )
+    ){
+
+        return "rejected";
+
+    }
+
+
+    return "pending";
+
+}
+
+
+/* =========================================================
+   VIEW DETAILS
+========================================================= */
+
+function showRequestDetails(
+    index
+){
+
+    const record =
+        window.currentVerificationRecords?.[
+            index
+        ];
+
+
+    if(
+        !record
+    ){
+
+        return;
+
+    }
+
+
+    const fields = [
+
+        [
+            "Instrument ID",
+            value(
+                record.instrument_id,
+                record.instrumentId
+            )
+        ],
+
+        [
+            "Instrument Type",
+            value(
+                record.instrument_type,
+                record.instrumentType
+            )
+        ],
+
+        [
+            "Manufacturer",
+            value(
+                record.manufacturer
+            )
+        ],
+
+        [
+            "Model",
+            value(
+                record.model
+            )
+        ],
+
+        [
+            "Serial Number",
+            value(
+                record.serial_number,
+                record.serialNumber
+            )
+        ],
+
+        [
+            "Capacity",
+            value(
+                record.capacity
+            )
+        ],
+
+        [
+            "Specification",
+            value(
+                record.specification,
+                record.specifications
+            )
+        ],
+
+        [
+            "Owner Name",
+            value(
+                record.owner_name,
+                record.ownerName
+            )
+        ],
+
+        [
+            "Phone Number",
+            value(
+                record.phone_number,
+                record.phone
+            )
+        ],
+
+        [
+            "Business Name",
+            value(
+                record.business_name,
+                record.store_name
+            )
+        ],
+
+        [
+            "Business Type",
+            value(
+                record.business_type
+            )
+        ],
+
+        [
+            "City",
+            value(
+                record.city
+            )
+        ],
+
+        [
+            "Complete Address",
+            value(
+                record.address,
+                record.complete_address
+            )
+        ],
+
+        [
+            "Verification Status",
+            value(
+                record.status,
+                record.verification_status
+            )
+        ]
+
+    ];
+
+
+    const modalBody =
+        document.getElementById(
+            "modalBody"
+        );
+
+
+    modalBody.innerHTML =
+        "";
+
+
+    fields.forEach(
+        field => {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+            div.className =
+                "detail";
+
+
+            div.innerHTML = `
+                <label>${escapeHTML(field[0])}</label>
+                <span>${escapeHTML(field[1])}</span>
+            `;
+
+
+            modalBody.appendChild(
+                div
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "detailsModal"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closeModal(){
+
+    document.getElementById(
+        "detailsModal"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(
+    value
+){
+
+    return String(
+        value ?? "—"
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logout(){
+
+    localStorage.removeItem(
+        "officialEmployeeId"
+    );
+
+    localStorage.removeItem(
+        "officialEmployeeName"
+    );
+
+    window.location.href =
+        "officiallogin.html";
+
+}
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function(){
+
+        /*
+            Load only real backend data.
+            No demo verification records or fake metrics
+            are inserted by this dashboard.
+        */
+
+        await loadMetrics();
+
+    }
+);
+
+
+/* =========================================================
+   MODAL CLICK OUTSIDE
+========================================================= */
+
+document.getElementById(
+    "detailsModal"
+).addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target === this
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>

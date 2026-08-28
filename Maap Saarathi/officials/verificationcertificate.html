@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification Certificate | MaapSaarthi</title>
+<style>
+:root{--blue:#003b73;--navy:#002b55;--gold:#b8872b;--green:#16823a;--bg:#eef1f4;--border:#b9c4cc;--text:#20252a;--muted:#68737c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,"Noto Sans",sans-serif;color:var(--text)}
+.topbar{height:34px;background:var(--navy);border-bottom:3px solid #e47b16;color:#fff;padding:0 5%;display:flex;align-items:center;justify-content:space-between;font-size:11px}
+.toolbar{width:92%;max-width:1100px;margin:18px auto;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.toolbar a,.toolbar button{font:700 10px Arial,sans-serif}
+.back{color:var(--blue);text-decoration:none}.back:hover{text-decoration:underline}
+.toolbar-actions{display:flex;gap:8px}
+.btn{border-radius:3px;padding:10px 14px;cursor:pointer;font-size:9px;font-weight:800}
+.btn-print{background:#fff;border:1px solid #b8c4cc;color:var(--blue)}
+.btn-download{background:var(--blue);border:1px solid var(--blue);color:#fff}
+main{width:92%;max-width:1100px;margin:0 auto 45px}
+.notice{display:none;padding:12px 15px;background:#fff0ef;border:1px solid #ddb2ad;color:#9d251e;font-size:10px;font-weight:700;margin-bottom:14px;border-radius:3px}
+.notice.show{display:block}
+.certificate{background:#fff;border:1px solid #aeb9c0;box-shadow:0 8px 28px #00000018;padding:35px 42px;position:relative;min-height:1050px}
+.certificate:after{content:"";position:absolute;inset:10px;border:1px solid #d8c18d;pointer-events:none}
+.cert-top{position:relative;text-align:center;padding-bottom:18px;border-bottom:2px solid var(--blue);min-height:150px}
+.logo{position:absolute;left:0;top:0;width:78px;height:78px;object-fit:contain}
+.emblem{position:absolute;right:0;top:0;width:70px;height:88px;object-fit:contain}
+.department{padding:3px 95px 0;font-weight:800;color:var(--blue);font-size:13px;line-height:1.45;text-transform:uppercase}
+.cert-title{margin:72px 0 0;color:var(--blue);font-family:Georgia,serif;font-size:28px;letter-spacing:.8px}
+.subtitle{font-size:11px;color:#555;margin-top:5px}
+.verified-banner{display:inline-block;margin-top:12px;padding:7px 17px;border:1px solid var(--green);border-radius:3px;color:var(--green);font-size:10px;font-weight:900;letter-spacing:.5px}
+.section{margin-top:21px}
+.section-title{display:inline-block;background:var(--blue);color:#fff;padding:7px 12px;font-size:11px;font-weight:900;letter-spacing:.2px;border-radius:3px 3px 0 0}
+.grid{border:1px solid #c6d0d7;display:grid;grid-template-columns:1fr 1fr}
+.field{min-height:48px;padding:9px 12px;border-bottom:1px solid #e0e5e8}
+.field:nth-child(odd){border-right:1px solid #e0e5e8}
+.field label{display:block;color:var(--muted);font-size:8px;text-transform:uppercase;margin-bottom:4px}
+.field span{display:block;color:#1f2a31;font-size:10px;font-weight:700;min-height:12px;word-break:break-word}
+.verify-box{border:1px solid #c6d0d7;display:grid;grid-template-columns:1fr 180px;padding:15px;align-items:center}
+.codes .field{border:0;padding:7px 5px}
+.codes .field label{font-size:8px}
+.codes .field span{font-size:11px;color:var(--blue)}
+.qr-area{text-align:center;border-left:1px solid #d9dfe3;padding-left:18px}
+.qr{width:135px;height:135px;border:1px solid #c6d0d7;padding:5px;object-fit:contain;background:#fff}
+.qr-caption{font-size:7px;color:#777;margin-top:5px}
+.cert-bottom{margin-top:25px;border-top:1px solid #d5dade;padding-top:17px;display:grid;grid-template-columns:1fr 170px;align-items:end}
+.employee{font-size:9px;line-height:1.7;color:#555}.employee strong{color:var(--blue);font-size:10px}
+.employee-name{font-size:14px!important;color:var(--blue)!important}
+.stamp{width:125px;height:125px;border:4px double var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--green);font-size:12px;font-weight:900;transform:rotate(-10deg);margin-left:auto}
+.stamp small{font-size:6px}
+.note{margin-top:15px;border:1px solid #c7d0d6;padding:9px;text-align:center;color:#52606a;font-size:8px;line-height:1.5}
+@media(max-width:700px){
+ .topbar{justify-content:center}.topbar span:last-child{display:none}
+ .toolbar,main{width:94%}.toolbar{flex-direction:column;align-items:flex-start}
+ .toolbar-actions{width:100%}.toolbar-actions button{flex:1}
+ .certificate{padding:27px 20px}.department{padding-left:70px;padding-right:70px;font-size:10px}
+ .cert-title{font-size:21px}.grid{grid-template-columns:1fr}.field:nth-child(odd){border-right:0}
+ .verify-box{grid-template-columns:1fr}.qr-area{border-left:0;border-top:1px solid #d9dfe3;margin-top:10px;padding:15px 0 0}
+ .cert-bottom{grid-template-columns:1fr}.stamp{margin:20px auto 0}
+}
+@media print{
+ body{background:#fff}.topbar,.toolbar{display:none}main{width:100%;max-width:none;margin:0}.certificate{box-shadow:none;border:0;padding:25px;min-height:auto}.certificate:after{inset:7px}
+ @page{size:A4;margin:7mm}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<span>Government of India</span>
+<span>Department of Consumer Affairs | Legal Metrology</span>
+</div>
+
+<div class="toolbar">
+<a class="back" href="verificationrequests.html">← Back to Verification Requests</a>
+<div class="toolbar-actions">
+<button class="btn btn-print" onclick="window.print()">Print Certificate</button>
+<button class="btn btn-download" onclick="window.print()">Download Certificate PDF</button>
+</div>
+</div>
+
+<main>
+<div id="notice" class="notice"></div>
+
+<article class="certificate">
+
+<div class="cert-top">
+<img class="logo" src="../images/sihlogo.png" alt="MaapSaarthi Logo">
+<img class="emblem" src="../images/indian-emblem.png" alt="Government of India Emblem"
+     onerror="this.style.display='none'">
+
+<div class="department">
+Department of Legal Metrology<br>
+Ministry of Consumer Affairs, Food & Public Distribution<br>
+Government of India
+</div>
+
+<h1 class="cert-title">VERIFICATION CERTIFICATE</h1>
+<div class="subtitle">Certificate of Verification of Weighing & Measuring Instrument</div>
+<div id="statusBanner" class="verified-banner">VERIFICATION STATUS: —</div>
+</div>
+
+<section class="section">
+<div class="section-title">RETAILER / OWNER DETAILS</div>
+<div class="grid">
+<div class="field"><label>Owner Name</label><span id="ownerName">—</span></div>
+<div class="field"><label>Phone Number</label><span id="phoneNumber">—</span></div>
+<div class="field"><label>Email Address</label><span id="email">—</span></div>
+<div class="field"><label>Store / Business Name</label><span id="businessName">—</span></div>
+<div class="field"><label>Business Type</label><span id="businessType">—</span></div>
+<div class="field"><label>City</label><span id="city">—</span></div>
+<div class="field"><label>Complete Address</label><span id="address">—</span></div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-title">INSTRUMENT DETAILS</div>
+<div class="grid">
+<div class="field"><label>Instrument ID</label><span id="instrumentId">—</span></div>
+<div class="field"><label>Instrument Type</label><span id="instrumentType">—</span></div>
+<div class="field"><label>Manufacturer</label><span id="manufacturer">—</span></div>
+<div class="field"><label>Model</label><span id="model">—</span></div>
+<div class="field"><label>Serial Number</label><span id="serialNumber">—</span></div>
+<div class="field"><label>Capacity</label><span id="capacity">—</span></div>
+<div class="field"><label>Specification</label><span id="specification">—</span></div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-title">VERIFICATION DETAILS</div>
+<div class="verify-box">
+<div class="codes">
+<div class="field"><label>Verification Date</label><span id="verificationDate">—</span></div>
+<div class="field"><label>Verification Status</label><span id="verificationStatus">—</span></div>
+<div class="field"><label>Certificate Number</label><span id="certificateNumber">—</span></div>
+<div class="field"><label>Verification Expiry Date</label><span id="expiryDate">—</span></div>
+<div class="field"><label>Unique Machine Verification Code</label><span id="machineCode">—</span></div>
+</div>
+<div class="qr-area">
+<img id="qrImage" class="qr" alt="Verification QR Code">
+<div class="qr-caption">Scan to verify certificate status</div>
+</div>
+</div>
+</section>
+
+<div class="note">
+This instrument has been verified in accordance with the applicable Legal Metrology requirements.
+Certificate authenticity can be checked using the unique verification code or QR code.
+</div>
+
+<div class="cert-bottom">
+<div class="employee">
+<strong>Verified By</strong><br>
+<span id="employeeName" class="employee-name">—</span><br>
+<span id="employeeDesignation">—</span><br>
+Employee ID: <span id="employeeId">—</span><br>
+Department of Legal Metrology
+</div>
+<div class="stamp">
+<div>VERIFIED<br><small>LEGAL METROLOGY</small><br>GOVERNMENT OF INDIA</div>
+</div>
+</div>
+
+</article>
+</main>
+
+<script>
+const API_BASE="http://10.250.20.18:8000";
+const REQUEST_ID=
+ new URLSearchParams(location.search).get("id") ||
+ new URLSearchParams(location.search).get("request_id") ||
+ new URLSearchParams(location.search).get("verification_id") ||
+ localStorage.getItem("selectedVerificationId") ||
+ localStorage.getItem("verificationRequestId");
+
+function value(obj,...keys){
+ for(const key of keys){
+  if(obj && obj[key]!==undefined && obj[key]!==null && String(obj[key]).trim()!==""){
+   return obj[key];
+  }
+ }
+ return "—";
+}
+
+function set(id,val){
+ document.getElementById(id).textContent=val ?? "—";
+}
+
+function formatDate(v){
+ if(!v || v==="—") return "—";
+ const d=new Date(v);
+ if(Number.isNaN(d.getTime())) return v;
+ return d.toLocaleDateString("en-IN",{day:"2-digit",month:"long",year:"numeric"});
+}
+
+function showNotice(message){
+ const n=document.getElementById("notice");
+ n.textContent=message;
+ n.classList.add("show");
+}
+
+async function loadCertificate(){
+ if(!REQUEST_ID){
+  showNotice("Certificate data will appear here after a verified request is selected. No request ID was supplied.");
+  return;
+ }
+
+ try{
+  const response=await fetch(
+   API_BASE+"/api/official/verifications/"+encodeURIComponent(REQUEST_ID)
+  );
+
+  if(!response.ok) throw new Error("HTTP "+response.status);
+
+  const raw=await response.json();
+  const record=raw.data || raw.verification || raw;
+
+  const status=String(
+   value(record,"status","verification_status")
+  ).toLowerCase();
+
+  if(!status.includes("verify") && !status.includes("approv")){
+   showNotice("This certificate is not available yet. The instrument must be verified by an authorized official first.");
+   return;
+  }
+
+  set("ownerName",value(record,"owner_name","ownerName"));
+  set("phoneNumber",value(record,"phone_number","phone","mobile_number"));
+  set("email",value(record,"email","owner_email"));
+  set("businessName",value(record,"business_name","store_name","businessName"));
+  set("businessType",value(record,"business_type"));
+  set("city",value(record,"city"));
+  set("address",value(record,"address","complete_address"));
+
+  set("instrumentId",value(record,"instrument_id","instrumentId"));
+  set("instrumentType",value(record,"instrument_type","instrumentType"));
+  set("manufacturer",value(record,"manufacturer"));
+  set("model",value(record,"model"));
+  set("serialNumber",value(record,"serial_number","serialNumber"));
+  set("capacity",value(record,"capacity"));
+  set("specification",value(record,"specification","specifications"));
+
+  set("verificationDate",formatDate(value(record,"verification_date","verified_at")));
+  set("verificationStatus","VERIFIED");
+  set("certificateNumber",value(record,"certificate_number","certificateNumber"));
+  set("expiryDate",formatDate(value(record,"expiry_date","verification_expiry","valid_until")));
+  set("machineCode",value(record,"machine_code","unique_machine_code","verification_code","unique_code"));
+
+  set("employeeName",value(record,"verified_by_name","official_name","verifiedByName"));
+  set("employeeDesignation",value(record,"verified_by_designation","designation"));
+  set("employeeId",value(record,"verified_by","employee_id","verified_employee_id"));
+
+  document.getElementById("statusBanner").textContent="VERIFICATION STATUS: VERIFIED";
+
+  const qrUrl=value(record,"qr_url","verification_url");
+  const machineCode=value(record,"machine_code","unique_machine_code","verification_code","unique_code");
+  const certificateNumber=value(record,"certificate_number","certificateNumber");
+  const verificationUrl=qrUrl!=="—"
+   ? qrUrl
+   : location.origin+"/verify.html?code="+encodeURIComponent(machineCode)+"&certificate="+encodeURIComponent(certificateNumber);
+
+  document.getElementById("qrImage").src=
+   "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+encodeURIComponent(verificationUrl);
+
+ }catch(error){
+  console.error(error);
+  showNotice("Unable to fetch the verified certificate from the backend. Check the backend connection and request ID.");
+ }
+}
+
+document.addEventListener("DOMContentLoaded",loadCertificate);
+</script>
+</body>
+</html>
