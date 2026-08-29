@@ -969,6 +969,80 @@ header {
 }
 
 
+
+/* =====================================================
+   SITE VISIT STATUS
+===================================================== */
+
+.site-visit-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-top:1px solid #edf0f2;
+}
+
+.site-visit-field{
+    padding:15px 20px;
+    border-right:1px solid #edf0f2;
+    border-bottom:1px solid #edf0f2;
+}
+
+.site-visit-field:nth-child(3n){
+    border-right:none;
+}
+
+.site-visit-field label{
+    display:block;
+    color:#777;
+    font-size:9px;
+    font-weight:700;
+    margin-bottom:5px;
+    text-transform:uppercase;
+}
+
+.site-visit-field strong{
+    color:var(--gov-blue);
+    font-size:12px;
+}
+
+.site-visit-message{
+    padding:22px 25px;
+    color:#666;
+    font-size:11px;
+    line-height:1.6;
+}
+
+.site-visit-message strong{
+    color:var(--gov-blue);
+    display:block;
+    margin-bottom:4px;
+}
+
+.site-visit-action{
+    display:inline-block;
+    margin-top:10px;
+    padding:9px 14px;
+    background:var(--gov-blue);
+    color:#fff;
+    text-decoration:none;
+    border-radius:3px;
+    font-size:10px;
+    font-weight:800;
+}
+
+.site-visit-action:hover{
+    background:var(--gov-blue-dark);
+}
+
+@media(max-width:700px){
+    .site-visit-grid{
+        grid-template-columns:1fr;
+    }
+
+    .site-visit-field{
+        border-right:none;
+    }
+}
+
 /* =====================================================
    FOOTER
 ===================================================== */
@@ -1736,6 +1810,40 @@ footer {
             </div>
 
 
+
+            <!-- =================================================
+                 SITE VISIT STATUS
+            ================================================== -->
+
+            <div class="content-card" id="siteVisitCard">
+
+                <div class="card-header">
+                    <div>
+                        <h3
+                            data-en="Site Visit Status"
+                            data-te="సైట్ విజిట్ స్థితి">
+                            Site Visit Status
+                        </h3>
+
+                        <p
+                            data-en="Track the government official site visit for your verification request."
+                            data-te="మీ ధృవీకరణ అభ్యర్థనకు సంబంధించిన ప్రభుత్వ అధికారి సైట్ విజిట్‌ను ట్రాక్ చేయండి.">
+                            Track the government official site visit for your verification request.
+                        </p>
+                    </div>
+
+                    <span id="siteVisitStatusBadge"
+                          style="display:none;padding:6px 10px;border-radius:3px;font-size:10px;font-weight:800;">
+                    </span>
+                </div>
+
+                <div id="siteVisitContent" class="empty-dashboard">
+                    Loading site visit status...
+                </div>
+
+            </div>
+
+
             <!-- =================================================
                  COMPLIANCE STATUS
             ================================================== -->
@@ -1851,9 +1959,10 @@ footer {
 
 
                 <div
-                    class="empty-dashboard">
+                    class="empty-dashboard"
+                    id="upcomingVerificationContent">
 
-                    No upcoming verification scheduled.
+                    Loading upcoming verification details...
 
                 </div>
 
@@ -2191,27 +2300,503 @@ function logout() {
 */
 
 
+const API_BASE = "http://10.250.20.18:8000";
+
+/*
+    Backend endpoints used by this dashboard.
+
+    The dashboard never creates demonstration site-visit data.
+    If the backend has no record, an empty state is displayed.
+*/
+
 async function loadDashboardData() {
 
-    /*
-        Later connect this to FastAPI.
+    const retailerId =
+        localStorage.getItem("retailerId") ||
+        localStorage.getItem("retailer_id");
 
-        Example:
+    const headers = {
+        "Accept": "application/json"
+    };
 
-        GET /api/retailer/dashboard
+    try {
 
-        Expected response:
+        /*
+            Dashboard statistics.
+        */
 
-        {
-            registered_instruments: 0,
-            verified_instruments: 0,
-            pending_verification: 0,
-            upcoming_verification: 0
+        const dashboardUrl =
+            retailerId
+                ? `${API_BASE}/api/retailer/dashboard?retailer_id=${encodeURIComponent(retailerId)}`
+                : `${API_BASE}/api/retailer/dashboard`;
+
+        const response =
+            await fetch(
+                dashboardUrl,
+                { headers }
+            );
+
+        if (response.ok) {
+
+            const data =
+                await response.json();
+
+            document.getElementById("registeredCount").textContent =
+                data.registered_instruments ??
+                data.registeredCount ??
+                0;
+
+            document.getElementById("verifiedCount").textContent =
+                data.verified_instruments ??
+                data.verifiedCount ??
+                0;
+
+            document.getElementById("pendingCount").textContent =
+                data.pending_verification ??
+                data.pendingCount ??
+                0;
+
+            document.getElementById("upcomingCount").textContent =
+                data.upcoming_verification ??
+                data.upcomingCount ??
+                0;
+
         }
+
+    } catch (error) {
+
+        console.warn(
+            "Retailer dashboard endpoint unavailable:",
+            error
+        );
+
+    }
+
+    /*
+        Site visit data is loaded independently so that
+        the rest of the dashboard can still render.
     */
 
-    console.log(
-        "Dashboard backend integration pending."
+    await loadSiteVisitStatus();
+    await loadUpcomingVerification();
+
+}
+
+
+/* =====================================================
+   SITE VISIT STATUS
+===================================================== */
+
+async function loadSiteVisitStatus() {
+
+    const container =
+        document.getElementById(
+            "siteVisitContent"
+        );
+
+    const badge =
+        document.getElementById(
+            "siteVisitStatusBadge"
+        );
+
+    const retailerId =
+        localStorage.getItem("retailerId") ||
+        localStorage.getItem("retailer_id");
+
+    try {
+
+        const url =
+            retailerId
+                ? `${API_BASE}/api/site-visits/retailer/${encodeURIComponent(retailerId)}`
+                : `${API_BASE}/api/site-visits/my`;
+
+        const response =
+            await fetch(url, {
+                headers:{
+                    "Accept":"application/json"
+                }
+            });
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Site visit endpoint returned HTTP " +
+                response.status
+            );
+
+        }
+
+        const raw =
+            await response.json();
+
+        const visits =
+            Array.isArray(raw)
+                ? raw
+                : (
+                    raw.site_visits ||
+                    raw.visits ||
+                    raw.results ||
+                    raw.data ||
+                    []
+                );
+
+        if (!visits.length) {
+
+            badge.style.display = "none";
+
+            container.innerHTML = `
+                <div class="site-visit-message">
+                    <strong>No site visit scheduled</strong>
+                    A government official site visit will appear here
+                    after an appointment has been scheduled for your
+                    verification request.
+                </div>
+            `;
+
+            return;
+        }
+
+        /*
+            Show the most recent/current visit first.
+        */
+
+        const visit =
+            visits
+                .slice()
+                .sort(
+                    (a,b) =>
+                        String(
+                            b.visit_date ||
+                            b.created_at ||
+                            ""
+                        ).localeCompare(
+                            String(
+                                a.visit_date ||
+                                a.created_at ||
+                                ""
+                            )
+                        )
+                )[0];
+
+        const status =
+            String(
+                visit.status ||
+                visit.visit_status ||
+                "Scheduled"
+            );
+
+        const normalized =
+            status.toLowerCase();
+
+        let badgeBackground = "#edf3f8";
+        let badgeColor = "var(--gov-blue)";
+
+        if (
+            normalized.includes("verif") ||
+            normalized.includes("approv")
+        ) {
+
+            badgeBackground = "#e8f6e6";
+            badgeColor = "var(--green)";
+
+        } else if (
+            normalized.includes("reject")
+        ) {
+
+            badgeBackground = "#fff0ef";
+            badgeColor = "var(--danger)";
+
+        } else if (
+            normalized.includes("complete")
+        ) {
+
+            badgeBackground = "#fff3df";
+            badgeColor = "var(--saffron)";
+
+        }
+
+        badge.textContent =
+            status.toUpperCase();
+
+        badge.style.display =
+            "inline-block";
+
+        badge.style.background =
+            badgeBackground;
+
+        badge.style.color =
+            badgeColor;
+
+        const fields = [
+            [
+                "Site Visit ID",
+                visit.site_visit_id ||
+                visit.visit_id ||
+                visit.id ||
+                "—"
+            ],
+            [
+                "Instrument ID",
+                visit.instrument_id ||
+                visit.instrumentId ||
+                "—"
+            ],
+            [
+                "Visit Date",
+                visit.visit_date ||
+                "—"
+            ],
+            [
+                "Time Slot",
+                visit.time_slot ||
+                "—"
+            ],
+            [
+                "City",
+                visit.city ||
+                "—"
+            ],
+            [
+                "Government Official",
+                visit.official_name ||
+                visit.employee_name ||
+                "—"
+            ]
+        ];
+
+        container.innerHTML = `
+            <div class="site-visit-grid">
+                ${fields.map(
+                    field => `
+                        <div class="site-visit-field">
+                            <label>${escapeHtml(field[0])}</label>
+                            <strong>${escapeHtml(field[1])}</strong>
+                        </div>
+                    `
+                ).join("")}
+            </div>
+
+            ${
+                normalized.includes("reject")
+                    ? `
+                        <div class="site-visit-message">
+                            <strong>Site Visit Rejected</strong>
+                            ${
+                                escapeHtml(
+                                    visit.reason ||
+                                    visit.rejection_reason ||
+                                    "The official has not provided a reason."
+                                )
+                            }
+                        </div>
+                    `
+                    : normalized.includes("verif")
+                        ? `
+                            <div class="site-visit-message">
+                                <strong>Site Visit Verified</strong>
+                                Your instrument has been verified by the
+                                government official. The verification
+                                certificate can be accessed from the
+                                Verification Request section when available.
+                                <br>
+                                <a class="site-visit-action"
+                                   href="verificationrequest.html">
+                                   View Verification Certificate
+                                </a>
+                            </div>
+                        `
+                        : `
+                            <div class="site-visit-message">
+                                <strong>Site Visit Scheduled</strong>
+                                Please keep the instrument and required
+                                documents available for inspection at the
+                                scheduled date and time.
+                            </div>
+                        `
+            }
+        `;
+
+    } catch (error) {
+
+        console.warn(
+            "Site visit status unavailable:",
+            error
+        );
+
+        container.innerHTML = `
+            <div class="site-visit-message">
+                <strong>Site visit information unavailable</strong>
+                Site visit information will appear here once the
+                retailer backend endpoint is available.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   UPCOMING VERIFICATION
+===================================================== */
+
+async function loadUpcomingVerification() {
+
+    const container =
+        document.getElementById(
+            "upcomingVerificationContent"
+        );
+
+    const retailerId =
+        localStorage.getItem("retailerId") ||
+        localStorage.getItem("retailer_id");
+
+    try {
+
+        const url =
+            retailerId
+                ? `${API_BASE}/api/site-visits/retailer/${encodeURIComponent(retailerId)}`
+                : `${API_BASE}/api/site-visits/my`;
+
+        const response =
+            await fetch(url);
+
+        if (!response.ok) {
+
+            throw new Error(
+                "HTTP " + response.status
+            );
+
+        }
+
+        const raw =
+            await response.json();
+
+        const visits =
+            Array.isArray(raw)
+                ? raw
+                : (
+                    raw.site_visits ||
+                    raw.visits ||
+                    raw.results ||
+                    raw.data ||
+                    []
+                );
+
+        const upcoming =
+            visits.filter(
+                visit => {
+
+                    const status =
+                        String(
+                            visit.status ||
+                            visit.visit_status ||
+                            ""
+                        ).toLowerCase();
+
+                    return (
+                        !status.includes("reject") &&
+                        !status.includes("verif") &&
+                        !status.includes("complete")
+                    );
+
+                }
+            );
+
+        if (!upcoming.length) {
+
+            container.innerHTML = `
+                No upcoming site visit is scheduled.
+            `;
+
+            return;
+        }
+
+        container.innerHTML =
+            upcoming
+                .slice(0,5)
+                .map(
+                    visit => `
+                        <div class="verification-item">
+                            <div class="verification-info">
+                                <strong>
+                                    ${escapeHtml(
+                                        visit.instrument_id ||
+                                        visit.instrumentId ||
+                                        "Instrument"
+                                    )}
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(
+                                        visit.site_visit_id ||
+                                        visit.visit_id ||
+                                        "Site Visit"
+                                    )}
+                                </span>
+                            </div>
+
+                            <div class="verification-date">
+                                ${escapeHtml(
+                                    visit.visit_date ||
+                                    "Date pending"
+                                )}
+                                <br>
+                                <small style="color:#777;font-size:9px;">
+                                    ${escapeHtml(
+                                        visit.time_slot ||
+                                        ""
+                                    )}
+                                </small>
+                            </div>
+                        </div>
+                    `
+                )
+                .join("");
+
+    } catch (error) {
+
+        console.warn(
+            "Upcoming verification unavailable:",
+            error
+        );
+
+        container.innerHTML =
+            "No upcoming verification scheduled.";
+
+    }
+
+}
+
+
+/* =====================================================
+   HTML ESCAPING
+===================================================== */
+
+function escapeHtml(value) {
+
+    return String(
+        value ?? "—"
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
     );
 
 }
